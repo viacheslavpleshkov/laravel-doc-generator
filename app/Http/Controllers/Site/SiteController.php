@@ -5,18 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SiteController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+class SiteController extends Controller {
     /**
      * Show the application dashboard.
      *
@@ -25,5 +14,17 @@ class SiteController extends Controller
     public function index()
     {
         return view('site.index');
+    }
+    public function about()
+    {
+        return view('site.about');
+    }
+    public function terms_of_use()
+    {
+        return view('site.about');
+    }
+    public function privacy_polic()
+    {
+        return view('site.about');
     }
 }
