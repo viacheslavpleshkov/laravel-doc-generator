@@ -27,4 +27,16 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        if ($this->app->isLocal()) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
+    }
 }
