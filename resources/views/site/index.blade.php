@@ -1,5 +1,6 @@
 @extends('site.layouts.app')
-@section('title', 'Page Title')
+@section('title', 'Page sdsdsds')
 
 @section('content')
+    sdsdsds
 @endsection

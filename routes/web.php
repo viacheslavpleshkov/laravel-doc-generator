@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'SiteController@index')->name('index');
+Route::get('/', 'Site\SiteController@index')->name('site.index');
 
 Auth::routes();
 
