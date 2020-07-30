@@ -21,5 +21,5 @@ Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');
-    Route::get('privacy-policy', 'SiteController@privacy-polic')->name('site.privacy-policy');
+    Route::get('privacy-policy', 'SiteController@privacy_policy')->name('site.privacy-policy');
 });

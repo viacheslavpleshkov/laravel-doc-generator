@@ -13,18 +13,29 @@ class SiteController extends Controller {
      */
     public function index()
     {
-        return view('site.index');
+        return view('site.pages.index');
     }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function about()
     {
-        return view('site.about');
+        return view('site.pages.about');
     }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function terms_of_use()
     {
-        return view('site.about');
+        return view('site.pages.terms-of-use');
     }
-    public function privacy_polic()
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function privacy_policy()
     {
-        return view('site.about');
+        return view('site.pages.privacy-policy');
     }
 }
