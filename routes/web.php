@@ -12,7 +12,20 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 /**
  * Admin Router
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('orders', 'AdminController@index')->name('admin.index');
+    Route::get('type', 'AdminController@index')->name('admin.index');
+    Route::get('situations', 'AdminController@index')->name('admin.index');
+    Route::get('documents_files', 'AdminController@index')->name('admin.index');
+    Route::get('documents', 'AdminController@index')->name('admin.index');
+    Route::get('roles', 'RoleController@index')->name('roles.index');
+    Route::get('role/{id}', 'RoleController@show')->name('roles.show');
+    Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
+    Route::put('roles/{id}', 'RoleController@update')->name('roles.update');
+    Route::resource('users', 'UserController');
+    Route::get('settings', 'SettingController@index')->name('settings.index');
+    Route::put('settings', 'SettingController@update')->name('settings.update');
 });
 /**
  * Site Router
