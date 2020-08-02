@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Repositories\RoleRepository;
+use App\Repositories\UserRepository;
+use App\Http\Requests\Auth\LoginRequest;
 
 /**
  * Class RegisterController
@@ -22,23 +22,27 @@ class RegisterController extends BaseController
     protected $redirectTo = '/';
 
     /**
-     * RegisterController constructor.
+     * @var
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    private $userRepository;
 
     /**
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @var RoleRepository
      */
-    protected function validator(array $data)
+    private $roleRepository;
+
+    /**
+     * RegisterController constructor.
+     * @param UserRepository $userRepository
+     * @param RoleRepository $roleRepository
+     */
+    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
-        return Validator::make($data, [
-            'email' => 'required|string|email|max:255|unique:users',
-        ]);
+        $this->middleware('guest');
+        $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
     }
+
 
     /**
      * @param array $data
@@ -46,23 +50,23 @@ class RegisterController extends BaseController
      */
     protected function create(array $data)
     {
-        return User::create([
+        $role = $this->roleRepository->getRoleUser();
+        $attributes = [
             'email' => $data['email'],
-            'role_id' => 0,
-        ]);
+            'role_id' => $role->id
+        ];
+
+        return $this->userRepository->create($attributes);
     }
 
     /**
-     * @param Request $request
+     * @param LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function register(Request $request)
+    public function register(LoginRequest $request)
     {
-        $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect()->route('login')
-            ->with(['success' => 'Success! your account is registered.']);
+        return redirect()->route('login')->with(['success' => 'Success! your account is registered.']);
     }
 }

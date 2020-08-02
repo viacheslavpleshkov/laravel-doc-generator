@@ -41,7 +41,7 @@ class NewLoginAttempt extends Notification
     public function toMail($notifiable)
     {
         return with(new MailMessage)
-            ->from(env('MAIL_FROM_ADDRESS'))
+            ->from("admin@gmail.com")
             ->subject('Login Your Account')
             ->greeting("Hello {$this->attempt->user->name}!")
             ->line('Please click the button below to get access to the application, which will be valid only for 15 minutes.')

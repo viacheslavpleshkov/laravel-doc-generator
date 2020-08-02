@@ -6,6 +6,7 @@ use App\Models\LoginAttempt;
 use App\Notifications\NewLoginAttempt;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Trait PasswordLessAuth
@@ -99,7 +100,7 @@ trait PasswordLessAuth
     {
         $authorize = LoginAttempt::create([
             'email' => $request->input($this->username()),
-            'token' => str_random(40) . time(),
+            'token' => Str::random(40) . time(),
         ]);
 
         $authorize->notify(new NewLoginAttempt($authorize));

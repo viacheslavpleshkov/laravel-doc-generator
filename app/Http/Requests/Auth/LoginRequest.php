@@ -28,7 +28,7 @@ class LoginRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
         ];
     }
 }
