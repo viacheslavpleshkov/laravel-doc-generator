@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.edit-roles'))
+@section('title',__('admin.roles.edit'))
 
 @section('content')
     @include('admin.includes.title')
@@ -11,14 +11,14 @@
 
         <fieldset disabled>
             <div class="form-group">
-                <label for="disabledTextInput">{{ __('admin.roles-name') }}</label>
+                <label for="disabledTextInput">{{ __('admin.roles.name') }}</label>
                 <input type="text" id="disabledTextInput" class="form-control" name="name" value="{{ $main->name }}"
                        placeholder="{{ __('admin.roles-enter-name') }}">
             </div>
         </fieldset>
 
         <div class="form-group">
-            <label>{{ __('admin.roles-description') }}</label>
+            <label>{{ __('admin.roles.description') }}</label>
             <input type="text" class="form-control" name="description" value="{{ $main->description }}"
                    placeholder="{{ __('admin.roles-enter-description') }}" required>
         </div>

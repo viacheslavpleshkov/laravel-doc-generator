@@ -5,17 +5,18 @@ return [
     'nav' => [
         'home' =>'Главная',
         'about' =>'О нас',
-        'user-manager' => 'User Manager',
-        'roles' =>'Roles',
-        'users' =>'Users',
-        'settings' =>'Settings',
+        'user-manager' => 'Диспетчер пользователей',
+        'roles' =>'Роли',
+        'users' =>'Пользователи',
+        'settings' =>'Настройки',
+        'logout' =>'Выйти',
     ],
     'footer' => [
         "name" => "Название сайта",
         "privacy" => "Все права защищены.",
     ],
     //genera;
-    'admin-panel' => 'Admin Panel',
+    'admin-panel' => 'Панель администратора',
     'no-data-table' => 'Данные отсутствуют в таблице',
     'enabled' => 'Включено',
     'disabled' => 'Отключено',
@@ -32,4 +33,19 @@ return [
     'created' => 'Cоздан',
     'updated' => 'Обновлено',
     'trash' => 'Ви хочете видалити цей елемент?',
+    //Home
+    'home' => [
+        "title" => "Главная",
+        'hello' => 'Здравствуйте',
+        'url' => 'Перейти на сайт',
+    ],
+    //Roles
+    "roles" => [
+        "title" => "Роли",
+        "id" => "ID",
+        "name" => "Название",
+        "description" => "Описание",
+        "show" => "Посмотреть роль",
+        "edit" => "Редактировать роль",
+    ],
 ];
