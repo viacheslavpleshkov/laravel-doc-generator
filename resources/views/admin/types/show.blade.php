@@ -1,14 +1,14 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.show-users'))
+@section('title',__('admin.types.show'))
 
 @section('content')
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('users.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
-            <a href="{{ route('users.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
-            <form action="{{ route('users.destroy', $main->id) }}" method="POST">
+            <a href="{{ route('types.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
+            <a href="{{ route('types.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
+            <form action="{{ route('types.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
@@ -17,16 +17,17 @@
     </ul>
     <table class="table">
         <tr>
-            <th>{{ __('admin.users-id') }}</th>
+            <th>{{ __('admin.types.id') }}</th>
             <td>{{ $main->id }}</td>
         </tr>
+
         <tr>
-            <th>{{ __('admin.users-email') }}</th>
-            <td>{{ $main->email }}</td>
+            <th>{{ __('admin.types.name') }}</th>
+            <td>{{ $main->name }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.users-roles') }}</th>
-            <td>{{ $main->role->name }}</td>
+            <th>{{ __('admin.types.url') }}</th>
+            <td>{{ $main->url }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>

@@ -67,4 +67,24 @@ class TypeRepository implements RepositoryInterface
     {
         return $this->model->find($id)->delete();
     }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
+    public function getAdminAll($paginate)
+    {
+        $columns = [
+            'id',
+            'name',
+            'url',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'desc')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }

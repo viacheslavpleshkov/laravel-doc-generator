@@ -15188,7 +15188,7 @@ li,
 ul,
 th,
 .dropdown-item {
-  color: #111860;
+  color: #2d2d30;
 }
 
 body {
@@ -15213,7 +15213,7 @@ form button {
   background: transparent;
   padding: 0;
   border: 0;
-  color: #111860;
+  color: #2d2d30;
 }
 
 body > .container {
@@ -15230,29 +15230,29 @@ code {
 }
 
 .bg-info {
-  background-color: #111860 !important;
+  background-color: #2d2d30 !important;
 }
 
 .bg-dark {
-  background-color: #111860 !important;
+  background-color: #2d2d30 !important;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: #111860;
+  background-color: #2d2d30;
 }
 
 .page-link {
-  color: #111860;
+  color: #2d2d30;
 }
 
 .page-item.active .page-link {
-  background-color: #111860;
-  border-color: #111860;
+  background-color: #2d2d30;
+  border-color: #2d2d30;
 }
 
 .page-link:hover {
-  color: #111860;
+  color: #2d2d30;
 }
 
 .group {
@@ -15262,8 +15262,8 @@ code {
 
 .btn-original {
   color: #fff;
-  background-color: #111860;
-  border-color: #111860;
+  background-color: #2d2d30;
+  border-color: #2d2d30;
 }
 
 .btn-original:hover {

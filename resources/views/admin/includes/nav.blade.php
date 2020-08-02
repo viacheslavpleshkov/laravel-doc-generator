@@ -13,6 +13,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-edit"></i> {{ __('admin.nav.user-manager') }}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item {{ Request::is('*types*') ? 'active' : '' }}"
+                       href="{{ route('types.index') }}"><i class="fas fa-list"></i> {{ __('admin.nav.types') }}</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-users-cog"></i> {{ __('admin.nav.user-manager') }}</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item {{ Request::is('*users*') ? 'active' : '' }}"
@@ -22,15 +31,8 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-cogs"></i> {{ __('admin.nav.settings') }}</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item {{ Request::is('*settings*') ? 'active' : '' }}"
-                       href="{{ route('settings.index') }}"><i class="fas fa-wrench"></i>{{ __('admin.nav.settings') }}
-                    </a>
-                </div>
+            <li class="nav-item {{ url()->current() == route('settings.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('settings.index') }}"><i class="fas fa-cogs"></i> {{ __('admin.nav.settings') }}</a>
             </li>
         </ul>
         <ul class="navbar-nav">

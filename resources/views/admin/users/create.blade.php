@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.create-users'))
+@section('title',__('admin.users.create'))
 
 @section('content')
     @include('admin.includes.title')
@@ -9,13 +9,13 @@
         @csrf
 
         <div class="form-group">
-            <label>{{ __('admin.users-email') }}</label>
+            <label>{{ __('admin.users.email') }}</label>
             <input type="email" class="form-control" name="email" value="{{ old('email') }}"
-                   placeholder="{{ __('admin.users-enter-email') }}" required>
+                   placeholder="{{ __('admin.users.enter-email') }}" required>
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.users-roles') }}</label>
+            <label>{{ __('admin.users.roles') }}</label>
             <select class="form-control" name="role_id" required>
                 @foreach($role as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>

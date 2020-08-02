@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.users-title'))
+@section('title',__('admin.types.title'))
 
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -13,7 +13,8 @@
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-original" href="{{ route('users.create') }}">{{ __('admin.create-users') }}</a>
+                <a class="btn btn-original"
+                   href="{{ route('types.create') }}">{{ __('admin.types.create') }}</a>
             </div>
         </div>
     </div>
@@ -22,9 +23,9 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">{{ __('admin.users-id') }}</th>
-                <th scope="col">{{ __('admin.users-email') }}</th>
-                <th scope="col">{{ __('admin.users-roles') }}</th>
+                <th scope="col">{{ __('admin.types.id') }}</th>
+                <th scope="col">{{ __('admin.types.name') }}</th>
+                <th scope="col">{{ __('admin.types.url') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -32,14 +33,12 @@
             @foreach($main as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->url }}</td>
                     <td>
-                        {{ $item->role->name }}
-                    </td>
-                    <td>
-                        <a href="{{ route('users.show',$item->id) }}"><i class="far fa-eye"></i></a>
-                        <a href="{{ route('users.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('users.destroy',$item->id) }}" method="POST">
+                        <a href="{{ route('types.show',$item->id) }}"><i class="far fa-eye"></i></a>
+                        <a href="{{ route('types.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('types.destroy',$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">

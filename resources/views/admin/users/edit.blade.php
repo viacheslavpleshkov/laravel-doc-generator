@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.edit-users'))
+@section('title',__('admin.users.edit'))
 
 @section('content')
     @include('admin.includes.title')
@@ -10,13 +10,13 @@
         @method('PUT')
 
         <div class="form-group">
-            <label>{{ __('admin.users-email') }}</label>
+            <label>{{ __('admin.users.email') }}</label>
             <input type="email" class="form-control" name="email" value="{{ $main->email }}"
-                   placeholder="{{ __('admin.users-enter-email') }}" required>
+                   placeholder="{{ __('admin.users.enter-email') }}" required>
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.users-roles') }}</label>
+            <label>{{ __('admin.users.roles') }}</label>
             <select class="form-control" name="role_id" required>
                 <option value="{{ $main->role->id }}">{{ $main->role->name }}</option>
                 @foreach($role as $item)

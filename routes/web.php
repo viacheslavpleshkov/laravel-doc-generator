@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::group(['roles' => ['Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
         Route::get('orders', 'AdminController@index')->name('admin.index');
-        Route::get('types', 'AdminController@index')->name('admin.index');
+        Route::resource('types', 'TypeController');
         Route::get('situations', 'AdminController@index')->name('admin.index');
         Route::get('documents_files', 'AdminController@index')->name('admin.index');
         Route::get('documents', 'AdminController@index')->name('admin.index');

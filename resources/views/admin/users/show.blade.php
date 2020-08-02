@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.show-users'))
+@section('title',__('admin.users.show'))
 
 @section('content')
     @include('admin.includes.title')
@@ -17,15 +17,15 @@
     </ul>
     <table class="table">
         <tr>
-            <th>{{ __('admin.users-id') }}</th>
+            <th>{{ __('admin.users.id') }}</th>
             <td>{{ $main->id }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.users-email') }}</th>
+            <th>{{ __('admin.users.email') }}</th>
             <td>{{ $main->email }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.users-roles') }}</th>
+            <th>{{ __('admin.users.roles') }}</th>
             <td>{{ $main->role->name }}</td>
         </tr>
         <tr>
