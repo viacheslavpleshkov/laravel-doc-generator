@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
  */
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
-    Route::post('login', 'LoginController@login');
+    Route::post('login/attempt', 'LoginController@attempt')->name('login.attempt');
+    Route::get('login/{token}/validate', 'LoginController@login')->name('login.token.validate')->middleware('signed');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
     Route::post('logout', 'LoginController@logout')->name('logout');
 });
 /**

@@ -67,4 +67,25 @@ class UserRepository implements RepositoryInterface
     {
         return $this->model->find($id)->delete();
     }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
+    public function getUserAdminAll($paginate)
+    {
+        $columns = [
+            'id',
+            'email',
+            'role_id',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'desc')
+            ->with('role:id,name')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }

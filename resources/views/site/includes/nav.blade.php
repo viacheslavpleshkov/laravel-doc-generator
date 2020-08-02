@@ -5,4 +5,5 @@
         <a class="p-2 text-dark" href="{{ route('site.about') }}">{{__('site.nav.about') }}</a>
     </nav>
     <a class="btn btn-outline-primary" href="{{ route('login') }}">{{ __('site.nav.login') }}</a>
+    <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('site.nav.register') }}</a>
 </div>

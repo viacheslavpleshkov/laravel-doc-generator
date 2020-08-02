@@ -9,7 +9,7 @@
           content="Пример на bootstrap 4: Прайс-лист - пример страницы с ценой, созданной с помощью карт, с пользовательским верхнего и нижнего колонтитула. Версия v4.4.1.">
     <title>@if(url()->current() != route('site.index')) {{__('site.name') }} @else @endif</title>
     <script src="{{ asset('js/site.js') }}" defer></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 </head>
 
 <body data-gr-c-s-loaded="true">

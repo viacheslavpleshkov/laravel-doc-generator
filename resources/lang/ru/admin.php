@@ -2,11 +2,13 @@
 
 return [
     'name' => 'Название сайта',
-    'description' => 'Наш сервис позволяет любому защитить свои права и обратиться в суд без расходов на юриста',
     'nav' => [
         'home' =>'Главная',
         'about' =>'О нас',
-        'login' =>'Авторизоваться',
+        'user-manager' => 'User Manager',
+        'roles' =>'Roles',
+        'users' =>'Users',
+        'settings' =>'Settings',
     ],
     'footer' => [
         "name" => "Название сайта",
