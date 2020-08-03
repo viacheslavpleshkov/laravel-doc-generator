@@ -22,27 +22,25 @@ class Document_file extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'price',
-        'situation_id',
+        'file_path',
     ];
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function situation()
+    public function orders()
     {
-        return $this->belongsTo(Situation::class);
+        return $this->hasMany(Order::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function document()
+    public function documents()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Document::class);
     }
 }

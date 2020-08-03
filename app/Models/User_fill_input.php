@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Order
+ * Class User_fill_input
  * @package App\Models
  */
-class Order extends Model
+class User_fill_input extends Model
 {
     /**
      * @var string[]
@@ -17,32 +17,32 @@ class Order extends Model
     /**
      * @var string
      */
-    protected $table = 'orders';
+    protected $table = 'user_fill_input';
     /**
      * @var string[]
      */
     protected $fillable = [
         'user_id',
-        'document_file_id',
-        'transaction',
+        'document_id',
+        'user_input',
     ];
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function user()
+    public function document()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Document::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function document_file()
+    public function user()
     {
-        return $this->belongsTo(Document_file::class);
+        return $this->hasMany(User::class);
     }
 }

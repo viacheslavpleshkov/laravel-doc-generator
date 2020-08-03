@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateDocumentsTable
+ */
 class CreateDocumentsTable extends Migration
 {
     /**
@@ -18,7 +21,6 @@ class CreateDocumentsTable extends Migration
             $table->unsignedInteger('document_file_id');
             $table->string('title');
             $table->string('key');
-            $table->json('json');
             $table->timestamps();
             $table->foreign('document_file_id')->references('id')->on('documents_files');
         });

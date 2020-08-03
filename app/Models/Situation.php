@@ -23,8 +23,10 @@ class Situation extends Model
      */
     protected $fillable = [
         'name',
-        'url',
+        'description',
+        'price',
         'type_id',
+        'document_id',
     ];
 
     const CREATED_AT = 'created_at';
@@ -36,5 +38,13 @@ class Situation extends Model
     public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function document()
+    {
+        return $this->belongsTo(Document::class);
     }
 }

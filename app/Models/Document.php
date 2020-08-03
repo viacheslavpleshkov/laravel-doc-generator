@@ -31,18 +31,18 @@ class Document extends Model
     const UPDATED_AT = 'updated_at';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function document_file()
     {
-        return $this->belongsTo(Document_file::class);
+        return $this->hasMany(Document_file::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function order()
+    public function user_fill_input()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(User_fill_input::class);
     }
 }

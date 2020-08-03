@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateSituationsTable
+ * Class CreateUserFillInputTable
  */
-class CreateSituationsTable extends Migration
+class CreateUserFillInputTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,16 +16,15 @@ class CreateSituationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('situations', function (Blueprint $table) {
+        Schema::create('user_fill_input', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->integer('price');
-            $table->unsignedInteger('type_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('document_id');
-            $table->timestamps();
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->string('user_input');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('document_id')->references('id')->on('documents');
+
+            $table->timestamps();
         });
     }
 
@@ -36,6 +35,6 @@ class CreateSituationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('situations');
+        Schema::dropIfExists('user_fill_input');
     }
 }

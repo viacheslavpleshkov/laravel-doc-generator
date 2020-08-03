@@ -67,4 +67,24 @@ class SituationRepository implements RepositoryInterface
     {
         return $this->model->find($id)->delete();
     }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
+    public function getAdminAll($paginate)
+    {
+        $columns = [
+            'id',
+            'name',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'desc')
+            ->with('type:id,name')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }
