@@ -19,11 +19,20 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
-        Route::get('orders', 'AdminController@index')->name('admin.index');
+        Route::get('orders', 'AdminController@index');
         Route::resource('types', 'TypeController');
         Route::resource('situations', 'SituationController');
-        Route::get('documents_files', 'AdminController@index')->name('admin.index');
-        Route::get('documents', 'AdminController@index')->name('admin.index');
+        Route::resource('documents-files', 'DocumentFileController');
+        Route::get('documents-files', 'DocumentFileController@index')->name('documents-files.index');
+        Route::get('documents-files/{id}/edit', 'DocumentFileController@edit')->name('documents-files.edit');
+        Route::get('documents-files/{id}', 'DocumentFileController@show')->name('documents-files.show');
+        Route::delete('documents-files/{id}', 'DocumentFileController@destroy')->name('documents-files.destroy');
+        Route::resource('documents', 'DocumentController');
+        Route::resource('orders', 'OrderController');
+        Route::get('orders', 'OrderController@index')->name('orders.index');
+        Route::get('orders/{id}', 'OrderController@show')->name('orders.show');
+        Route::delete('orders/{id}', 'OrderController@destroy')->name('orders.destroy');
+
         Route::get('roles', 'RoleController@index')->name('roles.index');
         Route::get('role/{id}', 'RoleController@show')->name('roles.show');
         Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
@@ -42,3 +51,8 @@ Route::namespace('Site')->group(function () {
     Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');
     Route::get('privacy-policy', 'SiteController@privacy_policy')->name('site.privacy-policy');
 });
+
+Route::get('home', function () {
+    return redirect()->route('site.index');
+});
+

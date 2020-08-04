@@ -17,6 +17,12 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item {{ Request::is('*types*') ? 'active' : '' }}"
                        href="{{ route('types.index') }}"><i class="fas fa-list"></i> {{ __('admin.nav.types') }}</a>
+                    <a class="dropdown-item {{ Request::is('*situations*') ? 'active' : '' }}"
+                       href="{{ route('situations.index') }}"><i class="fas fa-adjust"></i> {{ __('admin.nav.situations') }}</a>
+                    <a class="dropdown-item {{ Request::is('*documents-files*') ? 'active' : '' }}"
+                       href="{{ route('documents-files.index') }}"><i class="fas fa-file-word"></i> {{ __('admin.nav.documents-files') }}</a>
+                    <a class="dropdown-item {{ Request::is('*documents*') ? 'active' : '' }}"
+                       href="{{ route('documents.index') }}"><i class="fas fa-file"></i> {{ __('admin.nav.documents') }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -30,6 +36,9 @@
                        href="{{ route('roles.index') }}"><i class="fas fa-user-shield"></i> {{ __('admin.nav.roles') }}
                     </a>
                 </div>
+            </li>
+            <li class="nav-item {{ url()->current() == route('orders.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('orders.index') }}"><i class="fas fa-chart-area"></i> {{ __('admin.nav.orders') }}</a>
             </li>
             <li class="nav-item {{ url()->current() == route('settings.index') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('settings.index') }}"><i class="fas fa-cogs"></i> {{ __('admin.nav.settings') }}</a>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.situations.title'))
+@section('title',__('admin.documents-files.title'))
 
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -14,7 +14,7 @@
         <div class="col-lg-3">
             <div class="pull-right">
                 <a class="btn btn-original"
-                   href="{{ route('types.create') }}">{{ __('admin.situations.create') }}</a>
+                   href="{{ route('documents-files.create') }}">{{ __('admin.documents-files.create') }}</a>
             </div>
         </div>
     </div>
@@ -23,11 +23,8 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">{{ __('admin.situations.id') }}</th>
-                <th scope="col">{{ __('admin.situations.name') }}</th>
-                <th scope="col">{{ __('admin.situations.description') }}</th>
-                <th scope="col">{{ __('admin.situations.price') }}</th>
-                <th scope="col">{{ __('admin.situations.type-name') }}</th>
+                <th scope="col">{{ __('admin.documents-files.id') }}</th>
+                <th scope="col">{{ __('admin.documents-files.files') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -35,14 +32,11 @@
             @foreach($main as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->description }}</td>
-                    <td>{{ $item->price }}</td>
-                    <td>{{ $item->types->name }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td scope="row">{{ $item->file_path }}</td>
                     <td>
-                        <a href="{{ route('situations.show',$item->id) }}"><i class="far fa-eye"></i></a>
-                        <a href="{{ route('situations.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('situations.destroy',$item->id) }}" method="POST">
+                        <a href="{{ route('documents-files.show',$item->id) }}"><i class="far fa-eye"></i></a>
+                        <form action="{{ route('documents-files.destroy',$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">

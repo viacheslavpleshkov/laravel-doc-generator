@@ -22,20 +22,20 @@ class Document extends Model
      * @var string[]
      */
     protected $fillable = [
-        'document_file_id',
         'title',
         'key',
+        'document_file_id'
     ];
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function document_file()
+    public function documents_files()
     {
-        return $this->hasMany(Document_file::class);
+        return $this->belongsTo(DocumentFile::class, 'id');
     }
 
     /**
@@ -43,6 +43,6 @@ class Document extends Model
      */
     public function user_fill_input()
     {
-        return $this->hasMany(User_fill_input::class);
+        return $this->hasMany(User_fill_input::class, 'id');
     }
 }

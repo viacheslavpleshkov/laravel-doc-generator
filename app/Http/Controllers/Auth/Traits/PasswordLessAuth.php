@@ -22,10 +22,10 @@ trait PasswordLessAuth
     protected function validateLogin(Request $request)
     {
         $messages = ['exists' => trans('auth.exists')];
-
         $this->validate($request, [
             $this->username() => 'required|email|exists:users',
         ], $messages);
+
     }
 
     /**
@@ -43,13 +43,11 @@ trait PasswordLessAuth
 
             return $this->sendLockoutResponse($request);
         }
-
         $this->validateLogin($request);
 
         if ($this->createLoginAttempt($request)) {
             return $this->sendAttemptResponse($request);
         }
-
         return $this->sendFailedLoginResponse($request);
     }
 

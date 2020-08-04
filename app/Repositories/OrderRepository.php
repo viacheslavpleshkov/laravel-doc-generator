@@ -67,4 +67,25 @@ class OrderRepository implements RepositoryInterface
     {
         return $this->model->find($id)->delete();
     }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
+    public function getAdminAll($paginate)
+    {
+        $columns = [
+            'user_id',
+            'document_file_id',
+            'transaction',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'desc')
+            ->with('user:id,email')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }

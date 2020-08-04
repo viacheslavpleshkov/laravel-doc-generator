@@ -43,6 +43,6 @@ class Order extends Model
      */
     public function document_file()
     {
-        return $this->belongsTo(Document_file::class);
+        return $this->belongsTo(DocumentFile::class);
     }
 }

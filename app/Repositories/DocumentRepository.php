@@ -67,4 +67,26 @@ class DocumentRepository implements RepositoryInterface
     {
         return $this->model->find($id)->delete();
     }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
+    public function getAdminAll($paginate)
+    {
+        $columns = [
+            'id',
+            'document_file_id',
+            'title',
+            'key',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'desc')
+            ->with('documents_files:id,file_path')
+            ->paginate($paginate);
+
+        return $result;
+    }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Document as Model;
+use App\Models\DocumentFile as Model;
 
 /**
- * Class Document_fileRepository
+ * Class DocumentFileRepository
  * @package App\Repositories
  */
-class Document_fileRepository implements RepositoryInterface
+class DocumentFileRepository implements RepositoryInterface
 {
     /**
      * @var $model
@@ -16,7 +16,7 @@ class Document_fileRepository implements RepositoryInterface
     protected $model;
 
     /**
-     * Document_fileRepository constructor.
+     * DocumentFileRepository constructor.
      */
     public function __construct()
     {
@@ -66,5 +66,15 @@ class Document_fileRepository implements RepositoryInterface
     public function delete($id)
     {
         return $this->model->find($id)->delete();
+    }
+
+    public function getAdminAll($paginate)
+    {
+        $result = $this->model
+            ->select('id', 'file_path')
+            ->orderBy('id', 'desc')
+            ->paginate($paginate);
+
+        return $result;
     }
 }

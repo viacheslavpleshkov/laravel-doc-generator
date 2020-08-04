@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Document_file
+ * Class DocumentFile
  * @package App\Models
  */
-class Document_file extends Model
+class DocumentFile extends Model
 {
     /**
      * @var string[]
