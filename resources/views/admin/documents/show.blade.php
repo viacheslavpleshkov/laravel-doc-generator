@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.documents.document_file') }}</th>
-            <td>{{ $main->document_file_id }}</td>
+            <td>({{ $main->documentfile->id }}) {{ $main->documentfile->file_path }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.documents.name') }}</th>

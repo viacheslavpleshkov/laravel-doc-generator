@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\DocumentFileRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
-use App\Repositories\UserRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\SituationStoreRequest;
 use App\Http\Requests\Admin\SituationUpdateRequest;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -24,6 +23,10 @@ class SituationController extends BaseController
     protected $typeRepository;
 
     /**
+     * @var
+     */
+    protected $documentFileRepository;
+    /**
      * @var SituationRepository
      */
     protected $situationRepository;
@@ -36,12 +39,14 @@ class SituationController extends BaseController
     /**
      * SituationController constructor.
      * @param TypeRepository $typeRepository
+     * @param DocumentFileRepository $documentFileRepository
      * @param SituationRepository $situationRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(TypeRepository $typeRepository, SituationRepository $situationRepository,SettingRepository $settingRepository)
+    public function __construct(TypeRepository $typeRepository, DocumentFileRepository $documentFileRepository, SituationRepository $situationRepository,SettingRepository $settingRepository)
     {
         $this->typeRepository = $typeRepository;
+        $this->documentFileRepository = $documentFileRepository;
         $this->situationRepository = $situationRepository;
         $this->settingRepository = $settingRepository;
     }
@@ -62,46 +67,34 @@ class SituationController extends BaseController
      */
     public function create()
     {
-        $seo = $this->seoRepository->getStatusAll();
-        $categories = $this->categoryRepository->getStatusAll();
+        $types = $this->typeRepository->getAll();
+        $documentsfile = $this->documentFileRepository->getAll();
 
-        return view('admin.articles.create', compact('seo', 'categories'));
+        return view('admin.situations.create', compact('types', 'documentsfile'));
     }
 
     /**
-     * @param ArticleStoreRequest $request
+     * @param SituationStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(SituationStoreRequest $request)
     {
-        $attributes = [
-            'title' => $request->title,
-            'url' => $request->url,
-            'images' => Storage::disk()->put('articles', $request->images),
-            'text' => $request->text,
-            'category_id' => $request->category_id,
-            'seo_id' => $request->seo_id,
-            'views' => $request->views,
-            'slide' => $request->slide,
-            'status' => $request->status,
-            'user_id' => Auth::user()->id,
-        ];
-        $main = $this->articleRepository->create($attributes);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store article     id= ' . $main->id . ' with params ', $request->all());
+        $main = $this->situationRepository->create($request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store situation id= ' . $main->id . ' with params ', $request->all());
 
-        return redirect()->route('articles.index')->with('success', __('admin.created-success'));
+        return redirect()->route('situations.index')->with('success', __('admin.created-success'));
     }
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        $main = $this->articleRepository->getById($id);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show article id= ' . $main->id);
+        $main = $this->situationRepository->getById($id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show situation id= ' . $main->id);
 
-        return view('admin.articles.show', compact('main'));
+        return view('admin.situations.show', compact('main'));
     }
 
     /**
@@ -110,25 +103,24 @@ class SituationController extends BaseController
      */
     public function edit($id)
     {
-        $main = $this->articleRepository->getById($id);
-        $seo = $this->seoRepository->getStatusAll();
-        $categories = $this->categoryRepository->getStatusAll();
-        $users = $this->userRepository->getAll();
+        $types = $this->typeRepository->getAll();
+        $documentsfile = $this->documentFileRepository->getAll();
+        $main = $this->situationRepository->getById($id);
 
-        return view('admin.articles.edit', compact('main', 'categories', 'seo', 'users'));
+        return view('admin.situations.edit', compact('main', 'types', 'documentsfile'));
     }
 
     /**
-     * @param ArticleUpdateRequest $request
+     * @param SituationUpdateRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(SituationUpdateRequest $request, $id)
     {
-        $this->articleRepository->update($id, $request->except(['url', 'images']));
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update article id= ' . $id . ' with params ', $request->all());
+        $this->situationRepository->update($id, $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update situation id= ' . $id . ' with params ', $request->all());
 
-        return redirect()->route('articles.index')->with('success', __('admin.updated-success'));
+        return redirect()->route('situations.index')->with('success', __('admin.updated-success'));
     }
 
     /**
@@ -137,9 +129,9 @@ class SituationController extends BaseController
      */
     public function destroy($id)
     {
-        $this->articleRepository->delete($id);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy article id= ' . $id);
+        $this->situationRepository->delete($id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy situation id= ' . $id);
 
-        return redirect()->route('articles.index')->with('success', __('admin.information-deleted'));
+        return redirect()->route('situations.index')->with('success', __('admin.information-deleted'));
     }
 }

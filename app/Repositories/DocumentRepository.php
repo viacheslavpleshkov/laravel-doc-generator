@@ -84,7 +84,7 @@ class DocumentRepository implements RepositoryInterface
         $result = $this->model
             ->select($columns)
             ->orderBy('id', 'desc')
-            ->with('documents_files:id,file_path')
+            ->with('documentfile:id,file_path')
             ->paginate($paginate);
 
         return $result;

@@ -32,8 +32,8 @@ class Type extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function situations()
+    public function situation()
     {
-        return $this->hasMany(Situation::class);
+        return $this->hasMany(Situation::class, 'type_id');
     }
 }

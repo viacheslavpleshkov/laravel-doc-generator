@@ -22,10 +22,10 @@ class CreateSituationsTable extends Migration
             $table->string('description');
             $table->integer('price');
             $table->unsignedInteger('type_id');
-            $table->unsignedInteger('document_id');
+            $table->unsignedInteger('document_file_id');
             $table->timestamps();
             $table->foreign('type_id')->references('id')->on('types');
-            $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('document_file_id')->references('id')->on('documents_files');
         });
     }
 

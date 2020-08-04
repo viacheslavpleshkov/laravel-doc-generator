@@ -44,6 +44,23 @@ return [
         'hello' => 'Здравствуйте',
         'url' => 'Перейти на сайт',
     ],
+    //Situations
+    "situations" => [
+        "title" => "Ситуации",
+        "id" => "ID",
+        "name" => "Название",
+        "enter-name" => "Введите название",
+        "description" => "Описание",
+        "enter-description" => "Введите описание",
+        "price" => "Цена",
+        "enter-price" => "Введите цену",
+        "type-name" => "Тип",
+        "enter-url" => "Введите url",
+        "documentfile-file" => "Документ файл",
+        "create" => "Создать ситуацию",
+        "show" => "Посмотреть ситуацию",
+        "edit" => "Редактировать ситуацию",
+    ],
     //Types
     "types" => [
         "title" => "Типы",

@@ -31,18 +31,18 @@ class User_fill_input extends Model
     const UPDATED_AT = 'updated_at';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function document()
-    {
-        return $this->hasMany(Document::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function document()
+    {
+        return $this->belongsTo(Document::class, 'document_id');
     }
 }

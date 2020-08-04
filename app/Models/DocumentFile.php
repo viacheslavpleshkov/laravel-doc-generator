@@ -33,7 +33,7 @@ class DocumentFile extends Model
      */
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'document_file_id');
     }
 
     /**
@@ -41,6 +41,14 @@ class DocumentFile extends Model
      */
     public function documents()
     {
-        return $this->hasMany(Document::class);
+        return $this->hasMany(Document::class, 'document_file_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function situations()
+    {
+        return $this->hasMany(Situation::class, 'document_file_id');
     }
 }

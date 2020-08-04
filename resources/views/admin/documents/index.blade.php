@@ -33,7 +33,7 @@
         @foreach($main as $item)
         <tr>
             <th scope="row">{{ $item->id }}</th>
-            <td>{{ $item->document_file_id }}</td>
+            <td>({{ $item->documentfile->id }}) {{ $item->documentfile->file_path }}</td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->key }}</td>
             <td>

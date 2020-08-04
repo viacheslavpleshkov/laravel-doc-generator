@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     /**
@@ -41,14 +41,14 @@ class User extends Authenticatable
      */
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'user_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function user_fill_input()
+    public function userfillinput()
     {
-        return $this->hasMany(User_fill_input::class);
+        return $this->hasMany(User_fill_input::class, 'user_id');
     }
 }

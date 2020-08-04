@@ -33,16 +33,16 @@ class Document extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function documents_files()
+    public function documentfile()
     {
-        return $this->belongsTo(DocumentFile::class, 'id');
+        return $this->belongsTo(DocumentFile::class, 'document_file_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function user_fill_input()
+    public function userfillinput()
     {
-        return $this->hasMany(User_fill_input::class, 'id');
+        return $this->hasMany(User_fill_input::class, 'document_id');
     }
 }

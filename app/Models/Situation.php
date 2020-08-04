@@ -26,25 +26,22 @@ class Situation extends Model
         'description',
         'price',
         'type_id',
-        'document_id',
+        'document_file_id',
     ];
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'type_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function document()
+    public function documentfile()
     {
-        return $this->belongsTo(Document::class);
+        return $this->belongsTo(DocumentFile::class, 'document_file_id');
     }
 }

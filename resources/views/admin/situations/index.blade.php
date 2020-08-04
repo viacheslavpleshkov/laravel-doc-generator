@@ -14,7 +14,7 @@
         <div class="col-lg-3">
             <div class="pull-right">
                 <a class="btn btn-original"
-                   href="{{ route('types.create') }}">{{ __('admin.situations.create') }}</a>
+                   href="{{ route('situations.create') }}">{{ __('admin.situations.create') }}</a>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->price }}</td>
-                    <td>{{ $item->types->name }}</td>
+                    <td>{{ $item->type->name }}</td>
                     <td>
                         <a href="{{ route('situations.show',$item->id) }}"><i class="far fa-eye"></i></a>
                         <a href="{{ route('situations.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
