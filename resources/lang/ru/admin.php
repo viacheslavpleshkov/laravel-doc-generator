@@ -4,6 +4,7 @@ return [
     'name' => 'Название сайта',
     'nav' => [
         'home' =>'Главная',
+        'templates' =>'Шаблоны',
         'types' =>'Типы',
         "documents-files" => "Файлы документов",
         "documents" => "Документы",
