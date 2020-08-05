@@ -35,6 +35,7 @@
                     <td>{{ $item->title }}</td>
                     <td scope="row">{{ $item->file_path }}</td>
                     <td>
+                        <a href="{{ route('documents.index', $item->id) }}"><i class="fas fa-key"></i></a>
                         <a href="{{ route('documents-files.show',$item->id) }}"><i class="far fa-eye"></i></a>
                         <form action="{{ route('documents-files.destroy',$item->id) }}" method="POST">
                             @csrf

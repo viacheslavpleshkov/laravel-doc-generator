@@ -69,20 +69,21 @@ class DocumentRepository implements RepositoryInterface
     }
 
     /**
+     * @param $document
      * @param $paginate
      * @return mixed
      */
-    public function getAdminAll($paginate)
+    public function getAdminAll($document, $paginate)
     {
         $columns = [
             'id',
-            'document_file_id',
             'title',
             'key',
         ];
 
         $result = $this->model
             ->select($columns)
+            ->where('document_file_id', $document)
             ->orderBy('id', 'desc')
             ->with('documentfile:id,file_path')
             ->paginate($paginate);

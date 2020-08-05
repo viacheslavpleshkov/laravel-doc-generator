@@ -23,20 +23,29 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::resource('types', 'TypeController');
         Route::resource('situations', 'SituationController');
         Route::resource('documents-files', 'DocumentFileController');
-        Route::get('documents-files', 'DocumentFileController@index')->name('documents-files.index');
-        Route::get('documents-files/{id}/edit', 'DocumentFileController@edit')->name('documents-files.edit');
-        Route::get('documents-files/{id}', 'DocumentFileController@show')->name('documents-files.show');
-        Route::delete('documents-files/{id}', 'DocumentFileController@destroy')->name('documents-files.destroy');
-        Route::resource('documents', 'DocumentController');
+
+        Route::get('documents', 'DocumentFileController@index')->name('documents-files.index');
+        Route::get('documents/{id}', 'DocumentFileController@show')->name('documents-files.show')->where('id', '[0-9]+');
+        Route::delete('documents/{id}', 'DocumentFileController@destroy')->name('documents-files.destroy')->where('id', '[0-9]+');
+
+        Route::get('{document}/document-key', 'DocumentController@index')->name('documents.index')->where('document', '[0-9]+');
+        Route::get('{document}/document-key/create', 'DocumentController@create')->name('documents.create')->where('document', '[0-9]+');
+        Route::post('{document}/document-key', 'DocumentController@store')->name('documents.store');
+        Route::get('{document}/document-key/{id}', 'DocumentController@show')->name('documents.show');
+        Route::get('{document}/document-key/{id}/edit', 'DocumentController@edit')->name('documents.edit')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::put('{document}/document-key/{id}', 'DocumentController@update')->name('documents.update')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::delete('{document}/document-key/{id}', 'DocumentController@destroy')->name('documents.destroy');
+
         Route::resource('orders', 'OrderController');
         Route::get('orders', 'OrderController@index')->name('orders.index');
-        Route::get('orders/{id}', 'OrderController@show')->name('orders.show');
-        Route::delete('orders/{id}', 'OrderController@destroy')->name('orders.destroy');
+        Route::get('orders/{id}', 'OrderController@show')->name('orders.show')->where('id', '[0-9]+');
+        Route::delete('orders/{id}', 'OrderController@destroy')->name('orders.destroy')->where('id', '[0-9]+');
 
         Route::get('roles', 'RoleController@index')->name('roles.index');
-        Route::get('role/{id}', 'RoleController@show')->name('roles.show');
-        Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit');
-        Route::put('roles/{id}', 'RoleController@update')->name('roles.update');
+        Route::get('role/{id}', 'RoleController@show')->name('roles.show')->where('id', '[0-9]+');
+        Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit')->where('id', '[0-9]+');
+        Route::put('roles/{id}', 'RoleController@update')->name('roles.update')->where('id', '[0-9]+');
+
         Route::resource('users', 'UserController');
         Route::get('settings', 'SettingController@index')->name('settings.index');
         Route::put('settings', 'SettingController@update')->name('settings.update');

@@ -5,7 +5,7 @@
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('documents.update',$main->id) }}" method="POST">
+    <form action="{{ route('documents.update', ['id' => $main->id, 'document' => $document]) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -19,17 +19,6 @@
             <label>{{ __('admin.documents.key') }}</label>
             <input type="text" class="form-control" name="key" value="{{ $main->key }}"
                    placeholder="{{ __('admin.documents-enter-key') }}" required>
-        </div>
-
-        <div class="form-group">
-            <label>{{ __('admin.documents.document_file') }}</label>
-            <select class="form-control" name="document_file_id" required>
-                <option value="{{ $main->document_file_id }}">{{ $main->document_file_id }}</option>
-                @foreach($documents as $item)
-                    @if($main->document_file_id === $item->id) @continue; @endif
-                    <option value="{{ $item->id }}">{{ $item->file_path }}</option>
-                @endforeach
-            </select>
         </div>
 
         <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.edit') }}</button>

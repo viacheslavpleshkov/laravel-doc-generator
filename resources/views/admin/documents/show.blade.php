@@ -6,9 +6,9 @@
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('documents.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
-            <a href="{{ route('documents.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
-            <form action="{{ route('documents.destroy', $main->id) }}" method="POST">
+            <a href="{{ route('documents.index', $document) }}" class="btn btn-dark">{{ __('admin.back') }}</a>
+            <a href="{{ route('documents.edit', ['id' => $main->id, 'document' => $document]) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
+            <form action="{{ route('documents.destroy', ['id' => $main->id, 'document' => $document]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>

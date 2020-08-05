@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Repositories\DocumentFileRepository;
 use App\Repositories\DocumentRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\DocumentStoreRequest;
 use App\Http\Requests\Admin\DocumentUpdateRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -26,43 +26,37 @@ class DocumentController extends BaseController
      */
     protected $settingRepository;
 
-    /**
-     * @var DocumentFileRepository
-     */
-    protected $documentFileRepository;
 
     /**
      * DocumentController constructor.
      * @param DocumentRepository $documentRepository
-     * @param DocumentFileRepository $documentFileRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(DocumentRepository $documentRepository, DocumentFileRepository $documentFileRepository,SettingRepository $settingRepository)
+    public function __construct(DocumentRepository $documentRepository,SettingRepository $settingRepository)
     {
         $this->documentRepository = $documentRepository;
-        $this->documentFileRepository = $documentFileRepository;
         $this->settingRepository = $settingRepository;
     }
 
     /**
+     * @param $document
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index($document)
     {
         $paginate = $this->settingRepository->getPaginateAdmin();
-        $main = $this->documentRepository->getAdminAll($paginate);
+        $main = $this->documentRepository->getAdminAll($document, $paginate);
 
-        return view('admin.documents.index', compact('main'));
+        return view('admin.documents.index', compact('main', 'document'));
     }
 
     /**
+     * @param $document
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create($document)
     {
-        $main = $this->documentFileRepository->getAll();
-
-        return view('admin.documents.create', compact('main'));
+        return view('admin.documents.create', compact( 'document'));
     }
 
     /**
@@ -71,58 +65,71 @@ class DocumentController extends BaseController
      */
     public function store(DocumentStoreRequest $request)
     {
-        $category = $this->documentRepository->create($request->all());
+        $attributes = [
+            'title' => $request->title,
+            'key' => $request->key,
+            'document_file_id' => $request->document
+        ];
+
+        $category = $this->documentRepository->create($attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store type id= ' . $category->id . ' with params ', $request->all());
 
-        return redirect()->route('documents.index')->with('success', __('admin.created-success'));
+        return redirect()->route('documents.index', $request->document)->with('success', __('admin.created-success'));
     }
 
     /**
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $main = $this->documentRepository->getById($id);
+        $main = $this->documentRepository->getById($request->id);
+        $document = $request->document;
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show type id= ' . $main->id);
 
-        return view('admin.documents.show', compact('main'));
+        return view('admin.documents.show', compact('main', 'document'));
     }
 
     /**
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $main = $this->documentRepository->getById($id);
-        $documents = $this->documentFileRepository->getAll();
+        $main = $this->documentRepository->getById($request->id);
+        $document = $request->document;
 
-        return view('admin.documents.edit', compact('main', 'documents'));
+        return view('admin.documents.edit', compact('main', 'document'));
     }
 
     /**
      * @param DocumentUpdateRequest $request
-     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(DocumentUpdateRequest $request, $id)
+    public function update(DocumentUpdateRequest $request)
     {
-        $this->documentRepository->update($id, $request->all());
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update document id= ' . $id . ' with params ', $request->all());
+        $attributes = [
+            'title' => $request->title,
+            'key' => $request->key,
+            'document_file_id' => $request->document
+        ];
 
-        return redirect()->route('documents.index')->with('success', __('admin.updated-success'));
+        $this->documentRepository->update($request->id, $attributes);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update document id= ' . $request->id . ' with params ', $request->all());
+
+        return redirect()->route('documents.index', $request->document)->with('success', __('admin.updated-success'));
     }
 
     /**
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $this->documentRepository->delete($id);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy document id= ' . $id);
+        $this->documentRepository->delete($request->id);
+        $document = $request->document;
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy document id= ' . $request->id);
 
-        return redirect()->route('documents.index')->with('success', __('admin.information-deleted'));
+        return redirect()->route('documents.index', $document)->with('success', __('admin.information-deleted'));
     }
 }

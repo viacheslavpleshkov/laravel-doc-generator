@@ -28,7 +28,6 @@ class DocumentUpdateRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'document_file_id' => 'required|integer',
             'title' => 'required|string|max:255',
             'key' => 'required|string|max:255',
         ];

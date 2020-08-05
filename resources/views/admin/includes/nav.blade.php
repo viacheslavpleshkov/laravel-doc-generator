@@ -21,8 +21,6 @@
                        href="{{ route('situations.index') }}"><i class="fas fa-adjust"></i> {{ __('admin.nav.situations') }}</a>
                     <a class="dropdown-item {{ Request::is('*documents-files*') ? 'active' : '' }}"
                        href="{{ route('documents-files.index') }}"><i class="fas fa-file-word"></i> {{ __('admin.nav.documents-files') }}</a>
-                    <a class="dropdown-item {{ Request::is('*documents*') ? 'active' : '' }}"
-                       href="{{ route('documents.index') }}"><i class="fas fa-file"></i> {{ __('admin.nav.documents') }}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

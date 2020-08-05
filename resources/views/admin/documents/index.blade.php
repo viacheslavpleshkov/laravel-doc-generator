@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-3">
         <div class="pull-right">
-            <a class="btn btn-original" href="{{ route('documents.create') }}">{{ __('admin.documents.create') }}</a>
+            <a class="btn btn-original" href="{{ route('documents.create', $document) }}">{{ __('admin.documents.create') }}</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,6 @@
         <thead>
         <tr>
             <th scope="col">{{ __('admin.documents.id') }}</th>
-            <th scope="col">{{ __('admin.documents.document_file') }}</th>
             <th scope="col">{{ __('admin.documents.name') }}</th>
             <th scope="col">{{ __('admin.documents.key') }}</th>
             <th scope="col"></th>
@@ -33,13 +32,12 @@
         @foreach($main as $item)
         <tr>
             <th scope="row">{{ $item->id }}</th>
-            <td>({{ $item->documentfile->id }}) {{ $item->documentfile->file_path }}</td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->key }}</td>
             <td>
-                <a href="{{ route('documents.show', $item->id) }}"><i class="far fa-eye"></i></a>
-                <a href="{{ route('documents.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('documents.destroy', $item->id) }}" method="POST">
+                <a href="{{ route('documents.show', ['id' => $item->id, 'document' => $document]) }}"><i class="far fa-eye"></i></a>
+                <a href="{{ route('documents.edit', ['id' => $item->id, 'document' => $document]) }}"><i class="fas fa-edit"></i></a>
+                <form action="{{ route('documents.destroy', ['id' => $item->id, 'document' => $document]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">
