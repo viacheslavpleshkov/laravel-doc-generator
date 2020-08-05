@@ -1,32 +1,21 @@
 @extends('site.layouts.main')
-@section('title', 'Title h1')
+@section('title', '')
 @section('description', 'Наш сервис позволяет любому защитить свои права и обратиться в суд без расходов на юриста')
 
 @section('content')
-    <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Free</h4>
-            </div>
-            <div class="card-body">
-                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Button</button>
-            </div>
-        </div>
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Pro</h4>
-            </div>
-            <div class="card-body">
-                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Button</button>
-            </div>
-        </div>
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Enterprise</h4>
-            </div>
-            <div class="card-body">
-                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Button</button>
-            </div>
+    <div style="min-height: 400px;">
+        <div class="card-deck mb-3 text-center">
+            @foreach($main as $item)
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ $item->name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ route('site.types', $item->url) }}"
+                           class="btn btn-lg btn-block btn-outline-primary">Перейти по ссылке</a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

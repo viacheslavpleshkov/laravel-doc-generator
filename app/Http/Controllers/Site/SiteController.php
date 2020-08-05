@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
+use App\Repositories\TypeRepository;
 
 class SiteController extends BaseController {
+
+    protected $typeRepository;
+    public function __construct(TypeRepository $typeRepository)
+    {
+        $this->typeRepository = $typeRepository;
+    }
     /**
      * Show the application dashboard.
      *
@@ -12,7 +19,9 @@ class SiteController extends BaseController {
      */
     public function index()
     {
-        return view('site.pages.index');
+        $main = $this->typeRepository->getAll();
+
+        return view('site.pages.index', compact('main'));
     }
 
     /**
@@ -21,6 +30,12 @@ class SiteController extends BaseController {
     public function about()
     {
         return view('site.pages.about');
+    }
+
+
+    public function protect()
+    {
+        return view('site.pages.protect');
     }
 
     /**

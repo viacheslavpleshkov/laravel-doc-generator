@@ -14,12 +14,16 @@
 
 <body data-gr-c-s-loaded="true">
 @include('site.includes.nav')
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">@yield('title')</h1>
-    <p class="lead">@yield('description')</p>
-</div>
-<div class="container">@yield('content')
-    @include('site.includes.footer')
+
+<div class="row">
+    <div class="container">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">@yield('title')</h1>
+            <p class="lead">@yield('description')</p>
+        </div>
+        @yield('content')
+        @include('site.includes.footer')
+    </div>
 </div>
 </body>
 </html>

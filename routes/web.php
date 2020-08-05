@@ -56,7 +56,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
  */
 Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
+    Route::get('types/{url}', 'SiteController@about')->name('site.types');
     Route::get('about', 'SiteController@about')->name('site.about');
+    Route::get('how-to-protect-your-rights', 'SiteController@protect')->name('site.protect');
     Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');
     Route::get('privacy-policy', 'SiteController@privacy_policy')->name('site.privacy-policy');
 });

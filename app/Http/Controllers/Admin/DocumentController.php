@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\DocumentFileRepository;
 use App\Repositories\DocumentRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\DocumentStoreRequest;
@@ -26,15 +27,20 @@ class DocumentController extends BaseController
      */
     protected $settingRepository;
 
+    /**
+     * @var DocumentFileRepository
+     */
+    protected $documentFileRepository;
 
     /**
      * DocumentController constructor.
      * @param DocumentRepository $documentRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(DocumentRepository $documentRepository,SettingRepository $settingRepository)
+    public function __construct(DocumentRepository $documentRepository, DocumentFileRepository $documentFileRepository, SettingRepository $settingRepository)
     {
         $this->documentRepository = $documentRepository;
+        $this->documentFileRepository = $documentFileRepository;
         $this->settingRepository = $settingRepository;
     }
 
@@ -44,10 +50,14 @@ class DocumentController extends BaseController
      */
     public function index($document)
     {
-        $paginate = $this->settingRepository->getPaginateAdmin();
-        $main = $this->documentRepository->getAdminAll($document, $paginate);
+        $document_file = $this->documentFileRepository->getById($document);
+        if (isset($document_file)) {
+            $paginate = $this->settingRepository->getPaginateAdmin();
+            $main = $this->documentRepository->getAdminAll($document, $paginate);
 
-        return view('admin.documents.index', compact('main', 'document'));
+            return view('admin.documents.index', ['main' => $main, 'name' => $document_file->file_path, 'document' => $document]);
+        } else
+            abort(404);
     }
 
     /**
@@ -56,7 +66,7 @@ class DocumentController extends BaseController
      */
     public function create($document)
     {
-        return view('admin.documents.create', compact( 'document'));
+        return view('admin.documents.create', compact('document'));
     }
 
     /**
