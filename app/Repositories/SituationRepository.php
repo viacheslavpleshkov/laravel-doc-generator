@@ -90,4 +90,22 @@ class SituationRepository implements RepositoryInterface
 
         return $result;
     }
+
+    public function getSitenAll($id)
+    {
+        $columns = [
+            'id',
+            'name',
+            'price',
+            'description',
+            'type_id',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->where('type_id', $id)
+            ->get();
+
+        return $result;
+    }
 }

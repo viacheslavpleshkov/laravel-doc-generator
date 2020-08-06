@@ -27,3 +27,17 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
+
+.head-card-bs {
+  min-height: 75px;
+  position: relative;
+}
+
+.text-card-bs {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

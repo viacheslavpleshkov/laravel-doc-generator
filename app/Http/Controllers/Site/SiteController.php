@@ -2,16 +2,34 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Admin\SituationController;
+use App\Repositories\SituationRepository;
 use Illuminate\Http\Request;
 use App\Repositories\TypeRepository;
 
 class SiteController extends BaseController {
 
+    /**
+     * @var TypeRepository
+     */
     protected $typeRepository;
-    public function __construct(TypeRepository $typeRepository)
+
+    /**
+     * @var SituationRepository
+     */
+    protected $situationRepository;
+
+    /**
+     * SiteController constructor.
+     * @param TypeRepository $typeRepository
+     * @param SituationRepository $situationRepository
+     */
+    public function __construct(TypeRepository $typeRepository, SituationRepository $situationRepository)
     {
         $this->typeRepository = $typeRepository;
+        $this->situationRepository = $situationRepository;
     }
+
     /**
      * Show the application dashboard.
      *
@@ -24,6 +42,19 @@ class SiteController extends BaseController {
         return view('site.pages.index', compact('main'));
     }
 
+    /**
+     * @param $url
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function types($url) {
+        $main = $this->typeRepository->getSiteUrl($url);
+        if (isset($main)) {
+            $situation = $this->situationRepository->getSitenAll($main->id);
+
+            return view('site.pages.types', compact('main', 'situation'));
+        } else
+            abort(404);
+    }
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

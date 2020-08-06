@@ -87,4 +87,15 @@ class TypeRepository implements RepositoryInterface
 
         return $result;
     }
+
+    /**
+     * @param $url
+     * @return mixed
+     */
+    public function getSiteUrl($url)
+    {
+        return $this->model
+            ->where('url', $url)
+            ->first();
+    }
 }

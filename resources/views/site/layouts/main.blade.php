@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
           content="Пример на bootstrap 4: Прайс-лист - пример страницы с ценой, созданной с помощью карт, с пользовательским верхнего и нижнего колонтитула. Версия v4.4.1.">
-    <title>@if(url()->current() != route('site.index')) {{__('site.name') }} @else @endif</title>
+    <title>@if(url()->current() != route('site.index')) {{__('site.name') }} @else @yield('title') @endif</title>
     <script src="{{ asset('js/site.js') }}" defer></script>
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
 </head>
