@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth\Traits;
 
 use App\Models\LoginAttempt;
+use App\Models\User;
 use App\Notifications\NewLoginAttempt;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Auth\RegisterController;
 
 /**
  * Trait PasswordLessAuth
@@ -23,15 +25,14 @@ trait PasswordLessAuth
     {
         $messages = ['exists' => trans('auth.exists')];
         $this->validate($request, [
-            $this->username() => 'required|email|exists:users',
+            $this->username() => 'required|email',
         ], $messages);
 
     }
 
     /**
-     * Handle a login attempt request to the application.
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response|void
+     * @return mixed|\Symfony\Component\HttpFoundation\Response|void
      * @throws \Illuminate\Validation\ValidationException
      */
     public function attempt(Request $request)
@@ -44,15 +45,16 @@ trait PasswordLessAuth
             return $this->sendLockoutResponse($request);
         }
         $this->validateLogin($request);
-
+        $user = User::where('email', $request->email)->first();
+        if (!isset($user))
+            (new RegisterController())->register($request);
         if ($this->createLoginAttempt($request)) {
             return $this->sendAttemptResponse($request);
-        }
-        return $this->sendFailedLoginResponse($request);
+        } else
+            return $this->sendFailedLoginResponse($request);
     }
 
     /**
-     * Handle a login request to the application.
      * @param $token
      * @param Request $request
      * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response|void

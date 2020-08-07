@@ -23,8 +23,8 @@
                     <td>{{ $item->description }}
                     </td>
                     <td>
-                        <a href="{{ route('roles.show',$item->id) }}"><i class="far fa-eye"></i></a>
-                        <a href="{{ route('roles.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('roles.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('roles.edit',$item->id) }}" class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
                     </td>
                 </tr>
             @endforeach

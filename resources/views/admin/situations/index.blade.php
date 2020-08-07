@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-original"
+                <a class="btn btn-outline-success"
                    href="{{ route('situations.create') }}">{{ __('admin.situations.create') }}</a>
             </div>
         </div>
@@ -40,13 +40,13 @@
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->type->name }}</td>
                     <td>
-                        <a href="{{ route('situations.show',$item->id) }}"><i class="far fa-eye"></i></a>
-                        <a href="{{ route('situations.edit',$item->id) }}"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('situations.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('situations.edit',$item->id) }}" class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
                         <form action="{{ route('situations.destroy',$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="btn btn-outline-danger">{{ __('admin.delete') }}</i>
                             </button>
                         </form>
                     </td>

@@ -6,12 +6,12 @@
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('users.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
-            <a href="{{ route('users.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
+            <a href="{{ route('users.index') }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
+            <a href="{{ route('users.edit', $main->id) }}" class="btn btn-outline-secondary">{{ __('admin.update') }}</a>
             <form action="{{ route('users.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
+                <button type="submit" class="btn btn-outline-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
             </form>
         </li>
     </ul>

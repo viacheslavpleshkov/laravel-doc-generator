@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Http\Request;
 
 /**
  * Class RegisterController
@@ -33,14 +34,12 @@ class RegisterController extends BaseController
 
     /**
      * RegisterController constructor.
-     * @param UserRepository $userRepository
-     * @param RoleRepository $roleRepository
      */
-    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
+    public function __construct()
     {
         $this->middleware('guest');
-        $this->userRepository = $userRepository;
-        $this->roleRepository = $roleRepository;
+        $this->userRepository = new UserRepository;
+        $this->roleRepository = new RoleRepository;
     }
 
 
@@ -60,10 +59,10 @@ class RegisterController extends BaseController
     }
 
     /**
-     * @param LoginRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function register(LoginRequest $request)
+    public function register(Request $request)
     {
         event(new Registered($user = $this->create($request->all())));
 

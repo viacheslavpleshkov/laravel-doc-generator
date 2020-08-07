@@ -13,6 +13,7 @@
 </head>
 
 <body data-gr-c-s-loaded="true">
+
 @include('site.includes.nav')
 
 <div class="row">

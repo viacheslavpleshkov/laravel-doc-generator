@@ -6,8 +6,8 @@ return [
         'home' =>'Главная',
         'templates' =>'Шаблоны',
         'types' =>'Типы',
-        "documents-files" => "Файлы документов",
-        "documents" => "Документы",
+        "documents-keys-files" => "Файлы документов",
+        "documents-keys" => "Документы",
         "situations" => "Ситуации",
         'about' =>'О нас',
         'user-manager' => 'Диспетчер пользователей',
@@ -30,6 +30,7 @@ return [
     'create' => 'Создайть',
     'edit' => 'Редактировать',
     'update' => 'Обновить',
+    'show' => 'Посмотреть',
     'delete' => 'Удалить',
     'block-success' => 'Извините, но у вас нет доступа.',
     'created-success' => 'Создано успешно.',
@@ -75,7 +76,7 @@ return [
         "edit" => "Редактировать тип",
     ],
     //Documents
-    "documents" => [
+    "documents-keys" => [
         "title" => "Ключи для докунта: :name",
         "id" => "ID",
         "document_file" => "Документ",

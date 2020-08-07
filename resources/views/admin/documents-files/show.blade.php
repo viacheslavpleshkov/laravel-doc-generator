@@ -6,11 +6,12 @@
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('documents-files.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
+            <a href="{{ route('documents-files.index') }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
+
             <form action="{{ route('documents-files.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
+                <button type="submit" class="btn btn-outline-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
             </form>
         </li>
     </ul>

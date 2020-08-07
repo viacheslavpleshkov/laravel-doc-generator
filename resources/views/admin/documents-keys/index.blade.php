@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.users.title'))
+@section('title',__('admin.documents-keys.title', ['name' => $name]))
 
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -13,7 +13,8 @@
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-outline-success" href="{{ route('users.create') }}">{{ __('admin.users.create') }}</a>
+                <a class="btn btn-outline-success"
+                   href="{{ route('documents-keys.create', $document) }}">{{ __('admin.documents-keys.create') }}</a>
             </div>
         </div>
     </div>
@@ -22,9 +23,9 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">{{ __('admin.users.id') }}</th>
-                <th scope="col">{{ __('admin.users.email') }}</th>
-                <th scope="col">{{ __('admin.users.roles') }}</th>
+                <th scope="col">{{ __('admin.documents-keys.id') }}</th>
+                <th scope="col">{{ __('admin.documents-keys.name') }}</th>
+                <th scope="col">{{ __('admin.documents-keys.key') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -32,14 +33,15 @@
             @foreach($main as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->key }}</td>
                     <td>
-                        {{ $item->role->name }}
-                    </td>
-                    <td>
-                        <a href="{{ route('users.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
-                        <a href="{{ route('users.edit',$item->id) }}" class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
-                        <form action="{{ route('users.destroy',$item->id) }}" method="POST">
+                        <a href="{{ route('documents-keys.show', ['id' => $item->id, 'document' => $document]) }}"
+                           class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('documents-keys.show', ['id' => $item->id, 'document' => $document]) }}"
+                           class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
+                        <form action="{{ route('documents-keys.destroy', ['id' => $item->id, 'document' => $document]) }}"
+                              method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">

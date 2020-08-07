@@ -13,7 +13,7 @@
         </div>
         <div class="col-lg-3">
             <div class="pull-right">
-                <a class="btn btn-original"
+                <a class="btn btn-outline-success"
                    href="{{ route('documents-files.create') }}">{{ __('admin.documents-files.create') }}</a>
             </div>
         </div>
@@ -26,6 +26,7 @@
                 <th scope="col">{{ __('admin.documents-files.id') }}</th>
                 <th scope="col">{{ __('admin.documents-files.files') }}</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -35,13 +36,13 @@
                     <td>{{ $item->title }}</td>
                     <td scope="row">{{ $item->file_path }}</td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('documents.index', $item->id) }}">{{ __('admin.documents-files.document-key') }}</a>
-                        <a href="{{ route('documents-files.show',$item->id) }}"><i class="far fa-eye"></i></a>
+                        <a href="{{ route('documents-keys.index', $item->id) }}" class="btn btn-outline-warning">{{ __('admin.documents-files.document-key') }}</a>
+                        <a href="{{ route('documents-files.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
                         <form action="{{ route('documents-files.destroy',$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="btn btn-outline-danger">{{ __('admin.delete') }}</i>
                             </button>
                         </form>
                     </td>

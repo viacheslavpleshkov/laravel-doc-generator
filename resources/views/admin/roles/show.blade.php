@@ -6,8 +6,8 @@
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('roles.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
-            <a href="{{ route('roles.edit', $main->id) }}" class="btn btn-primary">{{ __('admin.update') }}</a>
+            <a href="{{ route('roles.index') }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
+            <a href="{{ route('roles.edit', $main->id) }}" class="btn btn-outline-secondary">{{ __('admin.update') }}</a>
         </li>
     </ul>
     <table class="table">

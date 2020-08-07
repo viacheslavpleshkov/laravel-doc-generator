@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * Auth Router
  */
-Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
+Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login/attempt', 'LoginController@attempt')->name('login.attempt');
     Route::get('login/{token}/validate', 'LoginController@login')->name('login.token.validate')->middleware('signed');
@@ -22,19 +22,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::get('orders', 'AdminController@index');
         Route::resource('types', 'TypeController');
         Route::resource('situations', 'SituationController');
+
         Route::resource('documents-files', 'DocumentFileController');
 
-        Route::get('documents', 'DocumentFileController@index')->name('documents-files.index');
-        Route::get('documents/{id}', 'DocumentFileController@show')->name('documents-files.show')->where('id', '[0-9]+');
-        Route::delete('documents/{id}', 'DocumentFileController@destroy')->name('documents-files.destroy')->where('id', '[0-9]+');
-
-        Route::get('{document}/document-key', 'DocumentController@index')->name('documents.index')->where('document', '[0-9]+');
-        Route::get('{document}/document-key/create', 'DocumentController@create')->name('documents.create')->where('document', '[0-9]+');
-        Route::post('{document}/document-key', 'DocumentController@store')->name('documents.store');
-        Route::get('{document}/document-key/{id}', 'DocumentController@show')->name('documents.show');
-        Route::get('{document}/document-key/{id}/edit', 'DocumentController@edit')->name('documents.edit')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
-        Route::put('{document}/document-key/{id}', 'DocumentController@update')->name('documents.update')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
-        Route::delete('{document}/document-key/{id}', 'DocumentController@destroy')->name('documents.destroy');
+        Route::get('{document}/document-key', 'DocumentController@index')->name('documents-keys.index')->where('document', '[0-9]+');
+        Route::get('{document}/document-key/create', 'DocumentController@create')->name('documents-keys.create')->where('document', '[0-9]+');
+        Route::post('{document}/document-key', 'DocumentController@store')->name('documents-keys.store');
+        Route::get('{document}/document-key/{id}', 'DocumentController@show')->name('documents-keys.show');
+        Route::get('{document}/document-key/{id}/edit', 'DocumentController@edit')->name('documents-keys.edit')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::put('{document}/document-key/{id}', 'DocumentController@update')->name('documents-keys.update')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::delete('{document}/document-key/{id}', 'DocumentController@destroy')->name('documents-keys.destroy');
 
         Route::resource('orders', 'OrderController');
         Route::get('orders', 'OrderController@index')->name('orders.index');

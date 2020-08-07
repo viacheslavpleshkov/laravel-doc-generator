@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Repositories\DocumentFileRepository;
-use App\Repositories\UserRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\DocumentFileStoreRequest;
 use App\Http\Requests\Admin\DocumentFileUpdateRequest;
@@ -67,7 +66,7 @@ class DocumentFileController extends BaseController
             'file_path' => Storage::disk()->put('docs', $request->file_path),
         ];
         $main = $this->documentFileRepository->create($attributes);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store documents-files id= ' . $main->id . ' with params ', $request->all());
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store documents-keys-files id= ' . $main->id . ' with params ', $request->all());
 
         return redirect()->route('documents-files.index')->with('success', __('admin.created-success'));
     }
@@ -79,7 +78,7 @@ class DocumentFileController extends BaseController
     public function show($id)
     {
         $main = $this->documentFileRepository->getById($id);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show documents-files id= ' . $main->id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show documents-keys-files id= ' . $main->id);
 
         return view('admin.documents-files.show', compact('main'));
     }
@@ -92,7 +91,7 @@ class DocumentFileController extends BaseController
     public function destroy($id)
     {
         $this->documentFileRepository->delete($id);
-        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy documents-files id= ' . $id);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy documents-keys-files id= ' . $id);
 
         return redirect()->route('documents-files.index')->with('success', __('admin.information-deleted'));
     }

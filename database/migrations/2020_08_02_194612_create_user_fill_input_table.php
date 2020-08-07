@@ -22,7 +22,7 @@ class CreateUserFillInputTable extends Migration
             $table->unsignedInteger('document_id');
             $table->string('user_input');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('document_id')->references('id')->on('documents');
+            $table->foreign('document_id')->references('id')->on('documents-keys');
 
             $table->timestamps();
         });

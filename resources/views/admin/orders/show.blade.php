@@ -6,7 +6,7 @@
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('orders.index') }}" class="btn btn-dark">{{ __('admin.back') }}</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
         </li>
     </ul>
     <table class="table">

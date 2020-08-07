@@ -20,4 +20,5 @@ class LoginController extends BaseController
     {
         $this->middleware('guest')->except('logout');
     }
+
 }

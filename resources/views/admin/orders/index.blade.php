@@ -25,7 +25,7 @@
                     <td>{{ $item->transaction }}
                     </td>
                     <td>
-                        <a href="{{ route('orders.show',$item->id) }}"><i class="far fa-eye"></i></a>
+                        <a href="{{ route('orders.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
                     </td>
                 </tr>
             @endforeach

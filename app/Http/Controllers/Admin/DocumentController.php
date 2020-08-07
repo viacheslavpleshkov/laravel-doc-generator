@@ -55,7 +55,7 @@ class DocumentController extends BaseController
             $paginate = $this->settingRepository->getPaginateAdmin();
             $main = $this->documentRepository->getAdminAll($document, $paginate);
 
-            return view('admin.documents.index', ['main' => $main, 'name' => $document_file->file_path, 'document' => $document]);
+            return view('admin.documents-keys.index', ['main' => $main, 'name' => $document_file->file_path, 'document' => $document]);
         } else
             abort(404);
     }
@@ -66,7 +66,7 @@ class DocumentController extends BaseController
      */
     public function create($document)
     {
-        return view('admin.documents.create', compact('document'));
+        return view('admin.documents-keys.create', compact('document'));
     }
 
     /**
@@ -84,7 +84,7 @@ class DocumentController extends BaseController
         $category = $this->documentRepository->create($attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store type id= ' . $category->id . ' with params ', $request->all());
 
-        return redirect()->route('documents.index', $request->document)->with('success', __('admin.created-success'));
+        return redirect()->route('documents-keys.index', $request->document)->with('success', __('admin.created-success'));
     }
 
     /**
@@ -97,7 +97,7 @@ class DocumentController extends BaseController
         $document = $request->document;
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show type id= ' . $main->id);
 
-        return view('admin.documents.show', compact('main', 'document'));
+        return view('admin.documents-keys.show', compact('main', 'document'));
     }
 
     /**
@@ -109,7 +109,7 @@ class DocumentController extends BaseController
         $main = $this->documentRepository->getById($request->id);
         $document = $request->document;
 
-        return view('admin.documents.edit', compact('main', 'document'));
+        return view('admin.documents-keys.edit', compact('main', 'document'));
     }
 
     /**
@@ -127,7 +127,7 @@ class DocumentController extends BaseController
         $this->documentRepository->update($request->id, $attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update document id= ' . $request->id . ' with params ', $request->all());
 
-        return redirect()->route('documents.index', $request->document)->with('success', __('admin.updated-success'));
+        return redirect()->route('documents-keys.index', $request->document)->with('success', __('admin.updated-success'));
     }
 
     /**
@@ -140,6 +140,6 @@ class DocumentController extends BaseController
         $document = $request->document;
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy document id= ' . $request->id);
 
-        return redirect()->route('documents.index', $document)->with('success', __('admin.information-deleted'));
+        return redirect()->route('documents-keys.index', $document)->with('success', __('admin.information-deleted'));
     }
 }
