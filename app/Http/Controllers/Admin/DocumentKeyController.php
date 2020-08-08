@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Repositories\DocumentFileRepository;
-use App\Repositories\DocumentRepository;
+use App\Repositories\DocumentKeyRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\DocumentStoreRequest;
 use App\Http\Requests\Admin\DocumentUpdateRequest;
@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 /**
- * Class DocumentController
+ * Class DocumentKeyController
  * @package App\Http\Controllers\Admin
  */
-class DocumentController extends BaseController
+class DocumentKeyController extends BaseController
 {
     /**
-     * @var DocumentRepository
+     * @var DocumentKeyRepository
      */
     protected $documentRepository;
 
@@ -33,11 +33,12 @@ class DocumentController extends BaseController
     protected $documentFileRepository;
 
     /**
-     * DocumentController constructor.
-     * @param DocumentRepository $documentRepository
+     * DocumentKeyController constructor.
+     * @param DocumentKeyRepository $documentRepository
+     * @param DocumentFileRepository $documentFileRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(DocumentRepository $documentRepository, DocumentFileRepository $documentFileRepository, SettingRepository $settingRepository)
+    public function __construct(DocumentKeyRepository $documentRepository, DocumentFileRepository $documentFileRepository, SettingRepository $settingRepository)
     {
         $this->documentRepository = $documentRepository;
         $this->documentFileRepository = $documentFileRepository;

@@ -5,9 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateDocumentsTable
+ * Class CreateDocumentsKeysTable
  */
-class CreateDocumentsTable extends Migration
+class CreateDocumentsKeysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents-keys', function (Blueprint $table) {
+        Schema::create('documents_keys', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('document_file_id');
             $table->string('title');
@@ -33,6 +33,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents-keys');
+        Schema::dropIfExists('documents_keys');
     }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Document as Model;
+use App\Models\DocumentKey as Model;
 
 /**
- * Class DocumentRepository
+ * Class DocumentKeyRepository
  * @package App\Repositories
  */
-class DocumentRepository implements RepositoryInterface
+class DocumentKeyRepository implements RepositoryInterface
 {
     /**
      * @var $model
@@ -16,7 +16,7 @@ class DocumentRepository implements RepositoryInterface
     protected $model;
 
     /**
-     * DocumentRepository constructor.
+     * DocumentKeyRepository constructor.
      */
     public function __construct()
     {
@@ -87,6 +87,14 @@ class DocumentRepository implements RepositoryInterface
             ->orderBy('id', 'desc')
             ->with('documentfile:id,file_path')
             ->paginate($paginate);
+
+        return $result;
+    }
+
+    public function getSiteSituation($id) {
+        $result = $this->model
+            ->where('document_file_id', $id)
+            ->get();
 
         return $result;
     }

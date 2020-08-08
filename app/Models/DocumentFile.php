@@ -41,7 +41,7 @@ class DocumentFile extends Model
      */
     public function documents()
     {
-        return $this->hasMany(Document::class, 'document_file_id');
+        return $this->hasMany(DocumentKey::class, 'document_file_id');
     }
 
     /**

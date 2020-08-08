@@ -99,6 +99,7 @@ class SituationRepository implements RepositoryInterface
             'price',
             'description',
             'type_id',
+            'document_file_id',
         ];
 
         $result = $this->model

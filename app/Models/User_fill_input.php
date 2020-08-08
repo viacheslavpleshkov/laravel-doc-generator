@@ -43,6 +43,6 @@ class User_fill_input extends Model
      */
     public function document()
     {
-        return $this->belongsTo(Document::class, 'document_id');
+        return $this->belongsTo(DocumentKey::class, 'document_id');
     }
 }

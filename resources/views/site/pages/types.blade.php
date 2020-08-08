@@ -2,23 +2,21 @@
 @section('title', $main->name)
 
 @section('content')
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">{{ __('site.situation.name') }}</th>
-            <th scope="col">{{ __('admin.situation.price') }}</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="card-deck mb-3 text-center">
         @foreach($situation as $item)
-            <tr>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->price }}</td>
-                <td><a class="btn btn-secondary" href="{{ route('site.situation', $item->id) }}">Сделать документ</a></td>
-            </tr>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header head-card-bs">
+                    <h4 class="my-0 font-weight-normal text-card-bs">{{ $item->name }}</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ $item->price }}</h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>{{ $item->description }}</li>
+                    </ul>
+                    <a href="{{ route('site.situation', $item->document_file_id) }}"
+                       class="btn btn-lg btn-block btn-outline-secondary">Сделать документ</a>
+                </div>
+            </div>
         @endforeach
-        </tbody>
-    </table>
-
+    </div>
 @endsection

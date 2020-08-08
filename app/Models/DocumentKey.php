@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Document
+ * Class DocumentKey
  * @package App\Models
  */
-class Document extends Model
+class DocumentKey extends Model
 {
     /**
      * @var string[]
@@ -17,7 +17,7 @@ class Document extends Model
     /**
      * @var string
      */
-    protected $table = 'documents';
+    protected $table = 'documents_keys';
     /**
      * @var string[]
      */
