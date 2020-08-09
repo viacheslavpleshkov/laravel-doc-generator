@@ -25,6 +25,7 @@ class User_fill_input extends Model
         'user_id',
         'document_id',
         'user_input',
+        'situation_id',
     ];
 
     const CREATED_AT = 'created_at';
@@ -36,6 +37,14 @@ class User_fill_input extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function situation()
+    {
+        return $this->belongsTo(Situation::class, 'situation_id');
     }
 
     /**

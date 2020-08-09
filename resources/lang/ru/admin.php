@@ -34,7 +34,7 @@ return [
     'delete' => 'Удалить',
     'block-success' => 'Извините, но у вас нет доступа.',
     'created-success' => 'Создано успешно.',
-    'updated-success' => 'Успешно Обновлено.',
+    'updated-success' => 'Успешно обновлено.',
     'information-deleted' => 'Информация была удалена.',
     'status' => 'Cтатус',
     'created' => 'Cоздан',

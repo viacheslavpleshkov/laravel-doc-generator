@@ -54,9 +54,12 @@ Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
     Route::get('types/{url}', 'SiteController@types')->name('site.types');
     Route::middleware('auth')->group(function () {
-        Route::get('situation/{id}', 'SiteController@situation')->name('site.situation');
-        Route::post('situation', 'SiteController@situation_form')->name('site.situation_form');
+        Route::get('situation/{id}', 'SituationController@index')->name('site.situation.index');
+        Route::post('situation/{id}', 'SituationController@form')->name('site.situation.form');
+        Route::post('situation-update/{id}', 'SituationController@update_form')->name('site.situation.update_form');
     });
+    Route::get('payment/{id}', 'PaymentController@index')->name('site.payment.index');
+    Route::get('payment-success', 'PaymentController@success')->name('site.payment.success');
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('how-to-protect-your-rights', 'SiteController@protect')->name('site.protect');
     Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');

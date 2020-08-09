@@ -44,4 +44,12 @@ class Situation extends Model
     {
         return $this->belongsTo(DocumentFile::class, 'document_file_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userfillinput()
+    {
+        return $this->hasMany(User_fill_input::class, 'situation_id');
+    }
 }

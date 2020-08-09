@@ -44,7 +44,7 @@
                 <option value="{{ $main->documentfile->id }}">{{ $main->documentfile->file_path }}</option>
                 @foreach($documentsfile as $item)
                     @if($main->documentfile->id === $item->id) @continue; @endif
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    <option value="{{ $item->id }}">{{ $item->file_path }}</option>
                 @endforeach
             </select>
         </div>

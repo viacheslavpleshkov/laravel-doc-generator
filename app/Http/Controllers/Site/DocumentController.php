@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
-
-class SiteController extends BaseController
+use PhpOffice\PhpWord\PhpWord;
+class DocumentController extends BaseController
 {
 
     /**

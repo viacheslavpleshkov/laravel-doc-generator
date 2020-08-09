@@ -7,14 +7,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\URL;
 
+/**
+ * Class NewLoginAttempt
+ * @package App\Notifications
+ */
 class NewLoginAttempt extends Notification
 {
     use Queueable;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * NewLoginAttempt constructor.
+     * @param $attempt
      */
     public function __construct($attempt)
     {
@@ -22,10 +25,8 @@ class NewLoginAttempt extends Notification
     }
 
     /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
+     * @param $notifiable
+     * @return string[]
      */
     public function via($notifiable)
     {
@@ -33,20 +34,18 @@ class NewLoginAttempt extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @param $notifiable
+     * @return mixed
      */
     public function toMail($notifiable)
     {
         return with(new MailMessage)
             ->from("admin@gmail.com")
-            ->subject('Login Your Account')
-            ->greeting("Hello ss!")
-            ->line('Please click the button below to get access to the application, which will be valid only for 15 minutes.')
-            ->action('Login to your account', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), [$this->attempt->token]))
-            ->line('Thank you for using our application!');
+            ->subject('Войдите в свой аккаунт')
+            ->greeting("Hello {$this->attempt->user->name}!")
+            ->line('Пожалуйста, нажмите кнопку ниже, чтобы получить доступ к приложению, которое будет действовать только 15 минут.')
+            ->action('Войдите в свой аккаунт', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), [$this->attempt->token]))
+            ->line('Спасибо за использование нашего приложения!');
     }
 
     /**

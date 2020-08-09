@@ -12,10 +12,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "idma/robokassa": "dev-master",
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "phpoffice/phpword": "^0.17.0",
         "sentry/sentry-laravel": "^1.8"
     },
     "require-dev": {

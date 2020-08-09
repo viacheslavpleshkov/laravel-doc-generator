@@ -20,9 +20,11 @@ class CreateUserFillInputTable extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('document_id');
+            $table->unsignedInteger('situation_id');
             $table->string('user_input');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('document_id')->references('id')->on('documents_keys');
+            $table->foreign('situation_id')->references('id')->on('situations');
 
             $table->timestamps();
         });

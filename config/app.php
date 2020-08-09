@@ -123,6 +123,12 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    //Robokassa
+    'robokassa_login' => env('ROBOKASSA_LOGIN'),
+    'robokassa_password1' => env('ROBOKASSA_PASS1'),
+    'robokassa_password2' => env('ROBOKASSA_PASS2'),
+    'robokassa_mode' => env('ROBOKASSA_MODE'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

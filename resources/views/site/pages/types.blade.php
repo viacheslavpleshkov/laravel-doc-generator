@@ -13,7 +13,7 @@
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>{{ $item->description }}</li>
                     </ul>
-                    <a href="{{ route('site.situation', $item->document_file_id) }}"
+                    <a href="{{ route('site.situation.index', $item->id) }}"
                        class="btn btn-lg btn-block btn-outline-secondary">Сделать документ</a>
                 </div>
             </div>

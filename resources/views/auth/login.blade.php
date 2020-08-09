@@ -15,13 +15,13 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header text-center">Авторизоваться</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login.attempt') }}" aria-label="{{ __('Login') }}">
                             @csrf
 
-                            <div class="alert">
-                                Please enter your email address below and we will email you a unique login link right away.
+                            <div class="alert text-center">
+                                Пожалуйста, введите свой адрес электронной почты ниже, и мы сразу же вышлем вам уникальную ссылку для входа по электронной почте.
                             </div>
 
                             <div class="form-group row">
@@ -51,7 +51,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Get Login Link') }}
+                                        Получить ссылку для входа
                                     </button>
                                 </div>
                             </div>

@@ -88,6 +88,22 @@ class TypeRepository implements RepositoryInterface
         return $result;
     }
 
+    public function getSiteAll()
+    {
+        $columns = [
+            'id',
+            'name',
+            'url',
+        ];
+
+        $result = $this->model
+            ->select($columns)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return $result;
+    }
+
     /**
      * @param $url
      * @return mixed

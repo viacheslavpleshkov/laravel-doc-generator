@@ -9,6 +9,7 @@
 
 html {
   font-size: 14px;
+  font-family: $font-family-original;
 }
 @media (min-width: 768px) {
   html {
@@ -40,4 +41,9 @@ html {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+.img-center {
+  display: block;
+  margin: 0 auto;
 }
