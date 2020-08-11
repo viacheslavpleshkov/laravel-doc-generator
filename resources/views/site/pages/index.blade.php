@@ -14,7 +14,8 @@
     </div>
     <h3 class="text-center">Новости</h3>
     <hr>
-    <div class="card-deck mb-3 text-center">
+    <div class="index-card">
+        <div class="card-deck mb-3 text-center">
             @foreach($news as $item)
                 <div class="card mb-3 shadow-sm col-lg-2 p-0">
                     <div class="card-header">
@@ -23,9 +24,10 @@
                     <div class="card-body">
                         <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
                         <a href="{{ route('news.view', $item->url) }}"
-                           class="btn btn-lg btn-block btn-outline-primary cart-btn">Читать больше</a>
+                           class="btn btn-lg btn-block btn-outline-primary card-btn">Читать больше</a>
                     </div>
                 </div>
             @endforeach
+        </div>
     </div>
 @endsection

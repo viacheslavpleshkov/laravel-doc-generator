@@ -22,6 +22,7 @@ class DocumentFile extends Model
      * @var string[]
      */
     protected $fillable = [
+        'title',
         'file_path',
     ];
 

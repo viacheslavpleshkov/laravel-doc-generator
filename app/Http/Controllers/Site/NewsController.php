@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Site;
 
 use App\Repositories\NewsRepository;
 
+/**
+ * Class NewsController
+ * @package App\Http\Controllers\Site
+ */
 class NewsController extends BaseController
 {
     /**
@@ -21,6 +25,15 @@ class NewsController extends BaseController
     }
 
     /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index() {
+        $main = $this->newsRepository->getAll();
+
+        return view('site.news.index', compact('main'));
+    }
+
+    /**
      * @param $url
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -32,5 +45,4 @@ class NewsController extends BaseController
         else
             abort(404);
     }
-
 }

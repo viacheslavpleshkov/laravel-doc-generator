@@ -1,34 +1,42 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <div class="row">
-            <a href="{{ route('site.index') }}" class="my-0 mr-md-auto font-weight-normal text-dark"><h5>{{__('site.name') }}</h5>
-            </a>
-            <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="{{ route('news.index') }}">{{__('site.nav.protect') }}</a>
-            </nav>
-            @auth
-                @if(in_array(Auth::user()->role->name, ['Admin']))
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> {{ Auth::user()->email }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('admin.index') }}"><i
-                                            class="fas fa-sign-out-alt"></i> {{ __('site.nav.admin-panel') }}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                                            class="fas fa-sign-out-alt"></i> {{ __('site.nav.logout') }}</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                @endif
-            @endif
+        <a class="navbar-brand" href="{{ route('site.index') }}">{{__('site.name') }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('news.index') }}">{{__('site.nav.protect') }}</a>
+                    </li>
+                    @auth
+                        @if(in_array(Auth::user()->role->name, ['Admin']))
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->email }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"
+                                       href="{{ route('admin.index') }}">{{ __('site.nav.admin-panel') }}</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                class="fas fa-sign-out-alt"></i> {{ __('site.nav.logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</nav>
