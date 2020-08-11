@@ -13,18 +13,18 @@ class TypesTableSeeder extends Seeder
     public function run()
     {
         $type1 = new Type();
-        $type1->name = "Физическое лицо";
-        $type1->url = "individual";
+        $type1->name = "Юридическое лицо";
+        $type1->url = "entity";
         $type1->save();
 
         $type2 = new Type();
-        $type2->name = "Юридическое лицо";
-        $type2->url = "entity";
+        $type2->name = "Индивидуальный предприниматель";
+        $type2->url = "individual-entrepreneur";
         $type2->save();
 
         $type3 = new Type();
-        $type3->name = "Индивидуальный предприниматель";
-        $type3->url = "individual-entrepreneur";
+        $type3->name = "Физическое лицо";
+        $type3->url = "individual";
         $type3->save();
     }
 }

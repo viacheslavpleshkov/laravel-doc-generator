@@ -5,31 +5,27 @@
 @section('content')
     <div class="card-deck mb-3 text-center">
         @foreach($main as $item)
-            <div class="card mb-4 shadow-sm">
+            <a href="{{ route('site.types', $item->url) }}" class="card mb-4 shadow-sm">
                 <div class="card-header head-card-bs">
-                    <h4 class="my-0 font-weight-normal text-card-bs">{{ $item->name }}</h4>
+                    <h4 class="my-0 font-weight-normal text-card-bs text-dark">{{ $item->name }}</h4>
                 </div>
-                <div class="card-body">
-                    <a href="{{ route('site.types', $item->url) }}"
-                       class="btn btn-lg btn-block btn-outline-success">Перейти по ссылке</a>
-                </div>
-            </div>
+            </a>
         @endforeach
     </div>
     <h3 class="text-center">Новости</h3>
     <hr>
     <div class="card-deck mb-3 text-center">
-        @foreach($news as $item)
-            <div class="card mb-3 shadow-sm">
-                <div class="card-header head-card-bs">
-                    <h4 class="my-0 font-weight-normal text-card-bs">{{ $item->title }}</h4>
+            @foreach($news as $item)
+                <div class="card mb-3 shadow-sm col-lg-2 p-0">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ $item->title }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
+                        <a href="{{ route('news.view', $item->url) }}"
+                           class="btn btn-lg btn-block btn-outline-primary cart-btn">Читать больше</a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
-                    <a href="{{ route('news.view', $item->url) }}"
-                       class="btn btn-lg btn-block btn-outline-primary">Читать больше</a>
-                </div>
-            </div>
-        @endforeach
+            @endforeach
     </div>
 @endsection

@@ -74,11 +74,6 @@ class SiteController extends BaseController
     }
 
 
-    public function protect()
-    {
-        return view('site.pages.protect');
-    }
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

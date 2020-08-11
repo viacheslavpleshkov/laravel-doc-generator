@@ -70,8 +70,14 @@ class DocumentFileRepository implements RepositoryInterface
 
     public function getAdminAll($paginate)
     {
+        $columns = [
+            'id',
+            'title',
+            'file_path',
+        ];
+
         $result = $this->model
-            ->select('id', 'file_path')
+            ->select($columns)
             ->orderBy('id', 'desc')
             ->paginate($paginate);
 

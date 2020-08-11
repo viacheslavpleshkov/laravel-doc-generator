@@ -38,7 +38,9 @@ class DocumentKeyController extends BaseController
      * @param DocumentFileRepository $documentFileRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(DocumentKeyRepository $documentRepository, DocumentFileRepository $documentFileRepository, SettingRepository $settingRepository)
+    public function __construct(DocumentKeyRepository $documentRepository,
+                                DocumentFileRepository $documentFileRepository,
+                                SettingRepository $settingRepository)
     {
         $this->documentRepository = $documentRepository;
         $this->documentFileRepository = $documentFileRepository;
@@ -56,7 +58,7 @@ class DocumentKeyController extends BaseController
             $paginate = $this->settingRepository->getPaginateAdmin();
             $main = $this->documentRepository->getAdminAll($document, $paginate);
 
-            return view('admin.documents-keys.index', ['main' => $main, 'name' => $document_file->file_path, 'document' => $document]);
+            return view('admin.documents-keys.index', ['main' => $main, 'name' => $document_file->title, 'document' => $document]);
         } else
             abort(404);
     }

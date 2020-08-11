@@ -10970,3 +10970,11 @@ html {
   margin: 0 auto;
 }
 
+.card-btn {
+  font-size: 14px;
+}
+
+.card-deck .card {
+  min-width: 210px;
+}
+

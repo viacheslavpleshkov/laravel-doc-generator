@@ -106,7 +106,7 @@ class NewsRepository implements RepositoryInterface
         $result = $this->model
             ->select($columns)
             ->orderBy('id', 'desc')
-            ->limit(3)
+            ->limit(4)
             ->get();
 
         return $result;

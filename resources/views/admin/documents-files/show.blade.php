@@ -22,6 +22,10 @@
         </tr>
         <tr>
             <th>{{ __('admin.documents-files.id') }}</th>
+            <td>{{ $main->title }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.documents-files.id') }}</th>
             <td>{{ $main->file_path }}</td>
         </tr>
         <tr>
