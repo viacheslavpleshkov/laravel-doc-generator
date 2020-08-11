@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 Route::namespace('Site')->group(function () {
     Route::get('/', 'SiteController@index')->name('site.index');
     Route::get('types/{url}', 'SiteController@types')->name('site.types');
+    Route::get('news/{url}', 'NewsController@news')->name('site.news');
     Route::middleware('auth')->group(function () {
         Route::get('situation/{id}', 'SituationController@index')->name('site.situation.index');
         Route::post('situation/{id}', 'SituationController@form')->name('site.situation.form');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Repositories\NewsRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
 
@@ -19,14 +20,23 @@ class SiteController extends BaseController
     protected $situationRepository;
 
     /**
+     * @var NewsRepository
+     */
+    protected $newsRepository;
+
+    /**
      * SiteController constructor.
      * @param TypeRepository $typeRepository
      * @param SituationRepository $situationRepository
+     * @param NewsRepository $newsRepository
      */
-    public function __construct(TypeRepository $typeRepository, SituationRepository $situationRepository)
+    public function __construct(TypeRepository $typeRepository,
+                                SituationRepository $situationRepository,
+                                NewsRepository $newsRepository)
     {
         $this->typeRepository = $typeRepository;
         $this->situationRepository = $situationRepository;
+        $this->newsRepository = $newsRepository;
     }
 
     /**
@@ -35,8 +45,9 @@ class SiteController extends BaseController
     public function index()
     {
         $main = $this->typeRepository->getSiteAll();
+        $news = $this->newsRepository->getSiteAll();
 
-        return view('site.pages.index', compact('main'));
+        return view('site.pages.index', compact('main','news'));
     }
 
     /**
