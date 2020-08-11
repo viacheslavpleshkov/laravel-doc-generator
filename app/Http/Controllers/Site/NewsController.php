@@ -28,7 +28,7 @@ class NewsController extends BaseController
     {
         $item = $this->newsRepository->getNewsUrl($url);
         if (isset($item))
-            return view('site.pages.types', compact('item'));
+            return view('site.news.view', compact('item'));
         else
             abort(404);
     }

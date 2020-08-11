@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-body">
                     <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
-                    <a href="{{ route('site.types', $item->id) }}"
+                    <a href="{{ route('news.view', $item->url) }}"
                        class="btn btn-lg btn-block btn-outline-primary">Читать больше</a>
                 </div>
             </div>
