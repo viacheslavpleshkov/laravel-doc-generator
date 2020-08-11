@@ -43,6 +43,6 @@ class DocumentKey extends Model
      */
     public function userfillinput()
     {
-        return $this->hasMany(User_fill_input::class, 'document_id');
+        return $this->hasMany(User_fillInput::class, 'document_id');
     }
 }

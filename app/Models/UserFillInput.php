@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User_fill_input
+ * Class User_fillInput
  * @package App\Models
  */
-class User_fill_input extends Model
+class UserFillInput extends Model
 {
     /**
      * @var string[]

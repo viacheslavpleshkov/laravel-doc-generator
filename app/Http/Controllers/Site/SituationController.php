@@ -2,33 +2,43 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\User_fill_input;
 use App\Repositories\DocumentKeyRepository;
 use App\Repositories\SituationRepository;
+use App\Repositories\UserFillInputRepository;
 use Illuminate\Http\Request;
-use App\Repositories\TypeRepository;
 use Illuminate\Support\Facades\Auth;
 
 class SituationController extends BaseController
 {
+
     /**
      * @var SituationRepository
      */
     protected $situationRepository;
+
     /**
      * @var DocumentKeyRepository
      */
     protected $documentKeyRepository;
 
     /**
-     * SiteController constructor.
-     * @param TypeRepository $typeRepository
-     * @param SituationRepository $situationRepository
+     * @var UserFillInputRepository
      */
-    public function __construct(SituationRepository $situationRepository, DocumentKeyRepository $documentKeyRepository)
+    protected $userFillInputRepository;
+
+    /**
+     * SituationController constructor.
+     * @param SituationRepository $situationRepository
+     * @param DocumentKeyRepository $documentKeyRepository
+     * @param UserFillInputRepository $userFillInputRepository
+     */
+    public function __construct(SituationRepository $situationRepository,
+                                DocumentKeyRepository $documentKeyRepository,
+                                UserFillInputRepository $userFillInputRepository)
     {
         $this->situationRepository = $situationRepository;
         $this->documentKeyRepository = $documentKeyRepository;
+        $this->userFillInputRepository = $userFillInputRepository;
     }
 
     /**
@@ -40,9 +50,8 @@ class SituationController extends BaseController
         $situation = $this->situationRepository->getById($id);
 
         if (isset($situation)) {
-            $main = $this->documentKeyRepository->getSiteSituation($situation->id);
-            $data = User_fill_input::where('user_id', Auth::user()->id)->where('situation_id', $situation->id)->get();
-
+            $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
+            $data = $this->userFillInputRepository->getSiteSituation($situation->id, Auth::user()->id);
             if (!$data->isEmpty())
                 return view('site.situation.situation-value', ['main' => $data, 'situation' => $situation->id]);
             else
@@ -61,13 +70,14 @@ class SituationController extends BaseController
         $array = $request->except('_token');
 
         foreach (array_keys($array) as $value) {
-            User_fill_input::create([
+            $this->userFillInputRepository->create([
                 'user_id' => Auth::user()->id,
                 'document_id' => $value,
                 'situation_id' => $situation_id,
                 'user_input' => $array[$value],
             ]);
         }
+
         return redirect()->route('site.payment.index', $situation_id);
     }
 
@@ -81,12 +91,15 @@ class SituationController extends BaseController
         $array = $request->except('_token');
 
         foreach (array_keys($array) as $value) {
-            User_fill_input::where('user_id', Auth::user()->id)
+            $this->userFillInputRepository
+                ->where('user_id', Auth::user()->id)
                 ->where('document_id', $value)
-                ->where('situation_id', $situation_id)->update([
-                'user_input' => $array[$value],
-            ]);
+                ->where('situation_id', $situation_id)
+                ->update([
+                    'user_input' => $array[$value],
+                ]);
         }
+
         return redirect()->route('site.payment.index', $situation_id);
     }
 }

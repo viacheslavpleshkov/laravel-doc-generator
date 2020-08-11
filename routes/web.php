@@ -58,6 +58,7 @@ Route::namespace('Site')->group(function () {
         Route::post('situation/{id}', 'SituationController@form')->name('site.situation.form');
         Route::post('situation-update/{id}', 'SituationController@update_form')->name('site.situation.update_form');
     });
+    Route::get('test/{user_id}/{situation_id}', 'DocumentController@index')->name('site.document');
     Route::get('payment/{id}', 'PaymentController@index')->name('site.payment.index');
     Route::get('payment-success', 'PaymentController@success')->name('site.payment.success');
     Route::get('about', 'SiteController@about')->name('site.about');

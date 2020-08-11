@@ -32519,7 +32519,7 @@ return jQuery;
      * @example
      *
      * var view = {
-     *   'label': 'docs',
+     *   'label': 'docx',
      *   'click': function() {
      *     console.log('clicked ' + this.label);
      *   }
@@ -32527,7 +32527,7 @@ return jQuery;
      *
      * _.bindAll(view, ['click']);
      * jQuery(element).on('click', view.click);
-     * // => Logs 'clicked docs' when clicked.
+     * // => Logs 'clicked docx' when clicked.
      */
     var bindAll = flatRest(function(object, methodNames) {
       arrayEach(methodNames, function(key) {

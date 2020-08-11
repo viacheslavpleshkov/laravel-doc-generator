@@ -23,8 +23,8 @@ class Order extends Model
      */
     protected $fillable = [
         'user_id',
-        'document_file_id',
-        'transaction',
+        'file_path',
+        'status',
     ];
 
     const CREATED_AT = 'created_at';
@@ -36,13 +36,5 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function document_file()
-    {
-        return $this->belongsTo(DocumentFile::class, 'document_file_id');
     }
 }

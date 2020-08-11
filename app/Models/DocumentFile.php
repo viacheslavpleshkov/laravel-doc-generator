@@ -31,14 +31,6 @@ class DocumentFile extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'document_file_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function documents()
     {
         return $this->hasMany(DocumentKey::class, 'document_file_id');

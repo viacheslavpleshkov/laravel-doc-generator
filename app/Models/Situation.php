@@ -50,6 +50,6 @@ class Situation extends Model
      */
     public function userfillinput()
     {
-        return $this->hasMany(User_fill_input::class, 'situation_id');
+        return $this->hasMany(User_fillInput::class, 'situation_id');
     }
 }

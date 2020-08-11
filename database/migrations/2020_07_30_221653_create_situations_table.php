@@ -24,8 +24,8 @@ class CreateSituationsTable extends Migration
             $table->unsignedInteger('type_id');
             $table->unsignedInteger('document_file_id');
             $table->timestamps();
-            $table->foreign('type_id')->references('id')->on('types');
-            $table->foreign('document_file_id')->references('id')->on('documents_files');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreign('document_file_id')->references('id')->on('documents_files')->onDelete('cascade');
         });
     }
 

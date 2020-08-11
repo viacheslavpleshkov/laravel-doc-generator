@@ -10,7 +10,7 @@
                 <label>{{ $item->title }}</label>
                 <input type="hidden" id="custId" value="3487">
                 <input type="text" class="form-control" name="{{ $item->id }}" value="{{ old($item->id) }}"
-                       placeholder="Введите {{ strtolower($item->title) }}" required>
+                       placeholder="Введите {{ mb_convert_case($item->title, MB_CASE_LOWER, "UTF-8") }}" required>
             </div>
         @endforeach
         <button class="btn btn-lg btn-block btn-outline-primary" type="submit">Создать документ</button>

@@ -2,85 +2,62 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Repositories\SituationRepository;
-use App\Repositories\TypeRepository;
-use PhpOffice\PhpWord\PhpWord;
+use App\Repositories\OrderRepository;
+use App\Repositories\UserFillInputRepository;
+use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Storage;
+
+/**
+ * Class DocumentController
+ * @package App\Http\Controllers\Site
+ */
 class DocumentController extends BaseController
 {
 
     /**
-     * @var TypeRepository
+     * @var UserFillInputRepository
      */
-    protected $typeRepository;
+    protected $userFillInputRepository;
 
     /**
-     * @var SituationRepository
+     * @var OrderRepository
      */
-    protected $situationRepository;
+    protected $orderRepository;
 
     /**
-     * SiteController constructor.
-     * @param TypeRepository $typeRepository
-     * @param SituationRepository $situationRepository
+     * DocumentController constructor.
      */
-    public function __construct(TypeRepository $typeRepository, SituationRepository $situationRepository)
+    public function __construct()
     {
-        $this->typeRepository = $typeRepository;
-        $this->situationRepository = $situationRepository;
+        $this->userFillInputRepository = new UserFillInputRepository;
+        $this->orderRepository = new OrderRepository;
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $user_id
+     * @param $situation_id
+     * @return mixed
+     * @throws \PhpOffice\PhpWord\Exception\CopyFileException
+     * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function index()
+    public function create_document($user_id, $situation_id)
     {
-        $main = $this->typeRepository->getSiteAll();
+        $user_fill_input = $this->userFillInputRepository->getDocumentAll($user_id, $situation_id);
+        if (!$user_fill_input->isEmpty()) {
+            $path = $user_fill_input[0]->document->documentfile->file_path;
+            $user_path = 'docx/' .$user_id. '/Voucher-' . time() . '.docx';
 
-        return view('site.pages.index', compact('main'));
-    }
+            Storage::copy($path, $user_path);
+            $templateProcessor = new TemplateProcessor(storage_path('app/' . $user_path));
+            foreach (($user_fill_input) as $value)
+                $templateProcessor->setValue('${' . $value->document->key . '}', $value->user_input);
+            $templateProcessor->saveAs(storage_path('app/' . $user_path));
 
-    /**
-     * @param $url
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function types($url)
-    {
-        $main = $this->typeRepository->getSiteUrl($url);
-        if (isset($main)) {
-            $situation = $this->situationRepository->getSitenAll($main->id);
-
-            return view('site.pages.types', compact('main', 'situation'));
-        } else
-            abort(404);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function about()
-    {
-        return view('site.pages.about');
-    }
-
-
-    public function protect()
-    {
-        return view('site.pages.protect');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function terms_of_use()
-    {
-        return view('site.pages.terms-of-use');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function privacy_policy()
-    {
-        return view('site.pages.privacy-policy');
+            return $this->orderRepository->create([
+                'file_path' => $user_path,
+                'user_id' => $user_id,
+                'status' => 0,
+            ])->id;
+        }
     }
 }

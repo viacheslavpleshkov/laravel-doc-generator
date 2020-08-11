@@ -22,7 +22,7 @@ class CreateDocumentsKeysTable extends Migration
             $table->string('title');
             $table->string('key');
             $table->timestamps();
-            $table->foreign('document_file_id')->references('id')->on('documents_files');
+            $table->foreign('document_file_id')->references('id')->on('documents_files')->onDelete('cascade');
         });
     }
 
