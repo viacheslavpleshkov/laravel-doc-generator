@@ -27,5 +27,12 @@
             </tr>
         @endforeach
     </table>
+
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address">
+        <label class="custom-control-label" for="same-address">Я принимаю условия <a href="{{ route('site.terms-of-use') }}" target="_blank">пользовательского соглашения</a></label>
+    </div>
+
+
     <a href="{{ $url }}"><img src="{{ asset('img/robokassa.png') }}" class="img-center"></a>
 @endsection

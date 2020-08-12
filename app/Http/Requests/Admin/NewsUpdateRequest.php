@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Http\Requests\AbstractRequest;
 
 /**
- * Class NewsUpdateRequest
+ * Class UserUpdateRequest
  * @package App\Http\Requests\Admin
  */
 class NewsUpdateRequest extends AbstractRequest
@@ -29,8 +29,8 @@ class NewsUpdateRequest extends AbstractRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'text' => 'required|text|unique:types|max:4096',
-            'url' => 'required|string|unique:types|max:255',
+            'url' => 'required|string|unique:news|max:255',
+            'text' => 'required|string|max:4096',
         ];
     }
 }

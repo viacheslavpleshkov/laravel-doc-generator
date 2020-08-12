@@ -29,8 +29,8 @@ class NewsStoreRequest extends AbstractRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'text' => 'required|text|unique:types|max:4096',
-            'url' => 'required|string|unique:types|max:255',
+            'url' => 'required|string|unique:news|max:255',
+            'text' => 'required|string|max:4096',
         ];
     }
 }

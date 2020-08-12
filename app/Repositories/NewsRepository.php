@@ -70,8 +70,14 @@ class NewsRepository implements RepositoryInterface
 
     public function getAdminAll($paginate)
     {
+        $columns = [
+            'id',
+            'title',
+            'url',
+        ];
+
         $result = $this->model
-            ->select('id', 'file_path')
+            ->select($columns)
             ->orderBy('id', 'desc')
             ->paginate($paginate);
 

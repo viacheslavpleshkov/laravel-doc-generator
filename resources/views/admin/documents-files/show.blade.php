@@ -21,7 +21,7 @@
             <td>{{ $main->id }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.documents-files.title') }}</th>
+            <th>{{ __('admin.documents-files.name') }}</th>
             <td>{{ $main->title }}</td>
         </tr>
         <tr>

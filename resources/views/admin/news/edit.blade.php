@@ -9,9 +9,9 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label>{{ __('admin.news.title') }}</label>
+            <label>{{ __('admin.news.name') }}</label>
             <input type="text" class="form-control" name="title" value="{{ $main->title }}"
-                   placeholder="{{ __('admin.news.enter-title') }}" required>
+                   placeholder="{{ __('admin.news.enter-name') }}" required>
         </div>
 
         <div class="form-group">

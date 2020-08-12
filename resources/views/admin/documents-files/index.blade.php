@@ -24,7 +24,7 @@
             <thead>
             <tr>
                 <th scope="col">{{ __('admin.documents-files.id') }}</th>
-                <th scope="col">{{ __('admin.documents-files.title') }}</th>
+                <th scope="col">{{ __('admin.documents-files.name') }}</th>
                 <th scope="col">{{ __('admin.documents-files.files') }}</th>
                 <th scope="col"></th>
                 <th scope="col"></th>

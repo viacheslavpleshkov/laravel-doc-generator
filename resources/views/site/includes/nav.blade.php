@@ -12,7 +12,7 @@
             <div class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('news.index') }}">{{__('site.nav.protect') }}</a>
+                        <a class="nav-link" href="{{ route('site.news.index') }}">{{__('site.nav.protect') }}</a>
                     </li>
                     @auth
                         @if(in_array(Auth::user()->role->name, ['Admin']))

@@ -51,7 +51,9 @@ class SituationController extends BaseController
 
         if (isset($situation)) {
             $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
-            $data = $this->userFillInputRepository->getSiteSituation(Auth::user()->id);
+            $data = $this->userFillInputRepository->getSiteSituation(1000);
+            if (Auth::check())
+                $data = $this->userFillInputRepository->getSiteSituation(Auth::user()->id);
 
             return view('site.situation.situation', [
                 'main' => $main,

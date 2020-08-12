@@ -23,6 +23,10 @@
                        href="{{ route('documents-files.index') }}"><i class="fas fa-file-word"></i> {{ __('admin.nav.documents-keys-files') }}</a>
                 </div>
             </li>
+            <li class="nav-item {{ url()->current() == route('news.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('news.index') }}"><i
+                            class="fas fa-newspaper"></i> {{ __('admin.nav.news') }}</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">

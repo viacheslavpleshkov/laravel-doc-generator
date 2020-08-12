@@ -8,9 +8,9 @@
     <form action="{{ route('documents-files.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label>{{ __('admin.documents-files.title') }}</label>
+            <label>{{ __('admin.documents-files.name') }}</label>
             <input type="text" class="form-control" name="title" value="{{ old('title') }}"
-                   placeholder="{{ __('admin.documents-files.enter-title') }}" required>
+                   placeholder="{{ __('admin.documents-files.enter-name') }}" required>
         </div>
 
         <label>{{ __('admin.documents-files.file-path') }}</label><br>

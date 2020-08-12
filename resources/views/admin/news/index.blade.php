@@ -24,7 +24,7 @@
             <thead>
             <tr>
                 <th scope="col">{{ __('admin.news.id') }}</th>
-                <th scope="col">{{ __('admin.news.title') }}</th>
+                <th scope="col">{{ __('admin.news.name') }}</th>
                 <th scope="col">{{ __('admin.news.url') }}</th>
                 <th scope="col"></th>
             </tr>

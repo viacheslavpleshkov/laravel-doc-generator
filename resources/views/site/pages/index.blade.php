@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
-                        <a href="{{ route('news.view', $item->url) }}"
+                        <a href="{{ route('site.news.view', $item->url) }}"
                            class="btn btn-lg btn-block btn-outline-primary card-btn">Читать больше</a>
                     </div>
                 </div>

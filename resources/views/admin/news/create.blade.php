@@ -5,11 +5,11 @@
 @section('content')
     @include('admin.includes.title')
     @include('admin.includes.error')
-    <form action="{{ route('news.store', $document) }}" method="POST">
+    <form action="{{ route('news.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
-            <label>{{ __('admin.news.title') }}</label>
+            <label>{{ __('admin.news.name') }}</label>
             <input type="text" class="form-control" name="title" value="{{ old('title') }}"
                    placeholder="{{ __('admin.news.enter-name') }}" required>
         </div>
