@@ -91,11 +91,10 @@ class UserFillInputRepository implements RepositoryInterface
      * @param $user_id
      * @return mixed
      */
-    public function getSiteSituation($situation_id, $user_id)
+    public function getSiteSituation($user_id)
     {
         return $this->model
             ->where('user_id', $user_id)
-            ->where('situation_id', $situation_id)
             ->get();
     }
 }

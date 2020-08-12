@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.documents-keys.title', ['name' => $name]))
+@section('title',__('admin.news.title'))
 
 @section('content')
     <div class="row justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -14,7 +14,7 @@
         <div class="col-lg-3">
             <div class="pull-right">
                 <a class="btn btn-outline-success"
-                   href="{{ route('documents-keys.create', $document) }}">{{ __('admin.documents-keys.create') }}</a>
+                   href="{{ route('news.create') }}">{{ __('admin.news.create') }}</a>
             </div>
         </div>
     </div>
@@ -23,9 +23,9 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">{{ __('admin.documents-keys.id') }}</th>
-                <th scope="col">{{ __('admin.documents-keys.name') }}</th>
-                <th scope="col">{{ __('admin.documents-keys.key') }}</th>
+                <th scope="col">{{ __('admin.news.id') }}</th>
+                <th scope="col">{{ __('admin.news.title') }}</th>
+                <th scope="col">{{ __('admin.news.url') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -34,14 +34,11 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->title }}</td>
-                    <td>{{ $item->key }}</td>
+                    <td>{{ $item->url }}</td>
                     <td>
-                        <a href="{{ route('documents-keys.show', ['id' => $item->id, 'document' => $document]) }}"
-                           class="btn btn-outline-primary">{{ __('admin.show') }}</a>
-                        <a href="{{ route('documents-keys.show', ['id' => $item->id, 'document' => $document]) }}"
-                           class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
-                        <form action="{{ route('documents-keys.destroy', ['id' => $item->id, 'document' => $document]) }}"
-                              method="POST">
+                        <a href="{{ route('news.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('news.edit',$item->id) }}" class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
+                        <form action="{{ route('news.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">

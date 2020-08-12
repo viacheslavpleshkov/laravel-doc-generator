@@ -51,11 +51,13 @@ class SituationController extends BaseController
 
         if (isset($situation)) {
             $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
-            $data = $this->userFillInputRepository->getSiteSituation($situation->id, Auth::user()->id);
-            if (!$data->isEmpty())
-                return view('site.situation.situation-value', ['main' => $data, 'situation' => $situation->id]);
-            else
-                return view('site.situation.situation', ['main' => $main, 'situation' => $situation->id]);
+            $data = $this->userFillInputRepository->getSiteSituation(Auth::user()->id);
+
+            return view('site.situation.situation', [
+                'main' => $main,
+                'data' => $data,
+                'situation' => $situation->id
+            ]);
         } else
             abort(404);
     }

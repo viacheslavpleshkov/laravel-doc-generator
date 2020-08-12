@@ -1,14 +1,14 @@
 @extends('admin.layouts.main')
 
-@section('title',__('admin.documents-keys.show'))
+@section('title',__('admin.news.show'))
 
 @section('content')
     @include('admin.includes.title')
     <ul class="nav mb-md-3">
         <li>
-            <a href="{{ route('documents-keys.index', $document) }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
-            <a href="{{ route('documents-keys.edit', ['id' => $main->id, 'document' => $document]) }}" class="btn btn-outline-secondary">{{ __('admin.update') }}</a>
-            <form action="{{ route('documents-keys.destroy', ['id' => $main->id, 'document' => $document]) }}" method="POST">
+            <a href="{{ route('news.index') }}" class="btn btn-outline-primary">{{ __('admin.back') }}</a>
+            <a href="{{ route('news.edit', $main->id) }}" class="btn btn-outline-secondary">{{ __('admin.update') }}</a>
+            <form action="{{ route('news.destroy', $main->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-outline-danger" onclick="if(!confirm('{{ __('admin.trash') }}')) return false;">{{ __('admin.delete') }}</button>
@@ -17,20 +17,21 @@
     </ul>
     <table class="table">
         <tr>
-            <th>{{ __('admin.documents-keys.id') }}</th>
+            <th>{{ __('admin.news.id') }}</th>
             <td>{{ $main->id }}</td>
         </tr>
+
         <tr>
-            <th>{{ __('admin.documents-keys.document_file') }}</th>
-            <td>({{ $main->documentfile->id }}) {{ $main->documentfile->file_path }}</td>
-        </tr>
-        <tr>
-            <th>{{ __('admin.documents-keys.name') }}</th>
+            <th>{{ __('admin.news.name') }}</th>
             <td>{{ $main->title }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.documents-keys.key') }}</th>
-            <td>{{ $main->key }}</td>
+            <th>{{ __('admin.news.url') }}</th>
+            <td>{{ $main->text }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.news.url') }}</th>
+            <td>{{ $main->url }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>

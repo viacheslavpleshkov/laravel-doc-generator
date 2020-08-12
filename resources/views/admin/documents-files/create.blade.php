@@ -7,6 +7,12 @@
     @include('admin.includes.error')
     <form action="{{ route('documents-files.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="form-group">
+            <label>{{ __('admin.documents-files.title') }}</label>
+            <input type="text" class="form-control" name="title" value="{{ old('title') }}"
+                   placeholder="{{ __('admin.documents-files.enter-title') }}" required>
+        </div>
+
         <label>{{ __('admin.documents-files.file-path') }}</label><br>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
