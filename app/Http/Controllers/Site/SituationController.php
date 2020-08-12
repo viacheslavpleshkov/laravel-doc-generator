@@ -72,36 +72,18 @@ class SituationController extends BaseController
     {
         $situation_id = $request->id;
         $array = $request->except('_token');
+        $user_id = Auth::user()->id;
 
         foreach (array_keys($array) as $value) {
-            $this->userFillInputRepository->create([
-                'user_id' => Auth::user()->id,
-                'document_id' => $value,
-                'situation_id' => $situation_id,
-                'user_input' => $array[$value],
-            ]);
-        }
-
-        return redirect()->route('site.payment.index', $situation_id);
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update_form(Request $request)
-    {
-        $situation_id = $request->id;
-        $array = $request->except('_token');
-
-        foreach (array_keys($array) as $value) {
+            $check = $this->userFillInputRepository
+                ->getRepeatInput($user_id, $value);
+            if (!$check->isEmpty()) {
+                $this->userFillInputRepository
+                    ->setUpdateUserInput($user_id, $value, $array[$value]);
+                continue;
+            }
             $this->userFillInputRepository
-                ->where('user_id', Auth::user()->id)
-                ->where('document_id', $value)
-                ->where('situation_id', $situation_id)
-                ->update([
-                    'user_input' => $array[$value],
-                ]);
+                ->setCreateUserInput($user_id, $situation_id, $value, $array[$value]);
         }
 
         return redirect()->route('site.payment.index', $situation_id);

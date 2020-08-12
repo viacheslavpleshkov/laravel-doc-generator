@@ -97,4 +97,50 @@ class UserFillInputRepository implements RepositoryInterface
             ->where('user_id', $user_id)
             ->get();
     }
+
+    /**
+     * @param $user_id
+     * @param $document_id
+     * @return mixed
+     */
+    public function getRepeatInput($user_id, $document_id)
+    {
+        return $this->model
+            ->where('user_id', $user_id)
+            ->where('document_id', $document_id)
+            ->get();
+    }
+
+    /**
+     * @param $user_id
+     * @param $situation_id
+     * @param $document_id
+     * @param $user_input
+     * @return mixed
+     */
+    public function setCreateUserInput($user_id, $situation_id, $document_id, $user_input)
+    {
+        return $this->model->create([
+            'user_id' => $user_id,
+            'document_id' => $document_id,
+            'situation_id' => $situation_id,
+            'user_input' => $user_input,
+        ]);
+    }
+
+    /**
+     * @param $user_id
+     * @param $document_id
+     * @param $user_input
+     * @return mixed
+     */
+    public function setUpdateUserInput($user_id, $document_id, $user_input)
+    {
+        return $this->model
+            ->where('user_id', $user_id)
+            ->where('document_id', $document_id)
+            ->update([
+                'user_input' => $user_input,
+            ]);
+    }
 }

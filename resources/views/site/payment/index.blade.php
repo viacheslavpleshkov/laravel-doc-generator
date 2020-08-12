@@ -34,5 +34,5 @@
     </div>
 
 
-    <a href="{{ $url }}"><img src="{{ asset('img/robokassa.png') }}" class="img-center"></a>
+    <a href="https://auth.robokassa.ru/Merchant/Index.aspx?MerchantLogin=VSUDBEZURISTA&InvId=0&Culture=ru&Encoding=utf-8&Description=helo&OutSum=100&SignatureValue=548da6a92cc34da1202514536bb0cd5a}"><img src="{{ asset('img/robokassa.png') }}" class="img-center"></a>
 @endsection

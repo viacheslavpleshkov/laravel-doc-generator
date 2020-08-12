@@ -59,9 +59,9 @@ Route::namespace('Site')->group(function () {
     Route::get('situation/{id}', 'SituationController@index')->name('site.situation.index');
     Route::middleware('auth')->group(function () {
         Route::post('situation/{id}', 'SituationController@form')->name('site.situation.form');
-        Route::post('situation-update/{id}', 'SituationController@update_form')->name('site.situation.update_form');
         Route::get('payment/{id}', 'PaymentController@index')->name('site.payment.index');
         Route::get('payment-success', 'PaymentController@success')->name('site.payment.success');
+        Route::get('payment-fall', 'PaymentController@fall')->name('site.payment.fall');
     });
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');

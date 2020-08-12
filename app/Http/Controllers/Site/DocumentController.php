@@ -45,7 +45,7 @@ class DocumentController extends BaseController
         $user_fill_input = $this->userFillInputRepository->getDocumentAll($user_id, $situation_id);
         if (!$user_fill_input->isEmpty()) {
             $path = $user_fill_input[0]->document->documentfile->file_path;
-            $user_path = 'docx/' .$user_id. '/Voucher-' . time() . '.docx';
+            $user_path = 'docx/' . $user_id . '/Voucher-' . time() . '.docx';
 
             Storage::copy($path, $user_path);
             $templateProcessor = new TemplateProcessor(storage_path('app/' . $user_path));

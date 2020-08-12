@@ -63,6 +63,7 @@ class DocumentFileController extends BaseController
     public function store(DocumentFileStoreRequest $request)
     {
         $attributes = [
+            'title' => $request->title,
             'file_path' => Storage::disk()->put('docx', $request->file_path),
         ];
         $main = $this->documentFileRepository->create($attributes);
