@@ -51,9 +51,10 @@ class SituationController extends BaseController
 
         if (isset($situation)) {
             $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
-            $data = $this->userFillInputRepository->getSiteSituation(1000);
             if (Auth::check())
                 $data = $this->userFillInputRepository->getSiteSituation(Auth::user()->id);
+            else
+                $data = $this->userFillInputRepository->getSiteSituation(1000);
 
             return view('site.situation.situation', [
                 'main' => $main,
@@ -72,7 +73,10 @@ class SituationController extends BaseController
     {
         $situation_id = $request->id;
         $array = $request->except('_token');
-        $user_id = Auth::user()->id;
+        if (Auth::check())
+            $user_id = Auth::user()->id;
+        else
+            $user_id = 1;
 
         foreach (array_keys($array) as $value) {
             $check = $this->userFillInputRepository

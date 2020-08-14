@@ -28,11 +28,21 @@
         @endforeach
     </table>
 
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="same-address">
-        <label class="custom-control-label" for="same-address">Я принимаю условия <a href="{{ route('site.terms-of-use') }}" target="_blank">пользовательского соглашения</a></label>
-    </div>
+    <form action="{{ route('site.payment.submit') }}" method="POST">
+        @csrf
 
+        <div class="form-group">
+            <label>{{ __('site.payment.email') }}</label>
+            <input type="email" class="form-control" name="email" value="@auth{{  auth()->user()->email }}@endauth"
+                   placeholder="{{ __('site.payment.enter-email') }}" required>
+        </div>
 
-    <a href="https://auth.robokassa.ru/Merchant/Index.aspx?MerchantLogin=VSUDBEZURISTA&InvId=0&Culture=ru&Encoding=utf-8&Description=helo&OutSum=100&SignatureValue=548da6a92cc34da1202514536bb0cd5a}"><img src="{{ asset('img/robokassa.png') }}" class="img-center"></a>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="same-address">
+            <label class="custom-control-label" for="same-address">Я принимаю условия <a
+                        href="{{ route('site.terms-of-use') }}" target="_blank">пользовательского соглашения</a></label>
+        </div>
+        <br>
+        <button class="btn btn-lg btn-success btn-block" type="submit">Оплатить</button>
+    </form>
 @endsection

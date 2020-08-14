@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Requests\Site\PaymentRequest;
 use App\Repositories\SituationRepository;
 use App\Repositories\UserFillInputRepository;
 use Illuminate\Http\Request;
@@ -54,26 +55,33 @@ class PaymentController extends BaseController
      */
     public function index($id)
     {
-        $user_id = Auth::user()->id;
+        if (Auth::check())
+            $user_id = Auth::user()->id;
+        else
+            $user_id = 1;
         $situations = $this->situationRepository->getById($id);
-        $transaction =  (new DocumentController())->create_document($user_id, $situations->id);
 
         $main = $this->userFillInputRepository
             ->where('user_id', $user_id)
             ->where('situation_id', $id)
             ->get();
-        $this->payment
-            ->setInvoiceId($transaction)
-            ->setSum($situations->price)
-            ->setDescription($situations->description);
 
         return view('site.payment.index', [
-            'url' => $this->payment->getPaymentUrl(),
             'situations' => $situations,
             'main' => $main
         ]);
     }
 
+    public function submit(PaymentRequest $request) {
+        dd($request);
+        $situations = $this->situationRepository->getById($id);
+        $transaction =  (new DocumentController())->create_document($user_id, $situations->id);
+
+        $this->payment
+            ->setInvoiceId($request->transaction)
+            ->setSum($situations->price)
+            ->setDescription($situations->description);
+    }
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -83,7 +91,7 @@ class PaymentController extends BaseController
     public function success(Request $request)
     {
         dd($request);
-        $user_id = $request->user_id;
+        $user_id = $request->$id;
         $transaction = $request->transaction;
         $situation_id = $request->situation_id;
         $file = (new DocumentController())->index($transaction, $user_id);

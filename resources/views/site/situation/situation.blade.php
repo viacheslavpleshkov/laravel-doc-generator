@@ -3,9 +3,9 @@
 @section('title', "Заполните поля чтобы создать документ")
 
 @section('content')
-    @guest
-        @include("auth.login")
-    @endguest
+{{--    @guest--}}
+{{--        @include("auth.login")--}}
+{{--    @endguest--}}
     <form action="{{ route('site.situation.form', $situation) }}" method="POST">
         @csrf
         @foreach($main as $item_main)
