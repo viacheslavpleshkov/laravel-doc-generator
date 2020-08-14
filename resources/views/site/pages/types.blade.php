@@ -14,7 +14,7 @@
                         <li>{{ $item->description }}</li>
                     </ul>
                     <a href="{{ route('site.situation.index', $item->id) }}"
-                       class="btn btn-lg btn-block btn-outline-secondary">Сделать документ</a>
+                       class="btn btn-lg btn-block btn-outline-secondary">Создать документ</a>
                 </div>
             </div>
         @endforeach

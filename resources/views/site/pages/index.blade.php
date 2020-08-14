@@ -5,14 +5,18 @@
 @section('content')
     <div class="card-deck mb-3 text-center">
         @foreach($main as $item)
-            <a href="{{ route('site.types', $item->url) }}" class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm">
                 <div class="card-header head-card-bs">
-                    <h4 class="my-0 font-weight-normal text-card-bs text-dark">{{ $item->name }}</h4>
+                    <h4 class="my-0 font-weight-normal text-card-bs">{{ $item->name }}</h4>
                 </div>
-            </a>
+                <div class="card-body">
+                    <a href="{{ route('site.types', $item->url) }}"
+                       class="btn btn-lg btn-block btn-outline-primary">Перейти по ссылке</a>
+                </div>
+            </div>
         @endforeach
     </div>
-    <h3 class="text-center">Новости</h3>
+    <h3 class="text-center">Как защитить свои права?</h3>
     <hr>
     <div class="index-card">
         <div class="card-deck mb-3 text-center">
@@ -22,9 +26,9 @@
                         <h4 class="my-0 font-weight-normal">{{ $item->title }}</h4>
                     </div>
                     <div class="card-body">
-                        <p> {{ mb_strimwidth($item->text, 0, 50, "...") }}</p>
+                        <p> {{ mb_strimwidth($item->text, 0, 40, "...") }}</p>
                         <a href="{{ route('site.news.view', $item->url) }}"
-                           class="btn btn-lg btn-block btn-outline-primary card-btn">Читать больше</a>
+                           class="btn btn-lg btn-block btn-outline-primary card-btn">Читать дальше</a>
                     </div>
                 </div>
             @endforeach
