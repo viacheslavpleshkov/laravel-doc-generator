@@ -9,7 +9,7 @@
                     <h4 class="my-0 font-weight-normal text-card-bs">{{ $item->name }}</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">{{ $item->price }}</h1>
+                    <h1 class="card-title pricing-card-title">{{ $item->price }} рубль</h1>
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>{{ $item->description }}</li>
                     </ul>

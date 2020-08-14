@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <th>{{ __('site.situation.price') }}</th>
-                <td>{{ $situations->price }}</td>
+                <td>{{ $situations->price }} рубль</td>
             </tr>
         </div>
     </table>
