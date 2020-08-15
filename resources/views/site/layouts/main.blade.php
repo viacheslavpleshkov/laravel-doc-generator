@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-          content="Пример на bootstrap 4: Прайс-лист - пример страницы с ценой, созданной с помощью карт, с пользовательским верхнего и нижнего колонтитула. Версия v4.4.1.">
-    <title>@yield('title') | {{__('site.name') }}</title>
+          content="Наш сервис позволяет любому защитить свои права и обратиться в суд без расходов на юриста">
+    <title>@if(url()->current() != route('site.index'))@yield('title') | {{__('site.name') }} @else{{__('site.name') }}@endif</title>
 
     <script src="{{ asset('js/site.js') }}" defer></script>
     <link href="{{ asset('css/site.css') }}" rel="stylesheet">
