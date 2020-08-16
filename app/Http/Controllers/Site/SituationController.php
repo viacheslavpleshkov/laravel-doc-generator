@@ -7,6 +7,7 @@ use App\Repositories\SituationRepository;
 use App\Repositories\UserFillInputRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController;
 
 class SituationController extends BaseController
 {
@@ -42,19 +43,21 @@ class SituationController extends BaseController
     }
 
     /**
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($id)
+    public function index(Request $request)
     {
-        $situation = $this->situationRepository->getById($id);
+        $situation = $this->situationRepository->getById($request->id);
 
         if (isset($situation)) {
-            $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
             if (Auth::check())
-                $data = $this->userFillInputRepository->getSiteSituation(Auth::user()->id);
+                $user_id = Auth::user()->id;
             else
-                $data = $this->userFillInputRepository->getSiteSituation(1000);
+                $user_id = 0;
+
+            $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
+            $data = $this->userFillInputRepository->getSiteSituation($user_id);
 
             return view('site.situation.situation', [
                 'main' => $main,
@@ -73,10 +76,15 @@ class SituationController extends BaseController
     {
         $situation_id = $request->id;
         $array = $request->except('_token');
+
         if (Auth::check())
             $user_id = Auth::user()->id;
-        else
-            $user_id = 1;
+        else {
+            $random = str_random(240).'@m.com';
+            $user = (new RegisterController())->createGust(['email' => $random]);
+            Auth::login($user, true);
+            $user_id = $user->id;
+        }
 
         foreach (array_keys($array) as $value) {
             $check = $this->userFillInputRepository

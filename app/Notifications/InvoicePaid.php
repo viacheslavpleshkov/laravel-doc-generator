@@ -17,13 +17,11 @@ class InvoicePaid extends Notification
 
     /**
      * InvoicePaid constructor.
-     * @param $user
-     * @param $document
+     * @param $order
      */
-    public function __construct($user, $document)
+    public function __construct($order)
     {
-        $this->user = $user;
-        $this->document = $document;
+        $this->order = $order;
     }
 
     /**
@@ -45,12 +43,12 @@ class InvoicePaid extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return with(new MailMessage)
                     ->subject('Успешная оплата документа')
-                    ->greeting("Привет, {$this->user->email}!")
-                    ->line('Номер заказа'. $this->document->id)
+                    ->greeting("Привет, {$this->order->user->email_pay}!")
+                    ->line('Номер заказа:'. $this->order->id)
                     ->line('Статус документа: оплачено')
-                    ->action('Скачать документ', asset($this->document->file_path))
+                    ->action('Скачать документ', asset($this->order->file_path))
                     ->line('Спасибо за использование нашего приложения!');
     }
 

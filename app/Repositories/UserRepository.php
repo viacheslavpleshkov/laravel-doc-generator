@@ -77,6 +77,7 @@ class UserRepository implements RepositoryInterface
         $columns = [
             'id',
             'email',
+            'email_pay',
             'role_id',
         ];
 

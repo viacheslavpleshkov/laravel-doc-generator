@@ -67,14 +67,24 @@ class RoleRepository implements RepositoryInterface
     /**
      * @return mixed
      */
-    public function getRoleUser()
+    public function getRoleGuest()
     {
         return $this->model->where('id', 1)->first();
     }
-
-    public function getRoleAdmin()
+    /**
+     * @return mixed
+     */
+    public function getRoleUser()
     {
         return $this->model->where('id', 2)->first();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoleAdmin()
+    {
+        return $this->model->where('id', 3)->first();
     }
 
     public function getRoleAdminAll($paginate)

@@ -57,7 +57,7 @@ class DocumentController extends BaseController
                 'file_path' => $user_path,
                 'user_id' => $user_id,
                 'status' => 0,
-            ])->id;
+            ]);
         }
     }
 }

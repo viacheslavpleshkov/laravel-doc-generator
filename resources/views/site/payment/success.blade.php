@@ -1,31 +1,30 @@
 @extends('site.layouts.main')
-@section('title', 'Оплатить за документ: '.$situations->name)
+@section('title', 'Оплата прошла успешно: '.$order->user->email_pay)
 
 @section('content')
+    <p>Если вы не получили сгенерированный документ на указанную электронную почту, проверьте папку spam. Если документа нет, напишите нам по адресу ….. и укажите альтернативный адрес электронной почты - мы направим Вам созданный Вами документ</p>
     <table class="table table-bordered">
         <div class="row">
             <tr>
-                <th>{{ __('site.situation.name') }}</th>
-                <td>{{ $situations->name }}</td>
+                <th>{{ __('site.order.id') }}</th>
+                <td>{{ $order->id }}</td>
             </tr>
             <tr>
-                <th>{{ __('site.situation.description') }}</th>
-                <td>{{ $situations->description }}</td>
+                <th>{{ __('site.order.file_path') }}</th>
+                <td>{{ asset($order->file_path) }}</td>
             </tr>
             <tr>
-                <th>{{ __('site.situation.price') }}</th>
-                <td>{{ $situations->price }} рубль</td>
+                <th>{{ __('site.order.user_name') }}</th>
+                <td>{{ $order->user->email_pay }}</td>
+            </tr>
+            <tr>
+                <th>{{ __('site.order.status') }}</th>
+                <td>{{ $order->status }}</td>
+            </tr>
+            <tr>
+                <th>{{ __('site.order.create_at') }}</th>
+                <td>{{ $order->updated_at }}</td>
             </tr>
         </div>
     </table>
-    <h2 class="text-center">Пользовательские данные</h2>
-    <table class="table table-bordered">
-        @foreach($main as $item)
-            <tr>
-                <th>{{ $item->document->title }}</th>
-                <td>{{ $item->user_input }}</td>
-            </tr>
-        @endforeach
-    </table>
-    <a href="{{ $url }}"><img src="{{ asset('img/robokassa.png') }}" class="img-center"></a>
 @endsection

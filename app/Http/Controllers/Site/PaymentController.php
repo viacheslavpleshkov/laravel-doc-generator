@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\Site\PaymentRequest;
+use App\Repositories\OrderRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\UserFillInputRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Idma\Robokassa\Payment;
+use App\Notifications\InvoicePaid;
 
 /**
  * Class PaymentController
@@ -27,14 +30,26 @@ class PaymentController extends BaseController
      * @var Payment
      */
     protected $payment;
+    /**
+     * @var UserRepository
+     */
+    protected $userRepository;
+    /**
+     * @var
+     */
+    protected $orderRepository;
 
     /**
      * PaymentController constructor.
      * @param SituationRepository $situationRepository
      * @param UserFillInputRepository $userFillInputRepository
+     * @param UserRepository $userRepository
+     * @param OrderRepository $orderRepository
      */
     public function __construct(SituationRepository $situationRepository,
-                                UserFillInputRepository $userFillInputRepository)
+                                UserFillInputRepository $userFillInputRepository,
+                                UserRepository $userRepository,
+                                OrderRepository $orderRepository)
     {
         $this->payment = new Payment(
             config('app.robokassa_login'),
@@ -44,26 +59,20 @@ class PaymentController extends BaseController
         );
         $this->situationRepository = $situationRepository;
         $this->userFillInputRepository = $userFillInputRepository;
+        $this->userRepository = $userRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     /**
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Idma\Robokassa\Exception\EmptyDescriptionException
-     * @throws \Idma\Robokassa\Exception\InvalidInvoiceIdException
-     * @throws \Idma\Robokassa\Exception\InvalidSumException
      */
-    public function index($id)
+    public function index(Request $request)
     {
-        if (Auth::check())
-            $user_id = Auth::user()->id;
-        else
-            $user_id = 1;
-        $situations = $this->situationRepository->getById($id);
-
+        $situations = $this->situationRepository->getById($request->id);
         $main = $this->userFillInputRepository
-            ->where('user_id', $user_id)
-            ->where('situation_id', $id)
+            ->where('user_id', Auth::user()->id)
+            ->where('situation_id', $request->id)
             ->get();
 
         return view('site.payment.index', [
@@ -72,31 +81,42 @@ class PaymentController extends BaseController
         ]);
     }
 
-    public function submit(PaymentRequest $request) {
-        dd($request);
-        $situations = $this->situationRepository->getById($id);
-        $transaction =  (new DocumentController())->create_document($user_id, $situations->id);
-
-        $this->payment
-            ->setInvoiceId($request->transaction)
-            ->setSum($situations->price)
-            ->setDescription($situations->description);
-    }
     /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param PaymentRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Idma\Robokassa\Exception\InvalidSumException
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
+    public function submit(PaymentRequest $request)
+    {
+        $situations = $this->situationRepository->getById($request->id);
+        $user_id = Auth::user()->id;
+        $this->userRepository->update($user_id, ['email_pay' => $request->email]);
+        $transaction = (new DocumentController())->create_document($user_id, $situations->id);
+        $this->payment
+            ->setInvoiceId($transaction->id)
+            ->setSum($situations->price)
+            ->setDescription($situations->description);
+
+        return redirect()->route('site.payment.success', ['id' => $transaction->id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function success(Request $request)
     {
-        dd($request);
-        $user_id = $request->$id;
-        $transaction = $request->transaction;
-        $situation_id = $request->situation_id;
-        $file = (new DocumentController())->index($transaction, $user_id);
-        return view('site.payment.success', [
+        $order = $this->orderRepository->getById($request->id);
+        if (isset($order)) {
+            $this->orderRepository->update($request->id, ['status' => 1]);
+            $order = $this->orderRepository->getById($request->id);
+            $user = $this->userRepository->getById(Auth::user()->id);
+            $user->notify(new InvoicePaid($order));
 
-        ]);
+            return view('site.payment.success', compact('order'));
+        } else
+            abort(404);
     }
 }

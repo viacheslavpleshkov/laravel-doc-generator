@@ -28,7 +28,7 @@ class PaymentRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'email' =>'required|email',
+            'email' =>'required|string|email|max:255',
             'checkbox' =>'required',
         ];
     }

@@ -15,6 +15,11 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        $guest_user = new Role();
+        $guest_user->name = 'Guest';
+        $guest_user->description = 'Guest';
+        $guest_user->save();
+
         $role_user = new Role();
         $role_user->name = 'User';
         $role_user->description = 'User';

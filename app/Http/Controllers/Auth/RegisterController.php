@@ -47,9 +47,21 @@ class RegisterController extends BaseController
      * @param array $data
      * @return mixed
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
         $role = $this->roleRepository->getRoleUser();
+        $attributes = [
+            'email' => $data['email'],
+            'email_pay' => $data['email'],
+            'role_id' => $role->id
+        ];
+
+        return $this->userRepository->create($attributes);
+    }
+
+    public function createGust(array $data)
+    {
+        $role = $this->roleRepository->getRoleGuest();
         $attributes = [
             'email' => $data['email'],
             'role_id' => $role->id
