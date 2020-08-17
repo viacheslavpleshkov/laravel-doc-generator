@@ -3,12 +3,14 @@
 @section('description', 'Наш сервис позволяет любому защитить свои права и обратиться в суд без расходов на юриста')
 
 @section('content')
+    <h3 class="text-center">Выберите кто вы?</h3>
+    <hr>
     <div class="card-deck mb-3 text-center">
         @foreach($main as $item)
             <div class="card mb-4 card-clear">
-                <div class="card-header head-card-bs" style="background: white ">
+                <div class="card-header head-card-bs bg-white">
                     <a href="{{ route('site.types', $item->url) }}"
-                       class="btn btn-lg btn-block btn-outline-primary font-weight-normal text-card-bs">{{ $item->name }}</a>
+                       class="btn btn-lg btn-block btn-outline-primary font-weight-normal shadow-sm text-card-bs btn-center">{{ $item->name }}</a>
                 </div>
             </div>
         @endforeach

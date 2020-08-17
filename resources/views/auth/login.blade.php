@@ -1,5 +1,7 @@
 @extends('site.layouts.main')
 
+@section('title', "Авторизоваться")
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

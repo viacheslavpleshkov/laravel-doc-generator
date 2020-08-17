@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <th>{{ __('site.order.status') }}</th>
-                <td>{{ $order->status }}</td>
+                <td>оплачено</td>
             </tr>
             <tr>
                 <th>{{ __('site.order.create_at') }}</th>

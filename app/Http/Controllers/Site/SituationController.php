@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Admin\TypeController;
 use App\Repositories\DocumentKeyRepository;
 use App\Repositories\SituationRepository;
+use App\Repositories\TypeRepository;
 use App\Repositories\UserFillInputRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,20 +28,27 @@ class SituationController extends BaseController
      * @var UserFillInputRepository
      */
     protected $userFillInputRepository;
+    /**
+     * @var
+     */
+    protected $typeRepository;
 
     /**
      * SituationController constructor.
      * @param SituationRepository $situationRepository
      * @param DocumentKeyRepository $documentKeyRepository
      * @param UserFillInputRepository $userFillInputRepository
+     * @param TypeRepository $typeRepository
      */
     public function __construct(SituationRepository $situationRepository,
                                 DocumentKeyRepository $documentKeyRepository,
-                                UserFillInputRepository $userFillInputRepository)
+                                UserFillInputRepository $userFillInputRepository,
+                                TypeRepository $typeRepository)
     {
         $this->situationRepository = $situationRepository;
         $this->documentKeyRepository = $documentKeyRepository;
         $this->userFillInputRepository = $userFillInputRepository;
+        $this->typeRepository = $typeRepository;
     }
 
     /**

@@ -10981,3 +10981,25 @@ html {
   border-radius: 0;
 }
 
+.btn-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: inherit;
+}
+
+.center-div {
+  min-height: 75px;
+  font-size: 1.2rem;
+  min-width: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#inner {
+  width: 50%;
+  margin: 0 auto;
+}
+

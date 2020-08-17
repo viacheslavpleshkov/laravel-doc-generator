@@ -18,15 +18,6 @@
             </tr>
         </div>
     </table>
-    <h2 class="text-center display-6">Пользовательские данные</h2>
-    <table class="table table-bordered">
-        @foreach($main as $item)
-            <tr>
-                <th>{{ $item->document->title }}</th>
-                <td>{{ $item->user_input }}</td>
-            </tr>
-        @endforeach
-    </table>
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible fade show">
             <ul>

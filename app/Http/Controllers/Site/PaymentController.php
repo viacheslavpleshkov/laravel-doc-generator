@@ -10,7 +10,8 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Idma\Robokassa\Payment;
-use App\Notifications\InvoicePaid;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class PaymentController
@@ -113,7 +114,7 @@ class PaymentController extends BaseController
             $this->orderRepository->update($request->id, ['status' => 1]);
             $order = $this->orderRepository->getById($request->id);
             $user = $this->userRepository->getById(Auth::user()->id);
-            $user->notify(new InvoicePaid($order));
+            Mail::to($user->email_pay)->send(new OrderShipped($order));
 
             return view('site.payment.success', compact('order'));
         } else
