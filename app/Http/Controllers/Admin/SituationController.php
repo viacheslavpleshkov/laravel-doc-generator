@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Repositories\DocumentFileRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
 use App\Repositories\SettingRepository;
@@ -23,10 +22,6 @@ class SituationController extends BaseController
     protected $typeRepository;
 
     /**
-     * @var
-     */
-    protected $documentFileRepository;
-    /**
      * @var SituationRepository
      */
     protected $situationRepository;
@@ -39,14 +34,12 @@ class SituationController extends BaseController
     /**
      * SituationController constructor.
      * @param TypeRepository $typeRepository
-     * @param DocumentFileRepository $documentFileRepository
      * @param SituationRepository $situationRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(TypeRepository $typeRepository, DocumentFileRepository $documentFileRepository, SituationRepository $situationRepository,SettingRepository $settingRepository)
+    public function __construct(TypeRepository $typeRepository, SituationRepository $situationRepository,SettingRepository $settingRepository)
     {
         $this->typeRepository = $typeRepository;
-        $this->documentFileRepository = $documentFileRepository;
         $this->situationRepository = $situationRepository;
         $this->settingRepository = $settingRepository;
     }
@@ -68,9 +61,8 @@ class SituationController extends BaseController
     public function create()
     {
         $types = $this->typeRepository->getAll();
-        $documentsfile = $this->documentFileRepository->getAll();
 
-        return view('admin.situations.create', compact('types', 'documentsfile'));
+        return view('admin.situations.create', compact('types'));
     }
 
     /**
@@ -104,10 +96,9 @@ class SituationController extends BaseController
     public function edit($id)
     {
         $types = $this->typeRepository->getAll();
-        $documentsfile = $this->documentFileRepository->getAll();
         $main = $this->situationRepository->getById($id);
 
-        return view('admin.situations.edit', compact('main', 'types', 'documentsfile'));
+        return view('admin.situations.edit', compact('main', 'types'));
     }
 
     /**

@@ -21,12 +21,6 @@
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.situations.price') }}</label>
-            <input type="text" class="form-control" name="price" value="{{ old('price') }}"
-                   placeholder="{{ __('admin.situations.enter-price') }}" required>
-        </div>
-
-        <div class="form-group">
             <label>{{ __('admin.situations.type-name') }}</label>
             <select class="form-control" name="type_id" required>
                 @foreach($types as $item)
@@ -35,14 +29,6 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label>{{ __('admin.situations.documentfile-file') }}</label>
-            <select class="form-control" name="document_file_id" required>
-                @foreach($documentsfile as $item)
-                    <option value="{{ $item->id }}">{{ $item->file_path }}</option>
-                @endforeach
-            </select>
-        </div>
 
         <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.create') }}</button>
     </form>

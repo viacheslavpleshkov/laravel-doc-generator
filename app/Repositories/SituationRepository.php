@@ -77,7 +77,6 @@ class SituationRepository implements RepositoryInterface
         $columns = [
             'id',
             'name',
-            'price',
             'description',
             'type_id',
         ];

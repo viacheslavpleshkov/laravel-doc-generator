@@ -29,16 +29,8 @@
             <td>{{ $main->description }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.situations.price') }}</th>
-            <td>{{ $main->price }}</td>
-        </tr>
-        <tr>
             <th>{{ __('admin.situations.type-name') }}</th>
             <td>{{ $main->type->name }}</td>
-        </tr>
-        <tr>
-            <th>{{ __('admin.situations.documentfile-file') }}</th>
-            <td>{{ $main->documentfile->file_path }}</td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>

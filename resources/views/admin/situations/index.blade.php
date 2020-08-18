@@ -26,7 +26,6 @@
                 <th scope="col">{{ __('admin.situations.id') }}</th>
                 <th scope="col">{{ __('admin.situations.name') }}</th>
                 <th scope="col">{{ __('admin.situations.description') }}</th>
-                <th scope="col">{{ __('admin.situations.price') }}</th>
                 <th scope="col">{{ __('admin.situations.type-name') }}</th>
                 <th scope="col"></th>
             </tr>
@@ -37,7 +36,6 @@
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->description }}</td>
-                    <td>{{ $item->price }}</td>
                     <td>{{ $item->type->name }}</td>
                     <td>
                         <a href="{{ route('situations.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>

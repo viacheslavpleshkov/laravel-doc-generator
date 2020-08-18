@@ -28,7 +28,10 @@ class DocumentFileStoreRequest extends AbstractRequest
     public function rules()
     {
         return [
+            'title' => 'required|string|max:255',
             'file_path' => 'required|file|mimes:pdf,docx,doc',
+            'price' => 'required|integer',
+            'situation_id' => 'required|integer',
         ];
     }
 }
