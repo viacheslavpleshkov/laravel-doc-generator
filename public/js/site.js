@@ -37321,10 +37321,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-$(function () {
-  $('input[type="text"]').change(function () {
-    this.value = $.trim(this.value);
-  });
+$(document).ready(function () {
+  // show the alert
+  setTimeout(function () {
+    $(".alert").alert('close');
+  }, 2000);
 });
 
 /***/ }),

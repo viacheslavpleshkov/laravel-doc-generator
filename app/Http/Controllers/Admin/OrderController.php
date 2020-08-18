@@ -30,7 +30,8 @@ class OrderController extends BaseController
      * @param OrderRepository $orderRepository
      * @param SettingRepository $settingRepository
      */
-    public function __construct(OrderRepository $orderRepository, SettingRepository $settingRepository)
+    public function __construct(OrderRepository $orderRepository,
+                                SettingRepository $settingRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->settingRepository = $settingRepository;

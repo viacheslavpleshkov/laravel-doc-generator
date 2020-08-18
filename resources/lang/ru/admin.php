@@ -142,9 +142,10 @@ return [
     "orders" => [
         "title" => "Заказы",
         "id" => "ID",
-        "user-name" => "Пользуватель",
+        "user-name" => "Пользователь",
         "document-id" => "Документ ID",
-        "transaction" => "Транзакция",
+        "status" => "Статус",
+        "document" => "Документ",
         "create" => "Создать заказ",
         "show" => "Посмотреть заказ",
     ],

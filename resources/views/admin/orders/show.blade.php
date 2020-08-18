@@ -19,12 +19,18 @@
             <td>{{ $main->user->email }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.orders.document-id') }}</th>
-            <td>{{ $main->document_file_id }}</td>
+            <th>{{ __('admin.orders.document') }}</th>
+            <td>{{ $main->file_path }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.orders.transaction') }}</th>
-            <td>{{ $main->transaction }}</td>
+            <th>{{ __('admin.orders.status') }}</th>
+            <td>
+                @if($main->status)
+                    {{ __('admin.enabled') }}
+                @else
+                    {{ __('admin.disabled') }}
+                @endif
+            </td>
         </tr>
         <tr>
             <th>{{ __('admin.created') }}</th>

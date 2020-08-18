@@ -75,9 +75,10 @@ class OrderRepository implements RepositoryInterface
     public function getAdminAll($paginate)
     {
         $columns = [
+            'id',
             'user_id',
-            'document_file_id',
-            'transaction',
+            'file_path',
+            'status',
         ];
 
         $result = $this->model

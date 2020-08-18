@@ -11,8 +11,8 @@
             <tr>
                 <th scope="col">{{ __('admin.orders.id') }}</th>
                 <th scope="col">{{ __('admin.orders.user-name') }}</th>
-                <th scope="col">{{ __('admin.orders.document-id') }}</th>
-                <th scope="col">{{ __('admin.orders.transaction') }}</th>
+                <th scope="col">{{ __('admin.orders.document') }}</th>
+                <th scope="col">{{ __('admin.orders.status') }}</th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -21,8 +21,13 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->user->email }}</td>
-                    <td>{{ $item->document_file_id }}
-                    <td>{{ $item->transaction }}
+                    <td>{{ asset($item->file_path) }}
+                    <td>
+                        @if($item->status)
+                            {{ __('admin.enabled') }}
+                        @else
+                            {{ __('admin.disabled') }}
+                        @endif
                     </td>
                     <td>
                         <a href="{{ route('orders.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
