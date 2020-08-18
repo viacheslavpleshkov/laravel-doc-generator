@@ -24,10 +24,16 @@ class Situation extends Model
     protected $fillable = [
         'name',
         'description',
-        'price',
         'type_id',
-        'document_file_id',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function documentfile()
+    {
+        return $this->hasMany(DocumentFile::class, 'situation_id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -35,14 +41,6 @@ class Situation extends Model
     public function type()
     {
         return $this->belongsTo(Type::class, 'type_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function documentfile()
-    {
-        return $this->belongsTo(DocumentFile::class, 'document_file_id');
     }
 
     /**

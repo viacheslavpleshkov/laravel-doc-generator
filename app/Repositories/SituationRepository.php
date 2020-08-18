@@ -96,10 +96,8 @@ class SituationRepository implements RepositoryInterface
         $columns = [
             'id',
             'name',
-            'price',
             'description',
             'type_id',
-            'document_file_id',
         ];
 
         $result = $this->model

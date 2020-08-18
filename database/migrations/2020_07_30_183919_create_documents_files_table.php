@@ -20,6 +20,9 @@ class CreateDocumentsFilesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('file_path');
+            $table->integer('price');
+            $table->unsignedInteger('situation_id');
+            $table->foreign('situation_id')->references('id')->on('situations');
             $table->timestamps();
         });
     }

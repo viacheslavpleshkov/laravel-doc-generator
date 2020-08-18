@@ -29,6 +29,14 @@
             <td>{{ $main->file_path }}</td>
         </tr>
         <tr>
+            <th>{{ __('admin.documents-files.price') }}</th>
+            <td>{{ $main->price }}</td>
+        </tr>
+        <tr>
+            <th>{{ __('admin.documents-files.situation') }}</th>
+            <td>{{ $main->situation->name }}</td>
+        </tr>
+        <tr>
             <th>{{ __('admin.created') }}</th>
             <td>{{ $main->created_at }}</td>
         </tr>

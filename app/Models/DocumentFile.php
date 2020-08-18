@@ -24,6 +24,8 @@ class DocumentFile extends Model
     protected $fillable = [
         'title',
         'file_path',
+        'price',
+        'situation_id',
     ];
 
     const CREATED_AT = 'created_at';
@@ -38,10 +40,11 @@ class DocumentFile extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function situations()
+    public function situation()
     {
-        return $this->hasMany(Situation::class, 'document_file_id');
+        return $this->belongsTo(Situation::class, 'situation_id');
     }
+
 }

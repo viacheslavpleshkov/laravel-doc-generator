@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Requests\Site\PaymentRequest;
+use App\Repositories\DocumentFileRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\UserFillInputRepository;
@@ -39,6 +40,10 @@ class PaymentController extends BaseController
      * @var
      */
     protected $orderRepository;
+    /**
+     * @var
+     */
+    protected $documentFileRepository;
 
     /**
      * PaymentController constructor.
@@ -46,11 +51,13 @@ class PaymentController extends BaseController
      * @param UserFillInputRepository $userFillInputRepository
      * @param UserRepository $userRepository
      * @param OrderRepository $orderRepository
+     * @param DocumentFileRepository $documentFileRepository
      */
     public function __construct(SituationRepository $situationRepository,
                                 UserFillInputRepository $userFillInputRepository,
                                 UserRepository $userRepository,
-                                OrderRepository $orderRepository)
+                                OrderRepository $orderRepository,
+                                DocumentFileRepository $documentFileRepository)
     {
         $this->payment = new Payment(
             config('app.robokassa_login'),
@@ -62,6 +69,7 @@ class PaymentController extends BaseController
         $this->userFillInputRepository = $userFillInputRepository;
         $this->userRepository = $userRepository;
         $this->orderRepository = $orderRepository;
+        $this->documentFileRepository = $documentFileRepository;
     }
 
     /**
@@ -70,15 +78,16 @@ class PaymentController extends BaseController
      */
     public function index(Request $request)
     {
-        $situations = $this->situationRepository->getById($request->id);
+        $situations = $this->situationRepository->getById($request->situation_id);
         $main = $this->userFillInputRepository
             ->where('user_id', Auth::user()->id)
-            ->where('situation_id', $request->id)
+            ->where('situation_id', $request->situation_id)
             ->get();
-
+        $document = $this->documentFileRepository->getById($request->document_id);
         return view('site.payment.index', [
             'situations' => $situations,
-            'main' => $main
+            'main' => $main,
+            'document' => $document,
         ]);
     }
 
@@ -91,13 +100,14 @@ class PaymentController extends BaseController
      */
     public function submit(PaymentRequest $request)
     {
-        $situations = $this->situationRepository->getById($request->id);
+        $situations = $this->situationRepository->getById($request->situation_id);
+        $document = $this->documentFileRepository->getById($request->document_id);
         $user_id = Auth::user()->id;
         $this->userRepository->update($user_id, ['email_pay' => $request->email]);
-        $transaction = (new DocumentController())->create_document($user_id, $situations->id);
+        $transaction = (new DocumentController())->create_document($user_id, $situations->id, $request->document_id);
         $this->payment
             ->setInvoiceId($transaction->id)
-            ->setSum($situations->price)
+            ->setSum($document->price)
             ->setDescription($situations->description);
 
         return redirect()->route('site.payment.success', ['id' => $transaction->id]);

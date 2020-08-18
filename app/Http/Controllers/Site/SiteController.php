@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Repositories\NewsRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
+use App\Repositories\DocumentFileRepository;
 
 class SiteController extends BaseController
 {
@@ -23,7 +24,10 @@ class SiteController extends BaseController
      * @var NewsRepository
      */
     protected $newsRepository;
-
+    /**
+     * @var DocumentFileRepository
+     */
+    protected $documentFileRepository;
     /**
      * SiteController constructor.
      * @param TypeRepository $typeRepository
@@ -32,11 +36,13 @@ class SiteController extends BaseController
      */
     public function __construct(TypeRepository $typeRepository,
                                 SituationRepository $situationRepository,
-                                NewsRepository $newsRepository)
+                                NewsRepository $newsRepository,
+                                DocumentFileRepository $documentFileRepository)
     {
         $this->typeRepository = $typeRepository;
         $this->situationRepository = $situationRepository;
         $this->newsRepository = $newsRepository;
+        $this->documentFileRepository = $documentFileRepository;
     }
 
     /**
@@ -59,8 +65,9 @@ class SiteController extends BaseController
         $main = $this->typeRepository->getSiteUrl($url);
         if (isset($main)) {
             $situation = $this->situationRepository->getSitenAll($main->id);
+            $documents = $this->documentFileRepository->getAll();
 
-            return view('site.pages.types', compact('main', 'situation'));
+            return view('site.pages.types', compact('main', 'situation', 'documents'));
         } else
             abort(404);
     }

@@ -25,6 +25,7 @@
             <tr>
                 <th scope="col">{{ __('admin.documents-files.id') }}</th>
                 <th scope="col">{{ __('admin.documents-files.name') }}</th>
+                <th scope="col">{{ __('admin.documents-files.price') }}</th>
                 <th scope="col">{{ __('admin.documents-files.files') }}</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -36,6 +37,7 @@
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->title }}</td>
                     <td scope="row">{{ $item->file_path }}</td>
+                    <td scope="row">{{ $item->price }}</td>
                     <td>
                         <a href="{{ route('documents-keys.index', $item->id) }}" class="btn btn-outline-warning">{{ __('admin.documents-files.document-key') }}</a>
                         <a href="{{ route('documents-files.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>

@@ -68,12 +68,27 @@ class DocumentFileRepository implements RepositoryInterface
         return $this->model->find($id)->delete();
     }
 
+    /**
+     * @param $name
+     * @param $name2
+     * @return mixed
+     */
+    public function where($name, $name2)
+    {
+        return $this->model->where($name, $name2);
+    }
+
+    /**
+     * @param $paginate
+     * @return mixed
+     */
     public function getAdminAll($paginate)
     {
         $columns = [
             'id',
             'title',
             'file_path',
+            'price'
         ];
 
         $result = $this->model

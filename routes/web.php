@@ -56,11 +56,11 @@ Route::namespace('Site')->group(function () {
     Route::get('news', 'NewsController@index')->name('site.news.index');
     Route::get('news/{url}', 'NewsController@news')->name('site.news.view');
     Route::get('types/{url}', 'SiteController@types')->name('site.types');
-    Route::get('types/{url}/situation/{id}', 'SituationController@index')->name('site.situation.index');
-    Route::post('situation/{id}', 'SituationController@form')->name('site.situation.form');
+    Route::get('types/{type_url}/situation/{situation_id}/document/{document_id}', 'SituationController@index')->name('site.situation.index');
+    Route::post('types/{type_url}/situation/{situation_id}/document/{document_id}', 'SituationController@form')->name('site.situation.form');
     Route::middleware('auth')->group(function () {
-        Route::get('payment/{id}', 'PaymentController@index')->name('site.payment.index');
-        Route::post('payment-submit/{id}', 'PaymentController@submit')->name('site.payment.submit');
+        Route::get('types/{type_url}/situation/{situation_id}/document/{document_id}/payment', 'PaymentController@index')->name('site.payment.index');
+        Route::post('payment-submit/{situation_id}/{document_id}', 'PaymentController@submit')->name('site.payment.submit');
         Route::get('payment-success/{id}', 'PaymentController@success')->name('site.payment.success');
         Route::get('payment-fall/{id}', 'PaymentController@fall')->name('site.payment.fall');
     });

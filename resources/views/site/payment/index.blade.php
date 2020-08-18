@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <th>{{ __('site.situation.price') }}</th>
-                <td>{{ $situations->price }} рубль</td>
+                <td>{{ $document->price }} рубль</td>
             </tr>
         </div>
     </table>
@@ -30,7 +30,7 @@
             </button>
         </div>
     @endif
-    <form action="{{ route('site.payment.submit', $situations->id) }}" method="post">
+    <form action="{{ route('site.payment.submit',['situation_id' => $situations->id, 'document_id' => $document->id]) }}" method="post">
         @csrf
 
         <div class="form-group">

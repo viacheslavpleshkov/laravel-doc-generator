@@ -20,12 +20,9 @@ class CreateSituationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->integer('price');
             $table->unsignedInteger('type_id');
-            $table->unsignedInteger('document_file_id');
             $table->timestamps();
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
-            $table->foreign('document_file_id')->references('id')->on('documents_files')->onDelete('cascade');
         });
     }
 

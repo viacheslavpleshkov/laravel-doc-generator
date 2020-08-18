@@ -57,7 +57,7 @@ class SituationController extends BaseController
      */
     public function index(Request $request)
     {
-        $situation = $this->situationRepository->getById($request->id);
+        $situation = $this->situationRepository->getById($request->situation_id);
 
         if (isset($situation)) {
             if (Auth::check())
@@ -65,13 +65,15 @@ class SituationController extends BaseController
             else
                 $user_id = 0;
 
-            $main = $this->documentKeyRepository->getSiteSituation($situation->document_file_id);
+            $main = $this->documentKeyRepository->getSiteSituation($request->document_id);
             $data = $this->userFillInputRepository->getSiteSituation($user_id);
 
             return view('site.situation.situation', [
                 'main' => $main,
                 'data' => $data,
-                'situation' => $situation->id
+                'situation_id' => $situation->id,
+                'type_url' => $request->type_url,
+                'document_id' => $request->document_id,
             ]);
         } else
             abort(404);
@@ -83,7 +85,7 @@ class SituationController extends BaseController
      */
     public function form(Request $request)
     {
-        $situation_id = $request->id;
+        $situation_id = $request->situation_id;
         $array = $request->except('_token');
 
         if (Auth::check())
@@ -107,6 +109,10 @@ class SituationController extends BaseController
                 ->setCreateUserInput($user_id, $situation_id, $value, $array[$value]);
         }
 
-        return redirect()->route('site.payment.index', $situation_id);
+        return redirect()->route('site.payment.index', [
+            'situation_id' => $request->situation_id,
+            'type_url' => $request->type_url,
+            'document_id' =>  $request->document_id
+        ]);
     }
 }

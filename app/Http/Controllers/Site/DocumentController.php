@@ -6,6 +6,7 @@ use App\Repositories\OrderRepository;
 use App\Repositories\UserFillInputRepository;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\DocumentFileRepository;
 
 /**
  * Class DocumentController
@@ -23,6 +24,10 @@ class DocumentController extends BaseController
      * @var OrderRepository
      */
     protected $orderRepository;
+    /**
+     * @var DocumentFileRepository
+     */
+    protected $documentFileRepository;
 
     /**
      * DocumentController constructor.
@@ -31,20 +36,22 @@ class DocumentController extends BaseController
     {
         $this->userFillInputRepository = new UserFillInputRepository;
         $this->orderRepository = new OrderRepository;
+        $this->documentFileRepository= new DocumentFileRepository();
     }
 
     /**
      * @param $user_id
      * @param $situation_id
+     * @param $document_id
      * @return mixed
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function create_document($user_id, $situation_id)
+    public function create_document($user_id, $situation_id, $document_id)
     {
         $user_fill_input = $this->userFillInputRepository->getDocumentAll($user_id, $situation_id);
         if (!$user_fill_input->isEmpty()) {
-            $path = $user_fill_input[0]->document->documentfile->file_path;
+            $path = $this->documentFileRepository->getById($document_id)->file_path;
             $user_path = 'docx/' . $user_id . '/Voucher-' . time() . '.docx';
 
             Storage::copy($path, $user_path);

@@ -8,7 +8,7 @@
             <a href="{{ route('login') }}" class="text-dark text-center" target="_blank">Авторизуйтесь на сайте чтобы
                 автоматически подтянулись ваши данные</a>
         @endguest
-        <form action="{{ route('site.situation.form', $situation) }}" method="POST">
+        <form action="{{ route('site.situation.form', ['type_url' => $type_url, 'situation_id' => $situation_id,'document_id' => $document_id]) }}" method="POST">
             <div class="row">
                 @csrf
                 @foreach($main as $item_main)

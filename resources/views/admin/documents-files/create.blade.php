@@ -24,6 +24,21 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label>{{ __('admin.documents-files.price') }}</label>
+            <input type="text" class="form-control" name="price" value="{{ old('price') }}"
+                   placeholder="{{ __('admin.documents-files.enter-price') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>{{ __('admin.documents-files.situation') }}</label>
+            <select class="form-control" name="situation_id" required>
+                @foreach($main as $item)
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <button class="btn btn-lg btn-original btn-block" type="submit">{{ __('admin.create') }}</button>
     </form>
 @endsection

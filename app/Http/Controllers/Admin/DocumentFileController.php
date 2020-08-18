@@ -6,6 +6,7 @@ use App\Repositories\DocumentFileRepository;
 use App\Repositories\SettingRepository;
 use App\Http\Requests\Admin\DocumentFileStoreRequest;
 use App\Http\Requests\Admin\DocumentFileUpdateRequest;
+use App\Repositories\SituationRepository;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -25,16 +26,24 @@ class DocumentFileController extends BaseController
      * @var SettingRepository
      */
     protected $settingRepository;
+    /**
+     * @var
+     */
+    protected $situationRepository;
 
     /**
      * DocumentFileController constructor.
      * @param DocumentFileRepository $documentFileRepository
      * @param SettingRepository $settingRepository
+     * @param SituationRepository $situationRepository
      */
-    public function __construct(DocumentFileRepository $documentFileRepository, SettingRepository $settingRepository)
+    public function __construct(DocumentFileRepository $documentFileRepository,
+                                SettingRepository $settingRepository,
+                                SituationRepository $situationRepository)
     {
         $this->documentFileRepository = $documentFileRepository;
         $this->settingRepository = $settingRepository;
+        $this->situationRepository = $situationRepository;
     }
 
     /**
@@ -53,7 +62,9 @@ class DocumentFileController extends BaseController
      */
     public function create()
     {
-        return view('admin.documents-files.create');
+        $main = $this->situationRepository->getAll();
+
+        return view('admin.documents-files.create',compact('main'));
     }
 
     /**
@@ -65,6 +76,8 @@ class DocumentFileController extends BaseController
         $attributes = [
             'title' => $request->title,
             'file_path' => Storage::disk()->put('docx', $request->file_path),
+            'situation_id' => $request->situation_id,
+            'price' => $request->price,
         ];
         $main = $this->documentFileRepository->create($attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store documents-keys-files id= ' . $main->id . ' with params ', $request->all());
