@@ -60,7 +60,7 @@ Route::namespace('Site')->group(function () {
     Route::post('types/{type_url}/situation/{situation_id}/document/{document_id}', 'SituationController@form')->name('site.situation.form');
     Route::middleware('auth')->group(function () {
         Route::get('types/{type_url}/situation/{situation_id}/document/{document_id}/payment', 'PaymentController@index')->name('site.payment.index');
-        Route::post('payment-submit/{situation_id}/{document_id}', 'PaymentController@submit')->name('site.payment.submit');
+        Route::post('payment-submit/{type_id}/{situation_id}/{document_id}', 'PaymentController@submit')->name('site.payment.submit');
         Route::get('payment-success/{id}', 'PaymentController@success')->name('site.payment.success');
         Route::get('payment-fall/{id}', 'PaymentController@fall')->name('site.payment.fall');
     });

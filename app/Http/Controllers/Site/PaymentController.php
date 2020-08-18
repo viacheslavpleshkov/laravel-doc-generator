@@ -6,6 +6,7 @@ use App\Http\Requests\Site\PaymentRequest;
 use App\Repositories\DocumentFileRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\SituationRepository;
+use App\Repositories\TypeRepository;
 use App\Repositories\UserFillInputRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -44,6 +45,10 @@ class PaymentController extends BaseController
      * @var
      */
     protected $documentFileRepository;
+    /**
+     * @var TypeRepository
+     */
+    protected $typeRepository;
 
     /**
      * PaymentController constructor.
@@ -52,12 +57,14 @@ class PaymentController extends BaseController
      * @param UserRepository $userRepository
      * @param OrderRepository $orderRepository
      * @param DocumentFileRepository $documentFileRepository
+     * @param TypeRepository $typeRepository
      */
     public function __construct(SituationRepository $situationRepository,
                                 UserFillInputRepository $userFillInputRepository,
                                 UserRepository $userRepository,
                                 OrderRepository $orderRepository,
-                                DocumentFileRepository $documentFileRepository)
+                                DocumentFileRepository $documentFileRepository,
+                                TypeRepository $typeRepository)
     {
         $this->payment = new Payment(
             config('app.robokassa_login'),
@@ -70,6 +77,7 @@ class PaymentController extends BaseController
         $this->userRepository = $userRepository;
         $this->orderRepository = $orderRepository;
         $this->documentFileRepository = $documentFileRepository;
+        $this->typeRepository = $typeRepository;
     }
 
     /**
@@ -78,6 +86,7 @@ class PaymentController extends BaseController
      */
     public function index(Request $request)
     {
+        $type = $this->typeRepository->getSiteUrl($request->type_url);
         $situations = $this->situationRepository->getById($request->situation_id);
         $main = $this->userFillInputRepository
             ->where('user_id', Auth::user()->id)
@@ -88,6 +97,7 @@ class PaymentController extends BaseController
             'situations' => $situations,
             'main' => $main,
             'document' => $document,
+            'type_id' => $type->id,
         ]);
     }
 

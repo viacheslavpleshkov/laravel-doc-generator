@@ -91,11 +91,11 @@ class UserFillInputRepository implements RepositoryInterface
      * @param $user_id
      * @return mixed
      */
-    public function getSiteSituation($user_id)
+    public function getSiteSituation($user_id, $type_id)
     {
         return $this->model
             ->where('user_id', $user_id)
-//            ->where()
+            ->where('type_id', $type_id)
             ->get();
     }
 
@@ -117,15 +117,17 @@ class UserFillInputRepository implements RepositoryInterface
      * @param $situation_id
      * @param $document_id
      * @param $user_input
+     * @param $type_id
      * @return mixed
      */
-    public function setCreateUserInput($user_id, $situation_id, $document_id, $user_input)
+    public function setCreateUserInput($user_id, $situation_id, $document_id, $user_input, $type_id)
     {
         return $this->model->create([
             'user_id' => $user_id,
             'document_id' => $document_id,
             'situation_id' => $situation_id,
             'user_input' => $user_input,
+            'type_id' => $type_id,
         ]);
     }
 

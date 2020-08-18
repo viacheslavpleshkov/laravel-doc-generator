@@ -64,9 +64,9 @@ class SituationController extends BaseController
                 $user_id = Auth::user()->id;
             else
                 $user_id = 0;
-
+            $type = $this->typeRepository->getSiteUrl($request->type_url);
             $main = $this->documentKeyRepository->getSiteSituation($request->document_id);
-            $data = $this->userFillInputRepository->getSiteSituation($user_id);
+            $data = $this->userFillInputRepository->getSiteSituation($user_id, $type->id);
 
             return view('site.situation.situation', [
                 'main' => $main,
@@ -87,7 +87,7 @@ class SituationController extends BaseController
     {
         $situation_id = $request->situation_id;
         $array = $request->except('_token');
-
+        $type = $this->typeRepository->getSiteUrl($request->type_url);
         if (Auth::check())
             $user_id = Auth::user()->id;
         else {
@@ -106,7 +106,7 @@ class SituationController extends BaseController
                 continue;
             }
             $this->userFillInputRepository
-                ->setCreateUserInput($user_id, $situation_id, $value, $array[$value]);
+                ->setCreateUserInput($user_id, $situation_id, $value, $array[$value], $type->id);
         }
 
         return redirect()->route('site.payment.index', [

@@ -25,6 +25,7 @@ class UserFillInput extends Model
         'user_id',
         'document_id',
         'user_input',
+        'type_id',
         'situation_id',
     ];
 
