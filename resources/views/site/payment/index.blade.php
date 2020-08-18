@@ -30,7 +30,7 @@
             </button>
         </div>
     @endif
-    <form action="{{ route('site.payment.submit',['situation_id' => $situations->id, 'document_id' => $document->id]) }}" method="post">
+    <form action="{{ route('site.payment.submit',['type_id' => $type_id, 'situation_id' => $situations->id, 'document_id' => $document->id]) }}" method="post">
         @csrf
 
         <div class="form-group">

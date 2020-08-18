@@ -72,7 +72,7 @@ class SituationController extends BaseController
                 'main' => $main,
                 'data' => $data,
                 'situation_id' => $situation->id,
-                'type_url' => $request->type_url,
+                'type_url' => $type->id,
                 'document_id' => $request->document_id,
             ]);
         } else

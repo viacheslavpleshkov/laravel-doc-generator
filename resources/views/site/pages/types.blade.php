@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         @foreach($situation as $item)
-            <div class="dropdown col-4">
+            <div class="dropdown col-md-4">
                 <a class="btn btn-outline-primary dropdown-toggle mb-3 center-div" href="#" role="button"
                    id="dropdownMenuLink"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

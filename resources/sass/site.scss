@@ -8,18 +8,17 @@
 @import '~bootstrap/scss/bootstrap';
 
 html {
-  font-size: 14px;
+  font-size: 16px;
   font-family: $font-family-original;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.container {
-  max-width: 960px;
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .pricing-header {
@@ -54,7 +53,7 @@ html {
 }
 
 .index-card .card-deck .card {
-  min-width: 210px;
+  min-width: 255px;
 }
 
 .card-clear {

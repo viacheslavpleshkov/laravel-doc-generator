@@ -86,7 +86,6 @@ class PaymentController extends BaseController
      */
     public function index(Request $request)
     {
-        $type = $this->typeRepository->getSiteUrl($request->type_url);
         $situations = $this->situationRepository->getById($request->situation_id);
         $main = $this->userFillInputRepository
             ->where('user_id', Auth::user()->id)
@@ -97,7 +96,7 @@ class PaymentController extends BaseController
             'situations' => $situations,
             'main' => $main,
             'document' => $document,
-            'type_id' => $type->id,
+            'type_id' => $request->type_url,
         ]);
     }
 
