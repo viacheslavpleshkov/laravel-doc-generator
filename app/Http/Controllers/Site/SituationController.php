@@ -87,7 +87,6 @@ class SituationController extends BaseController
     {
         $situation_id = $request->situation_id;
         $array = $request->except('_token');
-        $type = $this->typeRepository->getSiteUrl($request->type_url);
         if (Auth::check())
             $user_id = Auth::user()->id;
         else {
@@ -106,7 +105,7 @@ class SituationController extends BaseController
                 continue;
             }
             $this->userFillInputRepository
-                ->setCreateUserInput($user_id, $situation_id, $value, $array[$value], $type->id);
+                ->setCreateUserInput($user_id, $situation_id, $value, $array[$value], $request->type_url);
         }
 
         return redirect()->route('site.payment.index', [
