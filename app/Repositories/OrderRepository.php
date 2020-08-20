@@ -83,7 +83,7 @@ class OrderRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->with('user:id,email')
             ->paginate($paginate);
 

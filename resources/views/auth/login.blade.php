@@ -17,7 +17,6 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header text-center">Авторизоваться</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login.attempt') }}" aria-label="{{ __('Login') }}">
                             @csrf

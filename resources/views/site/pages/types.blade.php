@@ -11,7 +11,7 @@
                     {{ $item->name }}
                 </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width: -webkit-fill-available;margin-right: 30px;">
                     @foreach($documents as $document)
                         @if($document->situation_id == $item->id)
                             <a class="dropdown-item"

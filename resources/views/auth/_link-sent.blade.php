@@ -7,9 +7,6 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header text-center">
-                        <h2>Успех</h2>
-                    </div>
                     <div class="card-body">
                         <div class="alert text-center text-muted text-center">
                             Проверьте свою электронную почту, чтобы найти ссылку для входа, которая будет действительна только в течение следующих 15 минут.

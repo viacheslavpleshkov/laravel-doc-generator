@@ -84,7 +84,7 @@ class DocumentKeyRepository implements RepositoryInterface
         $result = $this->model
             ->select($columns)
             ->where('document_file_id', $document)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->with('documentfile:id,file_path')
             ->paginate($paginate);
 

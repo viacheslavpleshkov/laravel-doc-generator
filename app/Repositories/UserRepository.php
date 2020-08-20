@@ -83,7 +83,7 @@ class UserRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->with('role:id,name')
             ->paginate($paginate);
 

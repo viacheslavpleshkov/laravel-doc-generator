@@ -83,7 +83,7 @@ class SituationRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->with('type:id,name')
             ->paginate($paginate);
 

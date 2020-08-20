@@ -8,11 +8,12 @@
             <a href="{{ route('login') }}" class="text-dark text-center" target="_blank">Авторизуйтесь на сайте чтобы
                 автоматически подтянулись ваши данные</a>
         @endguest
-        <form action="{{ route('site.situation.form', ['type_url' => $type_url, 'situation_id' => $situation_id,'document_id' => $document_id]) }}" method="POST">
+        <form action="{{ route('site.situation.form', ['type_url' => $type_url, 'situation_id' => $situation_id,'document_id' => $document_id]) }}"
+              method="POST">
             <div class="row">
                 @csrf
                 @foreach($main as $item_main)
-                    <div class="col-lg-6" style="padding: 10px">
+                    <div class="@if($main->count() == 1)col-lg-12 @else col-lg-6 @endif" style="padding: 10px">
                         <label>{{ $item_main->title }}</label>
                         <input type="text"
                                class="form-control"
@@ -23,7 +24,7 @@
                 @endforeach
                 <button class="btn btn-lg btn-outline-primary text-center" type="submit" id="inner">Создать документ
                 </button>
-            </div>
+
         </form>
     </div>
 @endsection
