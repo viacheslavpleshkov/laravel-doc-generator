@@ -21,9 +21,9 @@
                         <form method="POST" action="{{ route('login.attempt') }}" aria-label="{{ __('Login') }}">
                             @csrf
 
-                            <div class="alert text-center">
+                            <p class="text-center">
                                 Пожалуйста, введите свой адрес электронной почты ниже, и мы сразу же вышлем вам уникальную ссылку для входа по электронной почте.
-                            </div>
+                            </p>
 
                             <div class="form-group row">
                                 <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
