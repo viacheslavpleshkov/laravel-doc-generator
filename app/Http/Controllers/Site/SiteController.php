@@ -28,6 +28,7 @@ class SiteController extends BaseController
      * @var DocumentFileRepository
      */
     protected $documentFileRepository;
+
     /**
      * SiteController constructor.
      * @param TypeRepository $typeRepository
@@ -53,7 +54,7 @@ class SiteController extends BaseController
         $main = $this->typeRepository->getSiteAll();
         $news = $this->newsRepository->getSiteAll();
 
-        return view('site.pages.index', compact('main','news'));
+        return view('site.pages.index', compact('main', 'news'));
     }
 
     /**
@@ -95,5 +96,13 @@ class SiteController extends BaseController
     public function privacy_policy()
     {
         return view('site.pages.privacy-policy');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function personaldatapolicy()
+    {
+        return view('site.pages.personaldatapolicy');
     }
 }

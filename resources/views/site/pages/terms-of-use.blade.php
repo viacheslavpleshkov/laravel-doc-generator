@@ -2,73 +2,206 @@
 @section('title', 'Пользовательское соглашение')
 
 @section('content')
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id tincidunt dolor. Sed auctor
-        vitae nisl sit amet lobortis. Vivamus lobortis neque enim, eget ornare lacus malesuada at. Fusce lacinia odio
-        non interdum lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Ut ultricies risus a purus pretium bibendum. Praesent fringilla mauris id tincidunt rutrum. Duis congue libero
-        non justo luctus molestie. Nam dui tellus, lacinia sed sagittis id, molestie eget nisl. Mauris vulputate
-        tincidunt sollicitudin.</p>
-    <p class="lead">Fusce blandit, felis vitae dictum porttitor, mauris risus accumsan enim, nec congue eros nulla sed
-        velit. Nam euismod vehicula efficitur. Nunc iaculis risus ut rhoncus malesuada. Suspendisse ut ultricies mauris.
-        Fusce nec sollicitudin ipsum. Mauris in ligula in enim ultricies efficitur. Sed pulvinar non ipsum eu auctor.
-        Nunc dui nisl, euismod eget consequat scelerisque, rhoncus ac purus. Quisque auctor facilisis pharetra. Cras
-        euismod leo quis luctus aliquet. Aenean nec purus nec nunc blandit vulputate. Aliquam sagittis augue sed tempor
-        maximus. Sed convallis et est et sodales. Praesent elementum nunc ac nisi egestas, non rhoncus felis efficitur.
-        Suspendisse rhoncus rhoncus justo vitae imperdiet. Cras sagittis id ipsum ac faucibus.</p>
-    <p class="lead">Etiam egestas nibh ut arcu hendrerit volutpat. Cras mattis mi ut dui auctor, at iaculis nisl cursus.
-        Suspendisse sit amet suscipit magna. Curabitur ultrices dapibus purus et feugiat. Aenean convallis nisi purus,
-        eu tristique neque commodo id. Mauris blandit diam mi, eget iaculis velit bibendum non. Vestibulum ac felis sed
-        felis condimentum placerat.</p>
-    <p class="lead">Curabitur suscipit eros in neque tincidunt dignissim. Integer commodo lorem sit amet elit finibus
-        eleifend. Suspendisse sit amet eros congue, iaculis leo in, dignissim metus. Vestibulum nunc orci, posuere vel
-        est et, fringilla vestibulum elit. Fusce leo dui, facilisis vitae feugiat et, ultrices a risus. Etiam eget
-        consectetur neque. In hac habitasse platea dictumst. Aenean odio eros, luctus et urna in, congue convallis nisl.
-        Proin eget mi venenatis, gravida sem in, consectetur dui. Pellentesque ac diam eget felis fermentum posuere.
-        Fusce a vulputate arcu, a dictum erat.</p>
-    <p class="lead">Sed vestibulum, diam vitae ultrices euismod, est arcu blandit risus, eget lobortis tellus magna et
-        odio. Suspendisse lobortis dui at feugiat tristique. Nulla vestibulum nibh lectus, nec finibus felis condimentum
-        vulputate. Morbi semper arcu eget lacus facilisis dignissim. Class aptent taciti sociosqu ad litora torquent per
-        conubia nostra, per inceptos himenaeos. Ut nec efficitur enim. Nunc turpis ligula, imperdiet id imperdiet id,
-        lobortis ut lectus. Nam dapibus ligula vel facilisis viverra. Sed tempor leo eget lectus tincidunt, eget
-        vestibulum sem commodo. Fusce semper felis nec imperdiet molestie. Suspendisse id mi vel odio pretium vehicula
-        eu id eros. Sed euismod venenatis maximus. Donec porta mi laoreet risus tincidunt aliquam. Etiam et libero
-        aliquet, convallis purus at, lacinia elit. Vivamus egestas eu lectus vitae congue.</p>
-    <p class="lead">Duis lobortis nec tortor ut porttitor. Nulla iaculis ante et elit lobortis, a laoreet erat
-        elementum. Suspendisse eu pulvinar ante. Pellentesque condimentum sem nec vehicula egestas. Integer vitae tempus
-        turpis. Integer fringilla turpis nec tempus mollis. Maecenas eu leo tellus. Ut vulputate fermentum sagittis.
-        Aenean rhoncus at enim id suscipit. Vestibulum commodo sodales nibh, sit amet pellentesque tellus maximus id.
-        Vestibulum et ligula sit amet mauris ullamcorper posuere. Maecenas lobortis imperdiet odio non imperdiet. Sed
-        pharetra iaculis tellus, nec tempus ante luctus nec. Pellentesque et leo ultrices, malesuada ipsum at, aliquet
-        ligula. Praesent malesuada iaculis lacus vitae tincidunt.</p>
-    <p class="lead">Nam quis quam elit. Mauris vel risus massa. Etiam luctus arcu et blandit volutpat. Praesent vel est
-        purus. Curabitur ut lacinia velit. Duis aliquet purus ac mi porttitor pellentesque. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. In vitae odio pretium, ultricies nisl at, tempus felis. Aenean faucibus sem quis
-        ante lobortis ullamcorper. Phasellus ultrices vestibulum erat, eget tristique lacus ullamcorper eget. Integer
-        volutpat id odio ut feugiat. Cras sit amet lectus massa. Integer pretium tristique orci vel tincidunt. Mauris
-        vel lacus enim. Ut tincidunt velit eu erat posuere, gravida lobortis purus congue. Integer pharetra eu metus ut
-        ultricies.</p>
-    <p class="lead">Aenean scelerisque quis dui a varius. Curabitur sagittis tincidunt dapibus. Pellentesque habitant
-        morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin a dolor eu ligula pulvinar
-        sollicitudin. Phasellus viverra, sem a pulvinar placerat, ipsum ligula egestas dolor, quis rutrum urna ligula
-        sit amet eros. Praesent a purus quis ipsum imperdiet sollicitudin. Praesent non pellentesque nulla. Sed interdum
-        placerat ex et laoreet. Etiam aliquam vulputate quam, at ullamcorper turpis luctus eu.</p>
-    <p class="lead">Maecenas vel metus viverra, lobortis sapien a, sollicitudin nulla. Vestibulum convallis nibh augue,
-        a elementum felis pharetra in. Aenean posuere orci ac mauris laoreet hendrerit. Phasellus tincidunt massa
-        libero, id pharetra augue rhoncus at. Proin libero libero, ultricies tempor enim id, volutpat ultrices diam.
-        Etiam id hendrerit magna. In ornare erat ipsum, quis efficitur ipsum blandit sed. Integer enim neque, rutrum at
-        vulputate quis, dapibus eget mauris.</p>
-    <p class="lead">In a aliquet sem, vel maximus urna. Sed ullamcorper erat sit amet placerat commodo. Praesent sed
-        finibus metus. Ut sit amet massa sollicitudin, lobortis erat id, rhoncus metus. Ut nec auctor urna. Nulla
-        facilisi. Aliquam nisi nunc, malesuada eget lacinia quis, feugiat nec nunc. Vestibulum id eros ac urna faucibus
-        viverra in nec ipsum. In vel neque aliquet, vehicula massa sed, consectetur nibh. Suspendisse rutrum faucibus
-        lorem, in lobortis diam aliquam ac. Fusce venenatis, ante ut egestas pretium, mi tortor ultricies lacus, id
-        malesuada ante eros vitae est. Aliquam odio ante, fringilla non sem eu, imperdiet pretium ex.</p>
-    <p class="lead">Mauris eget volutpat dui. Cras quis elit ornare, semper nunc id, congue est. Aliquam sollicitudin
-        tortor nec posuere eleifend. Donec eu cursus quam. Vestibulum ante ipsum primis in faucibus orci luctus et
-        ultrices posuere cubilia curae; Fusce mattis diam non orci congue eleifend. Duis non vestibulum enim, vitae
-        volutpat turpis. Fusce a pellentesque risus. Vestibulum in tortor augue. Suspendisse auctor, dolor ac mattis
-        luctus, metus turpis tristique leo, ut facilisis sapien sem interdum odio. Suspendisse volutpat laoreet elit,
-        sed euismod lectus molestie ut. Fusce est tellus, egestas eu hendrerit ut, congue tempor erat. Ut eleifend purus
-        et consectetur tempor. Nulla consequat ipsum vel elit rutrum pharetra. Duis molestie libero et risus euismod
-        volutpat.</p>
+    <p class="lead">Настоящее соглашение (далее — <b>«Соглашение»</b>) заключено между ООО «Фирма ЛаКАС» (далее — <b>Лицензиар</b>)
+        и Пользователем (любым физическим лицом, индивидуальным предпринимателем, юридическим лицом)
+        (далее — <b>«Пользователь» либо «Лицензиат»</b>) Программы для ЭВМ «интернет-сайт всудбезюриста.рф» (далее — Сайт).
+        Сайт доступен в сети Интернет по адресу https://всудбезюриста.рф, и представляет собой программу для ЭВМ,
+        которая позволяет клиентам создавать документы.</p>
+    <p class="lead">Перед началом использования Сайта внимательно ознакомьтесь с условиями настоящего Соглашения.
+        С момента как Пользователь начинает использовать Сайт/его отдельные функции, либо прошел процедуру регистрации,
+        Соглашение вступает в силу, а Пользователь считается принявшим условия Соглашения, а также условия всех
+        указанных ниже документов, в полном объеме, без всяких оговорок и исключений (акцепт оферты в соответствие
+        с условиями пункта 3 статьи 434 и пункта 3 статьи 438 Гражданского кодекса РФ). Если вы не согласны с условиями
+        настоящего Соглашения, вы не можете использовать Сайт.</p>
+    <p class="lead">Пользуясь Сайтом, Пользователь соглашается с тем, что неотъемлемыми частями настоящего Соглашения
+        являются следующие документы:</p>
+    <p class="lead">«Политика конфиденциальности», доступная в сети Интернет
+        по адресу https://всудбезюриста.рф/confidentialitypolicy/.</p>
+    <p class="lead">«Политика обработки персональных данных», размещенная в сети Интернет по адресу https://
+        всудбезюриста.рф/personaldatapolicy/.</p>
+    <p class="lead">Указанные документы (в том числе любые из их частей) могут быть изменены Правообладателем
+        в одностороннем порядке без какого-либо специального уведомления, новая редакция документов вступает в силу
+        с момента их опубликования, если иное не предусмотрено новыми редакциями документов.</p>
+    <p class="lead">К Соглашению и всем отношениям, связанным с использованием Сайта, подлежит применению право
+        Российской Федерации и любые претензии или иски, вытекающие из Соглашения или использования Сайта, подлежат
+        рассмотрению в суде по месту нахождения Лицензиара.</p>
+    <p class="lead"><b>Термины и определения</b></p>
+    <p class="lead"><b>Адрес электронной почты —</b> адрес электронной почты Пользователя, указанный и подтвержденный
+        Пользователем в процессе регистрации на Сайте либо в ходе последующего размещения вопросов на Сайте
+        в соответствии с установленной процедурой и используемый для идентификации Пользователя Клиента в целях доступа
+        к Сайту и функционалу Программного обеспечения.</p>
+    <p class="lead"><b>Пользователь —</b> посетитель Сайта, который начал использовать Сайт/его отдельные функции, либо прошел
+        процедуру регистрации.ф</p>
+    <p class="lead"><b>Клиент —</b> Пользователь, зарегистрированный на Сайте.</p>
+    <p class="lead"><b>Лицензиар (или Администрация) —</b> Общество с ограниченной ответственностью «Фирма ЛаКАС», юридическое
+        лицо, созданное по законодательству Российской Федерации, зарегистрированное по адресу: 125190, г.
+        Москва, Ленинградский проспект, 80, корпус 5, и обладающее необходимыми правами на предоставление Пользователю
+        права использования Сайта.</p>
+    <p class="lead"><b>Программное обеспечение —</b> программа(ы) для ЭВМ.</p>
+    <p class="lead"><b>Контент —</b> объекты, размещенные на Сайте, в том числе элементы дизайна, текст, графические
+        изображения, иллюстрации, видео, скрипты, программы и другие объекты и их подборки.
+    </p>
+    <p class="lead"><b>Личный кабинет —</b> часть функционала Программного обеспечения, доступ к которому предоставляется после
+        регистрации Пользователя и ввода персонального логина и пароля, которые в дальнейшем обеспечивают доступ
+        к содержимому Личного кабинета. Ввод верных логина и пароля рассматривается как аналог собственноручной подписи
+        Пользователя.</p>
+    <h3>1. Соглашение</h3>
+    <p class="lead">1.1. Соглашение определяет условия использования Сайта, права и обязанности его Пользователей
+        и Администрации. Предметом Соглашения является предоставление Администрацией Пользователю неисключительной
+        лицензии на использование Сайта на условиях Соглашения. Лицензия предоставляется на условиях «как есть».
+        Администрация не гарантирует работоспособность Сайта в каждый отдельный момент времени.
+    </p>
+    <p class="lead">1.2. Настоящее Соглашение может быть изменено и/или дополнено Администрацией в одностороннем порядке
+        без
+        какого-либо специального уведомления. Соглашение является общедоступным документом. Действующая редакция
+        Соглашения располагается в сети Интернет по адресу: https://всудбезюриста.рф/useragreement.</p>
+    <p class="lead">1.3. Пользователи обязаны регулярно проверять условия Соглашения на предмет его изменения и/или
+        дополнения. Продолжение использования Сайта Пользователем после внесения изменений и/или дополнений в Соглашение
+        означает принятие и согласие Пользователя с такими изменениями и/или дополнениями.
+    </p>
+    <h3>2. Сайт</h3>
+    <p class="lead">2.1. Сайт является программой для ЭВМ размещенной в Интернете, обеспечивающей доступ к информации
+        по сетевому адресу https://всудбезюриста.рф.
+    </p>
+    <p class="lead">2.2. Все права на Сайт в целом, на использование сетевого адреса (доменного
+        имени) https://всудбезюриста.рф, на использование товарного знака «всудбезюриста.рф» принадлежат Администрации
+        либо третьим лицам. Администрация предоставляет доступ к Сайту всем заинтересованным лицам в соответствии
+        с Соглашением и действующим законодательством Российской Федерации.
+    </p>
+    <p class="lead">2.3. Администрация предоставляет Пользователям право использования Сайтом с целью создания
+        документов. Администрация имеет право устанавливать размер вознаграждения за предоставление указанного права для
+        различных Пользователей по собственному усмотрению.
+    </p>
+    <p class="lead">2.4. Используя Сайт, Пользователь подтверждает свое согласие с тем, что документ (файл, текст),
+        создаваемый с
+        использованием Сайта, и являющийся результатом работы Программного обеспечения, носит информационный характер.
+    </p>
+    <p class="lead">2.5. Программное обеспечение предоставляется на условиях «как есть». Администрация не предоставляет
+        никаких
+        гарантий в отношении безошибочной и бесперебойной работы Программного обеспечения или отдельных его компонентов
+        и/или функций, соответствия Программного обеспечения конкретным целям и ожиданиям Пользователя, не гарантирует
+        достоверность, точность, полноту и своевременность предоставляемой с его помощью информации (документов, файлов,
+        текстов), а также не предоставляет никаких иных гарантий, прямо не указанных в Соглашении.
+    </p>
+    <p class="lead">2.6. Администрация не несет ответственности за какие-либо прямые или косвенные убытки возникшие
+        в результате
+        использования или невозможности использования Сайта или Программного обеспечения и/или ущерб, причиненный
+        Пользователю и/или третьим лицам в результате использования, неиспользования или невозможности использования
+        Сайта или Программного обеспечения или отдельных его компонентов и/или функций, в том числе из-за возможных
+        ошибок или сбоев в работе Сайта или Программного обеспечения, за исключением случаев, прямо предусмотренных
+        законодательством. Ответственность Администрации и ООО «Фирма ЛаКАС» перед каждым Пользователем в любом случае
+        ограничен размером полученных от такого Пользователя денежных средств.
+    </p>
+    <h3>3. Администрация</h3>
+    <p class="lead">3.1. Обращения, предложения, претензии и иные запросы физических и юридических лиц к Администрации
+        Сайта,
+        связанные с Соглашением или работой Сайта либо Программного обеспечения, а также запросы уполномоченных
+        государственных органов могут быть направлены на электронный адрес contact@vsudbezurista.ru.
+    </p>
+    <p class="lead">3.2. Никакие положения Соглашения не предоставляют Пользователю права на использование фирменного
+        наименования,
+        коммерческого обозначения, товарных знаков, доменных имен и иных отличительных знаков Администрации, в том числе
+        «всудбезюриста.рф», “vsudbezurista.ru” и любых других.</p>
+    <h3>4. Регистрация</h3>
+    <p class="lead">4.1. В целях сохранения вводимой им на Сайте информации Пользователь регистрируется на Сайте путем
+        предоставления
+        адреса своей электронной почты и поддерживает эту информацию в актуальном состоянии. В случае предоставления
+        информации не соответствующей действительности либо в случае наличия у Администрации оснований полагать, что
+        предоставленная информация неполна или недостоверна, Администрация имеет право заблокировать либо удалить
+        учетную запись и ограничить Пользователя в использовании функционала Сайта.
+    </p>
+    <p class="lead">4.2. Администрация вправе отказать в регистрации на Сайте или зарегистрировать по иному виду(типу)
+        регистрации,
+        отличному от заявленной Пользователем при регистрации.
+    </p>
+    <p class="lead">4.3. Принимая настоящее Соглашение путем использования Сайта, в том числе путем регистрации
+        на Сайте,
+        Пользователь подтверждает свое согласие на обработку Администрацией его персональных данных, предоставленных при
+        регистрации, а также размещаемых Пользователем добровольно на своей персональной странице. Обработка
+        персональных данных Пользователя осуществляется в соответствии с законодательством Российской Федерации
+        в порядке, указанном в «Политике обработки персональных данных».
+    </p>
+    <h3>5. Финансовые отношения</h3>
+    <p class="lead">5.1. Заказывая платные услуги на Сайте, Пользователь соглашается с настоящим Соглашением.
+    </p>
+    <p class="lead">5.2. Стоимость платных услуг определяется Администрацией.
+    </p>
+    <p class="lead">5.3. Оплата платных услуг производится Пользователями через расчетно-банковский сервис,
+        предоставляемый третьими
+        лицами.
+    </p>
+    <p class="lead">5.4. В случае, если Пользователь оплатил денежные средства, но не получил платную услугу, денежные
+        средства могут
+        быть возвращены Пользователю. Для возврата денежных средств Пользователю необходимо отправить Заявку
+        в Администрацию по указанным на Сайте контактным данным с указанием данных Пользователя, введенных при заказе
+        платных услуг, деталей платежа и приложением копий документов, подтверждающих осуществление платежа, и указать,
+        что необходимо произвести возврат денежных средств. Возврат денежных средств возможен только в отношении
+        денежных средств, уплаченных не ранее 30 календарных дней до даты обращения за возвратом.
+    </p>
+    <p class="lead">5.5. В течение десяти рабочих дней заявка на возврат рассматривается Администрацией. После истечения
+        указанного
+        срока Администрация принимает решение по заявлению Пользователя, в частности, об оказании оплаченной услуги, о
+        возврате оплаченных денежных средств, о необоснованности требований Пользователя или иное решение.
+    </p>
+    <p class="lead">5.6. Денежные средства, уплаченные с использованием банковской карты, подлежат возврату на ту же
+        банковскую
+        карту, с которой производилась оплата. В остальных случаях денежные средства, подлежащие возврату, будут
+        возвращены Пользователю способом, выбранным Администрацией. Денежные средства возвращаются за вычетом комиссий
+        платежных систем.
+    </p>
+    <p class="lead">5.7. В целях противодействия совершению правонарушений, а также по запросу третьих лиц,
+        ответственных за движение
+        денежных средств (банки, платежные системы и иные) Администрация имеет право произвести временную блокировку
+        денежных средств и/или отказать Пользователю в выводе денежных средств.
+    </p>
+    <h3>6. Исключительные права
+    </h3>
+    <p class="lead">6.1. Сайт и его содержание (его часть) являются объектами исключительных прав Администрации и других
+        правообладателей.
+    </p>
+    <p class="lead">6.2. Ни Сайт, ни содержание Сайта (его часть) не могут быть скопированы (воспроизведены),
+        переработаны,
+        распространены, использованы, опубликованы, переданы, проданы или иным способом использованы в целом или в части
+        без предварительного разрешения Администрации.
+    </p>
+    <p class="lead">6.3. Использование Пользователем информации (документов, текста), полученных с сайта, допускается
+        при условии
+        сохранения всех знаков авторства (копирайтов) или других уведомлений об авторстве, сохранения имени автора
+        в неизменном виде, сохранении произведения в неизменном виде и ссылки на источник информации (документа, текста)
+        в виде включенной в информацию (документ, текст) ссылки «Создано с использованием https://всудбезюриста.рф»,
+        которая не подлежит удалению ни при каких обстоятельствах.
+    </p>
+    <p class="lead">6.4. Запрещено любое использование Сайта или его содержания, а также полученной в результате
+        использования сайта
+        информации (документов, текста), кроме разрешенного в настоящем Соглашении.
+    </p>
+    <p class="lead">6.5. Если иное явным образом не установлено в настоящем Соглашении, ничто в Соглашении не может быть
+        рассмотрено
+        как передача исключительных прав на Сайт, содержание Сайта или информацию (документы, тексты), созданные с
+        использованием Сайта.
+    </p>
+    <p class="lead">6.6. Пользователь несет личную ответственность за любую информацию, которую он загружает или иным
+        образом использует на Сайте или с его помощью. Пользователь не имеет права загружать или использовать на Сайте
+        информацию, если он не обладает соответствующими правами на совершение таких действий.
+    </p>
+    <p class="lead">6.7. Администрация может, но не обязана, просматривать Сайт на наличие запрещенной информации
+        и может удалять или перемещать (без предупреждения) любую информацию по своему личному усмотрению, по любой
+        причине или без причины, включая без всяких ограничений перемещение или удаление информации, которая, по мнению
+        Администрации, нарушает Соглашение, действующее законодательство и/или может нарушать права, причинить вред или
+        угрожать безопасности других Пользователей или третьих лиц.
+    </p>
+    <p class="lead">6.8 Размещая и используя свою информацию Сайте, Пользователь передает Администрации право
+        использовать, в том числе копировать, эту информацию в целях работы Сайта.
+    </p>
+    <p class="lead">Для целей передачи исключительных прав на информацию, Стороны согласились применять правила
+        о простой электронной подписи, рассматривая в качестве таковой простой электронной подписи адрес электронной
+        почты Пользователя, указанный им  на Сайте, и приравнивая такую простую электронную подпись к аналогу
+        собственноручной подписи Пользователя.
+    </p>
+    <h3>7. Заключительные положения</h3>
+    <p class="lead">7.1.  Администрация вправе в любое время и без предварительного уведомления Пользователя по своему
+        усмотрению удалить, блокировать или принудительно изменить доступ Пользователя к Сайту и информацию
+        Пользователя.
+    </p>
+    <p class="lead">Редакция от 18.08.2020 г.</p>
 @endsection

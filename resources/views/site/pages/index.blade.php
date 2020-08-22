@@ -15,7 +15,7 @@
             </div>
         @endforeach
     </div>
-    <h3 class="text-center">Как защитить свои права?</h3>
+    <h3 class="text-center">Как защитить свои права</h3>
     <hr>
     <div class="index-card">
         <div class="card-deck mb-3 text-center">

@@ -65,8 +65,9 @@ Route::namespace('Site')->group(function () {
         Route::get('payment-fall/{id}', 'PaymentController@fall')->name('site.payment.fall');
     });
     Route::get('about', 'SiteController@about')->name('site.about');
-    Route::get('terms-of-use', 'SiteController@terms_of_use')->name('site.terms-of-use');
-    Route::get('privacy-policy', 'SiteController@privacy_policy')->name('site.privacy-policy');
+    Route::get('useragreement', 'SiteController@terms_of_use')->name('site.terms-of-use');
+    Route::get('personaldatapolicy', 'SiteController@personaldatapolicy')->name('site.personaldatapolicy');
+    Route::get('confidentialitypolicy', 'SiteController@privacy_policy')->name('site.privacy-policy');
 });
 
 Route::get('home', function () {

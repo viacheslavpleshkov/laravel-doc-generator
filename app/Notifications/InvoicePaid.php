@@ -45,7 +45,7 @@ class InvoicePaid extends Notification
     {
         return with(new MailMessage)
                     ->subject('Успешная оплата документа')
-                    ->greeting("Привет, {$this->order->user->email_pay}!")
+                    ->greeting("Здраствуйте, {$this->order->user->email_pay}!")
                     ->line('Номер заказа:'. $this->order->id)
                     ->line('Статус документа: оплачено')
                     ->action('Скачать документ', asset($this->order->file_path))

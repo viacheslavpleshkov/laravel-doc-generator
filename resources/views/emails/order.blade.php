@@ -1,5 +1,5 @@
 @component('mail::message')
-    Привет **{{$order->user->email_pay}}**!,<br>
+    Здраствуйте **{{$order->user->email_pay}}**!,<br>
     Номер заказа: {{ $order->id }} <br>
     Статус документа: оплачено <br>
     @component('mail::button', ['url' => asset($order->file_path)])
