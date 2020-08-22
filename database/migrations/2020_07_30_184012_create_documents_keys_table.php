@@ -18,7 +18,7 @@ class CreateDocumentsKeysTable extends Migration
     {
         Schema::create('documents_keys', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('document_file_id');
+            $table->unsignedBigInteger('document_file_id');
             $table->string('title');
             $table->string('key');
             $table->timestamps();

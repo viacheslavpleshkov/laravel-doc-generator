@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('email_pay')->nullable();
             $table->rememberToken();
-            $table->unsignedInteger('role_id');
+            $table->unsignedBigInteger('role_id');
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles');
         });

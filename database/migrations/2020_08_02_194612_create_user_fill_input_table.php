@@ -18,10 +18,10 @@ class CreateUserFillInputTable extends Migration
     {
         Schema::create('user_fill_input', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('document_id');
-            $table->unsignedInteger('situation_id');
-            $table->unsignedInteger('type_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('document_id');
+            $table->unsignedBigInteger('situation_id');
+            $table->unsignedBigInteger('type_id');
             $table->string('user_input');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('document_id')->references('id')->on('documents_keys')->onDelete('cascade');;

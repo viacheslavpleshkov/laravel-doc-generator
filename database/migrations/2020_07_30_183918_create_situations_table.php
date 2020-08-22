@@ -20,7 +20,7 @@ class CreateSituationsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedInteger('type_id');
+            $table->unsignedBigInteger('type_id');
             $table->timestamps();
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
         });
