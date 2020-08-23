@@ -113,7 +113,7 @@ class PaymentController extends BaseController
         $document = $this->documentFileRepository->getById($request->document_id);
         $user_id = Auth::user()->id;
         $this->userRepository->update($user_id, ['email_pay' => $request->email]);
-        $transaction = (new DocumentController())->create_document($user_id, $situations->id, $request->document_id);
+        $transaction = (new DocumentController())->create_document($user_id, $situations->id, $document);
         $this->payment
             ->setInvoiceId($transaction->id)
             ->setSum($document->price)

@@ -11,10 +11,6 @@
                 <td>{{ $order->id }}</td>
             </tr>
             <tr>
-                <th>{{ __('site.order.file_path') }}</th>
-                <td><a href="{{ asset($order->file_path) }}">{{ asset($order->file_path) }}</a></td>
-            </tr>
-            <tr>
                 <th>{{ __('site.order.user_name') }}</th>
                 <td>{{ $order->user->email_pay }}</td>
             </tr>
@@ -28,4 +24,5 @@
             </tr>
         </div>
     </table>
+    <a class="btn btn-lg btn-outline-primary text-center d-flex justify-content-center" href="{{ asset($order->file_path) }}">Скачать документ</a>
 @endsection

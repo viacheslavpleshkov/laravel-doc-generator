@@ -10,6 +10,7 @@ use App\Repositories\UserFillInputRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class SituationController extends BaseController
 {
@@ -66,15 +67,19 @@ class SituationController extends BaseController
                 $user_id = 0;
             $type = $this->typeRepository->getSiteUrl($request->type_url);
             $main = $this->documentKeyRepository->getSiteSituation($request->document_id);
-            $data = $this->userFillInputRepository->getSiteSituation($user_id, $type->id);
-
-            return view('site.situation.situation', [
-                'main' => $main,
-                'data' => $data,
-                'situation_id' => $situation->id,
-                'type_url' => $type->id,
-                'document_id' => $request->document_id,
-            ]);
+            if (!$main->isEmpty()) {
+                $data = $this->userFillInputRepository->getSiteSituation($user_id, $type->id);
+                $title = mb_convert_case($main[0]->documentfile->title, MB_CASE_LOWER, "UTF-8");
+                return view('site.situation.situation', [
+                    'main' => $main,
+                    'data' => $data,
+                    'situation_id' => $situation->id,
+                    'type_url' => $type->id,
+                    'document_id' => $request->document_id,
+                    'title' => $title
+                ]);
+            } else
+                abort(404);
         } else
             abort(404);
     }

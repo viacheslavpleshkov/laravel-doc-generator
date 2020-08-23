@@ -19,9 +19,10 @@ class NewLoginAttempt extends Notification
      * NewLoginAttempt constructor.
      * @param $attempt
      */
-    public function __construct($attempt)
+    public function __construct($attempt, $url)
     {
         $this->attempt = $attempt;
+        $this->url = $url;
     }
 
     /**
@@ -43,7 +44,7 @@ class NewLoginAttempt extends Notification
             ->subject('Войдите в свой аккаунт')
             ->greeting("Здраствуйте, {$this->attempt->user->email}!")
             ->line('Пожалуйста, нажмите кнопку ниже, чтобы получить доступ к приложению, которое будет действовать только 15 минут.')
-            ->action('Войдите в свой аккаунт', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), [$this->attempt->token]))
+            ->action('Войдите в свой аккаунт', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), ['token' =>$this->attempt->token, 'url' => $this->url]))
             ->line('Спасибо что используете наше приложение!');
     }
 

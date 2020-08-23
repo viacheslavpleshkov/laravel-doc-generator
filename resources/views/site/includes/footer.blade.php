@@ -1,9 +1,5 @@
 <footer class="pt-4 my-md-5 pt-md-5 border-top footer navbar-fixed-bottom">
     <div class="row">
-        <div class="col-12 col-md">
-            <small class="d-block mb-3 text-muted text-center">{{ __('site.name') }} © {{date("Y")}}.
-                <br>{{ __('site.footer.title') }}</small>
-        </div>
         <div class="col-4 col-md">
             <h5 class="list-unstyled text-small text-center"><a href="{{ route('site.about') }}"
                                                                 class="text-dark">{{ __('site.footer.about') }}</a></h5>
@@ -23,5 +19,9 @@
                                                                 class="text-dark">Политика обращения с персональными данными</a>
             </h5>
         </div>
+    </div>
+    <br>
+    <div class="col-12 col-md">
+        <p class="d-block mb-12 text-dark text-center">{{ __('site.name') }} © {{date("Y")}}. {{ __('site.footer.title') }}</p>
     </div>
 </footer>

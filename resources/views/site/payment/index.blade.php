@@ -1,5 +1,5 @@
 @extends('site.layouts.main')
-@section('title', 'Оплатить за документ: '.$situations->name)
+@section('title', 'Оплатить за документ: '.mb_convert_case($document->title, MB_CASE_LOWER, "UTF-8"))
 
 @section('content')
     <table class="table table-bordered">
@@ -11,6 +11,10 @@
             <tr>
                 <th>{{ __('site.situation.description') }}</th>
                 <td>{{ $situations->description }}</td>
+            </tr>
+            <tr>
+                <th>Название документа:</th>
+                <td>{{ $document->title }}</td>
             </tr>
             <tr>
                 <th>{{ __('site.situation.price') }}</th>

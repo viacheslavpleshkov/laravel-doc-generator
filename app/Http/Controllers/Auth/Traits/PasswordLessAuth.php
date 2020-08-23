@@ -53,7 +53,6 @@ trait PasswordLessAuth
         } else
             return $this->sendFailedLoginResponse($request);
     }
-
     /**
      * @param $token
      * @param Request $request
@@ -65,15 +64,12 @@ trait PasswordLessAuth
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
+            return $this->sendLockoutResponsee($request);
         }
-
         if ($this->attemptLogin($token, $request)) {
-            return $this->sendLoginResponse($request);
+            return redirect($request->url);
         }
-
         $this->incrementLoginAttempts($request);
-
         return $this->sendFailedLoginResponse($request);
     }
 
@@ -87,7 +83,8 @@ trait PasswordLessAuth
         $user = LoginAttempt::userFromToken($token);
 
         if (is_object($user)) {
-            return $this->guard()->login($user);
+            $this->guard()->login($user);
+            return redirect($request->url);
         }
     }
 
@@ -103,7 +100,7 @@ trait PasswordLessAuth
             'token' => Str::random(40) . time(),
         ]);
 
-        $authorize->notify(new NewLoginAttempt($authorize));
+        $authorize->notify(new NewLoginAttempt($authorize, $request->url));
 
         return $authorize;
     }

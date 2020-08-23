@@ -42,17 +42,18 @@ class DocumentController extends BaseController
     /**
      * @param $user_id
      * @param $situation_id
-     * @param $document_id
+     * @param $document
      * @return mixed
      * @throws \PhpOffice\PhpWord\Exception\CopyFileException
      * @throws \PhpOffice\PhpWord\Exception\CreateTemporaryFileException
      */
-    public function create_document($user_id, $situation_id, $document_id)
+    public function create_document($user_id, $situation_id, $document)
     {
         $user_fill_input = $this->userFillInputRepository->getDocumentAll($user_id, $situation_id);
         if (!$user_fill_input->isEmpty()) {
-            $path = $this->documentFileRepository->getById($document_id)->file_path;
-            $user_path = 'docx/' . $user_id . '/Voucher-' . time() . '.docx';
+            $path = $this->documentFileRepository->getById($document->id)->file_path;
+            $title =  str_replace(" ","-", mb_convert_case($document->title, MB_CASE_LOWER, "UTF-8"));
+            $user_path = 'docx/' . $user_id . '/'.$title.'-' . rand() . '.docx';
 
             Storage::copy($path, $user_path);
             $templateProcessor = new TemplateProcessor(storage_path('app/' . $user_path));

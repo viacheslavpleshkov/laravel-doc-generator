@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title', "Заполните поля чтобы создать документ")
+@section('title', "Заполните поля чтобы создать документ: ".$title)
 
 @section('content')
     <div class="container">
@@ -40,6 +40,7 @@
                                                     Пожалуйста, введите свой адрес электронной почты ниже, и мы сразу же
                                                     вышлем вам уникальную ссылку для входа по электронной почте.
                                                 </p>
+                                                <input name="url" type="hidden" value="{{ request()->path() }}">
 
                                                 <div class="form-group row">
                                                     <label for="email"
