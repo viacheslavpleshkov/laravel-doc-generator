@@ -94,6 +94,7 @@ class DocumentKeyRepository implements RepositoryInterface
     public function getSiteSituation($id) {
         $result = $this->model
             ->where('document_file_id', $id)
+            ->orderBy('id', 'asc')
             ->get();
 
         return $result;

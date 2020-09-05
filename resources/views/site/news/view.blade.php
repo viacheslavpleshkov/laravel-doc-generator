@@ -2,7 +2,6 @@
 @section('title', $item->title)
 
 @section('content')
-    <p>{{ $item->text }}</p>
-    <p>{{ $item->created_at }}</p>
-    <p>Дата публикации : {{ $item->created_at }}</p>
+    <p>{!! $item->text !!}</p>
+    <p>Дата публикации : {{ date('d/m/Y H:i', strtotime($item->created_at)) }}</p>
 @endsection

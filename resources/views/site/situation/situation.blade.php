@@ -12,7 +12,7 @@
                             <button class="btn btn-link btn-block text-center collapsed" type="button"
                                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
-                                Авторизуйтесь на сайте чтобы автоматически подтянулись ваши данные
+                                Если Вы ранее пользовались нашим сервисом, укажите свою электронную почту, если хотите использовать ранее введенные Вами данные
                             </button>
                         </h2>
                     </div>
@@ -93,12 +93,14 @@
                 @csrf
                 @foreach($main as $item_main)
                     <div class="col-lg-12" style="padding: 10px">
-                        <input type="text"
-                               class="form-control"
-                               name="{{ $item_main->id }}"
-                               placeholder="{{ $item_main->title }}"
-                               value="@foreach($data as $item_data){{ $item_main->key == $item_data->document->key ? $item_data->user_input : '' }}@endforeach"
-                               required>
+                        <input type="text" class="form-control" name="{{ $item_main->id }}"
+                               placeholder="{{ $item_main->title }}" value="@php
+                            foreach($data as $item_data) {
+                                if($item_main->key==$item_data->document->key) {
+                                    echo $item_data->user_input;
+                                    break;
+                                    }
+                            } @endphp" required>
                     </div>
                 @endforeach
                 <button class="btn btn-lg btn-outline-primary text-center" type="submit" id="inner">Создать документ

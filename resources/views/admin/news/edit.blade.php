@@ -15,12 +15,6 @@
         </div>
 
         <div class="form-group">
-            <label>{{ __('admin.news.url') }}</label>
-            <input type="text" class="form-control" name="url" value="{{ $main->url }}"
-                   placeholder="{{ __('admin.news.enter-url') }}" required>
-        </div>
-
-        <div class="form-group">
             <label>{{ __('admin.news.text') }}</label>
             <textarea name="text" class="form-control" cols="30" placeholder="{{ __('admin.news.enter-text') }}" rows="10">{{ $main->text }}</textarea>
         </div>

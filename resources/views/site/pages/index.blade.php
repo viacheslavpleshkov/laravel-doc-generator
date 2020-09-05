@@ -3,7 +3,7 @@
 @section('description', 'Наш сервис позволяет любому защитить свои права и обратиться в суд без расходов на юриста')
 
 @section('content')
-    <h3 class="text-center">Выберите кто вы?</h3>
+    <h3 class="text-center">Выберите кто вы</h3>
     <hr>
     <div class="card-deck mb-3 text-center">
         @foreach($main as $item)
@@ -15,21 +15,16 @@
             </div>
         @endforeach
     </div>
-    <h3 class="text-center">Как защитить свои права</h3>
+    <h3 class="text-center">Узнайте, как защитить свои права без юриста </h3>
     <hr>
     <div class="index-card">
         <div class="card-deck mb-3 text-center">
             @foreach($news as $item)
-                <div class="card mb-3 shadow-sm col-lg-2 p-0">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">{{ $item->title }}</h4>
+                <a class="card col-lg-2 text-dark card-clear" href="{{ route('site.news.view', $item->url) }}">
+                    <div class="card-header head-card-bs bg-white" style="min-height: 130px">
+                        <h4 class="btn btn-lg btn-block btn-outline-primary font-weight-normal shadow-sm text-card-bs btn-center">{{ $item->title }}</h4>
                     </div>
-                    <div class="card-body">
-                        <p> {{ mb_strimwidth($item->text, 0, 40, "...") }}</p>
-                        <a href="{{ route('site.news.view', $item->url) }}"
-                           class="btn btn-lg btn-block btn-outline-primary card-btn">Читать дальше</a>
-                    </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

@@ -96,6 +96,7 @@ class UserFillInputRepository implements RepositoryInterface
         return $this->model
             ->where('user_id', $user_id)
             ->where('type_id', $type_id)
+            ->orderBy('id', 'asc')
             ->get();
     }
 

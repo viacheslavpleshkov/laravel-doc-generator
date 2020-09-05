@@ -1,3 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
 RewriteEngine on
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -5,4 +9,3 @@ RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www.xn--80abcigmh7degle1m.xn--p1ai [NC]
 RewriteRule ^(.*)$ https://xn--80abcigmh7degle1m.xn--p1ai/$1 [L,R=301]
 
-RewriteRule ^(.*)$ public/$1 [L]

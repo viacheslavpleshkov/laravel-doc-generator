@@ -37,6 +37,7 @@ trait PasswordLessAuth
      */
     public function attempt(Request $request)
     {
+        $request->merge(['email' => mb_convert_case($request->email, MB_CASE_LOWER, "UTF-8")]);
         $this->incrementLoginAttempts($request);
 
         if ($this->hasTooManyLoginAttempts($request)) {
@@ -53,6 +54,7 @@ trait PasswordLessAuth
         } else
             return $this->sendFailedLoginResponse($request);
     }
+
     /**
      * @param $token
      * @param Request $request
@@ -67,7 +69,10 @@ trait PasswordLessAuth
             return $this->sendLockoutResponsee($request);
         }
         if ($this->attemptLogin($token, $request)) {
-            return redirect($request->url);
+            if (isset($request->url))
+                return redirect($request->url);
+            else
+                return redirect()->route('site.index');
         }
         $this->incrementLoginAttempts($request);
         return $this->sendFailedLoginResponse($request);
@@ -84,7 +89,10 @@ trait PasswordLessAuth
 
         if (is_object($user)) {
             $this->guard()->login($user);
-            return redirect($request->url);
+            if (isset($request->url))
+                return redirect($request->url);
+            else
+                return redirect()->route('site.index');
         }
     }
 

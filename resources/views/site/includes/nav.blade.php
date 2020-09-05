@@ -15,11 +15,22 @@
                         <a class="nav-link" href="{{ route('site.news.index') }}">{{__('site.nav.protect') }}</a>
                     </li>
                     @auth
+                        @if(in_array(Auth::user()->role->name, ['User']))
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                            class="fas fa-sign-out-alt"></i> Выйти из аккаунта ({{ mb_strimwidth(Auth::user()->email, 0, 30, "...") }})</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endif
                         @if(in_array(Auth::user()->role->name, ['Admin']))
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->email }}
+                                    {{ mb_strimwidth(Auth::user()->email, 0, 30, "...") }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item"

@@ -91,6 +91,7 @@ class NewsRepository implements RepositoryInterface
             'title',
             'text',
             'url',
+            'created_at'
         ];
 
         $result = $this->model
@@ -111,7 +112,7 @@ class NewsRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->limit(4)
             ->get();
 
