@@ -61,8 +61,8 @@ Route::namespace('Site')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('types/{type_url}/situation/{situation_id}/document/{document_id}/payment', 'PaymentController@index')->name('site.payment.index');
         Route::post('payment-submit/{type_id}/{situation_id}/{document_id}', 'PaymentController@submit')->name('site.payment.submit');
-        Route::get('payment-success/{id}', 'PaymentController@success')->name('site.payment.success');
-        Route::get('payment-fall/{id}', 'PaymentController@fall')->name('site.payment.fall');
+        Route::get('payment-success', 'PaymentController@success')->name('site.payment.success');
+        Route::get('payment-fall', 'PaymentController@fall')->name('site.payment.fall');
     });
     Route::get('about', 'SiteController@about')->name('site.about');
     Route::get('useragreement', 'SiteController@terms_of_use')->name('site.terms-of-use');

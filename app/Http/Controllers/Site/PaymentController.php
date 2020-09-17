@@ -114,12 +114,11 @@ class PaymentController extends BaseController
         $user_id = Auth::user()->id;
         $this->userRepository->update($user_id, ['email_pay' => $request->email]);
         $transaction = (new DocumentController())->create_document($user_id, $situations->id, $document);
-        $this->payment
+        $link = $this->payment
             ->setInvoiceId($transaction->id)
             ->setSum($document->price)
             ->setDescription($situations->description);
-
-        return redirect()->route('site.payment.success', ['id' => $transaction->id]);
+        return redirect($link->getPaymentUrl());
     }
 
     /**
@@ -128,15 +127,23 @@ class PaymentController extends BaseController
      */
     public function success(Request $request)
     {
-        $order = $this->orderRepository->getById($request->id);
-        if (isset($order)) {
-            $this->orderRepository->update($request->id, ['status' => 1]);
-            $order = $this->orderRepository->getById($request->id);
-            $user = $this->userRepository->getById(Auth::user()->id);
-            Mail::to($user->email_pay)->send(new OrderShipped($order));
+        if (isset($request->OutSum) && $this->payment->validateSuccess($request->all())) {
+            $order = $this->orderRepository->getById($request->InvId);
+            if (isset($order) && $order->id == $this->payment->getInvoiceId()) {
+                $this->orderRepository->update($request->InvId, ['status' => 1]);
+                $order = $this->orderRepository->getById($request->InvId);
+                $user = $this->userRepository->getById(Auth::user()->id);
+                Mail::to($user->email_pay)->send(new OrderShipped($order));
 
-            return view('site.payment.success', compact('order'));
+                return view('site.payment.success', compact('order'));
+            } else
+                $this->fall();
         } else
-            abort(404);
+            $this->fall();
+    }
+
+    public function fall()
+    {
+        return view('site.payment.fall');
     }
 }

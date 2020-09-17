@@ -133,6 +133,8 @@
       <path value="$PROJECT_DIR$/vendor/composer 2/package-versions-deprecated" />
       <path value="$PROJECT_DIR$/vendor/idma 2/robokassa" />
       <path value="$PROJECT_DIR$/vendor/pclzip 2/pclzip" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
