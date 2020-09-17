@@ -57,7 +57,7 @@ class DocumentController extends BaseController
         elseif ($user_input >= 1000001 && $user_input <= 2000000)
             return 23000 + 0.01 * (2000000 - 1000000);
         else {
-            $value =  33000 + 0.005 * ($user_input - 2000000);
+            $value = 33000 + 0.005 * ($user_input - 2000000);
             if ($value >= 200000)
                 $value = 200000;
             return $value;
@@ -84,7 +84,7 @@ class DocumentController extends BaseController
             $templateProcessor = new TemplateProcessor(storage_path('app/' . $user_path));
             foreach (($user_fill_input) as $value) {
                 $templateProcessor->setValue('${' . $value->document->key . '}', $value->user_input);
-                if ($value->document->key == "amount_debt")
+                if ($value->document->key == "amount_debt" && is_numeric((int)$this->amount_debt($value->user_input)))
                     $templateProcessor->setValue('${gov_tax}', (int)$this->amount_debt($value->user_input));
             }
             $templateProcessor->saveAs(storage_path('app/' . $user_path));

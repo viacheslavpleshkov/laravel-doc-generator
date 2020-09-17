@@ -20,16 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b2d1e41-5541-47e0-bca2-78e3a43669c5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/site/payment/fail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Site/DocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Site/DocumentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/site/pages/terms-of-use.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/site/pages/terms-of-use.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +217,7 @@
       <option name="presentableId" value="Default" />
       <updated>1599299166656</updated>
       <workItem from="1599299167800" duration="4662000" />
-      <workItem from="1600331641999" duration="8672000" />
+      <workItem from="1600331641999" duration="9563000" />
     </task>
     <servers />
   </component>
@@ -247,5 +240,9 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="645" y="357" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1600352145886" />
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1600374394293">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600374394293" />
   </component>
 </project>
