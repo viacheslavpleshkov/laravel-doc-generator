@@ -93,7 +93,7 @@
                 @csrf
                 @foreach($main as $item_main)
                     <div class="col-lg-12" style="padding: 10px">
-                        <input type="text" class="form-control" name="{{ $item_main->id }}"
+                        <input type="{{ ($item_main->key == "amount_debt") ? 'number' : 'text' }}" class="form-control" name="{{ $item_main->id }}"
                                placeholder="{{ $item_main->title }}" value="@php
                             foreach($data as $item_data) {
                                 if($item_main->key==$item_data->document->key) {
