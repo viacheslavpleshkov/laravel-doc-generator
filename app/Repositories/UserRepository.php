@@ -83,6 +83,8 @@ class UserRepository implements RepositoryInterface
 
         $result = $this->model
             ->select($columns)
+            ->where('role_id', 2)
+            ->orWhere('role_id', 3)
             ->orderBy('id', 'asc')
             ->with('role:id,name')
             ->paginate($paginate);

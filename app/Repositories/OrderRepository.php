@@ -77,6 +77,7 @@ class OrderRepository implements RepositoryInterface
         $columns = [
             'id',
             'user_id',
+            'situation_id',
             'file_path',
             'status',
         ];
@@ -84,7 +85,8 @@ class OrderRepository implements RepositoryInterface
         $result = $this->model
             ->select($columns)
             ->orderBy('id', 'asc')
-            ->with('user:id,email')
+            ->with('user:id,email_pay')
+            ->with('situation:id,name')
             ->paginate($paginate);
 
         return $result;

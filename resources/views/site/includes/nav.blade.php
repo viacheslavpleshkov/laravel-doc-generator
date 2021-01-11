@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('site.index') }}">{{__('site.name') }}</a>
+        <a class="text_black hover_blue navbar-brand " href="{{ route('site.index') }}"> {{__('site.name') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
             <div class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('site.news.index') }}">{{__('site.nav.protect') }}</a>
+                        <a class="nav-link rights" href="{{ route('site.news.index') }}">{{__('site.nav.protect') }}</a>
                     </li>
                     @auth
                         @if(in_array(Auth::user()->role->name, ['User']))

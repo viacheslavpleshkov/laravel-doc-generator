@@ -137,9 +137,9 @@ class PaymentController extends BaseController
 
                 return view('site.payment.success', compact('order'));
             } else
-                $this->fall();
+                return redirect()->route('site.payment.fall');
         } else
-            $this->fall();
+            return redirect()->route('site.payment.fall');
     }
 
     public function fall()

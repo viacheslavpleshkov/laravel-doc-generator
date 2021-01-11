@@ -97,6 +97,35 @@ class DocumentFileController extends BaseController
         return view('admin.documents-files.show', compact('main'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $main = $this->documentFileRepository->getById($id);
+
+        return view('admin.documents-files.edit', compact('main'));
+    }
+
+    /**
+     * @param DocumentFileUpdateRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(DocumentFileUpdateRequest $request, $id)
+    {
+        $attributes = [
+            'title' => $request->title,
+            'price' => $request->price,
+        ];
+
+        $this->documentFileRepository->update($id, $attributes);
+        Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') update documents-keys-files id= ' . $request->id . ' with params ', $request->all());
+
+        return redirect()->route('documents-files.index')->with('success', __('admin.updated-success'));
+    }
+
 
     /**
      * @param $id
@@ -104,6 +133,10 @@ class DocumentFileController extends BaseController
      */
     public function destroy($id)
     {
+        $item = $this->documentFileRepository->getById($id);
+        if(\File::exists(public_path($item->file_path))){
+            \File::delete(public_path($item->file_path));
+        }
         $this->documentFileRepository->delete($id);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') destroy documents-keys-files id= ' . $id);
 

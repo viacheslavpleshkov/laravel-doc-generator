@@ -45,7 +45,7 @@ class NewLoginAttempt extends Notification
             ->greeting("Здраствуйте, {$this->attempt->user->email}!")
             ->line('Пожалуйста, нажмите кнопку ниже, чтобы получить доступ к приложению, которое будет действовать только 15 минут.')
             ->action('Войдите в свой аккаунт', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), ['token' =>$this->attempt->token, 'url' => $this->url]))
-            ->line('Спасибо что используете наше приложение!');
+            ->line('Спасибо, что используете наше приложение!');
     }
 
     /**

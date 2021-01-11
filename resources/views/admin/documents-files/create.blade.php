@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <label>{{ __('admin.documents-files.price') }}</label>
-            <input type="text" class="form-control" name="price" value="{{ old('price') }}"
+            <input type="number" class="form-control" name="price" value="{{ old('price') }}"
                    placeholder="{{ __('admin.documents-files.enter-price') }}" required>
         </div>
 

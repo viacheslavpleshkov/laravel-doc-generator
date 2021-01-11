@@ -88,6 +88,7 @@ class DocumentFileRepository implements RepositoryInterface
             'id',
             'title',
             'file_path',
+            'situation_id',
             'price'
         ];
 

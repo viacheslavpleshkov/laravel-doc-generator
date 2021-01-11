@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th>{{ __('admin.orders.user-name') }}</th>
-            <td>{{ $main->user->email }}</td>
+            <td>@if(strlen($main->user->email) > 245) {{$main->user->email_pay}} @else {{ $main->user->email }} @endif</td>
         </tr>
         <tr>
             <th>{{ __('admin.orders.document') }}</th>
@@ -26,9 +26,9 @@
             <th>{{ __('admin.orders.status') }}</th>
             <td>
                 @if($main->status)
-                    {{ __('admin.enabled') }}
+                    {{ __('admin.enabled_pay') }}
                 @else
-                    {{ __('admin.disabled') }}
+                    {{ __('admin.disabled_pay') }}
                 @endif
             </td>
         </tr>
@@ -37,7 +37,7 @@
             <td>{{ $main->created_at }}</td>
         </tr>
         <tr>
-            <th>{{ __('admin.update') }}</th>
+            <th>{{ __('admin.order_pay_date') }}</th>
             <td>{{ $main->updated_at }}</td>
         </tr>
     </table>

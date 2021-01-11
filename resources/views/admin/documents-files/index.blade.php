@@ -40,6 +40,7 @@
                     <td>
                         <a href="{{ route('documents-keys.index', $item->id) }}" class="btn btn-outline-warning">{{ __('admin.documents-files.document-key') }}</a>
                         <a href="{{ route('documents-files.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('documents-files.edit',$item->id) }}" class="btn btn-outline-secondary">{{ __('admin.edit') }}</a>
                         <form action="{{ route('documents-files.destroy',$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

@@ -12,6 +12,7 @@
                 <th scope="col">{{ __('admin.orders.id') }}</th>
                 <th scope="col">{{ __('admin.orders.user-name') }}</th>
                 <th scope="col">{{ __('admin.orders.document') }}</th>
+                <th scope="col">Ситуация</th>
                 <th scope="col">{{ __('admin.orders.status') }}</th>
                 <th scope="col"></th>
             </tr>
@@ -20,17 +21,22 @@
             @foreach($main as $item)
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->user->email }}</td>
-                    <td>{{ asset($item->file_path) }}
+                    <td>{{ $item->user->email_pay }}</td>
+                    <td><a href="{{ asset($item->file_path) }}" target="_blank"
+                           class="btn btn-outline-success">Скачать</a>
+                    <td>
+                        {{ $item->situation->name }}
+                    </td>
                     <td>
                         @if($item->status)
-                            {{ __('admin.enabled') }}
+                            Оплачено
                         @else
-                            {{ __('admin.disabled') }}
+                            Не оплачено
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('orders.show',$item->id) }}" class="btn btn-outline-primary">{{ __('admin.show') }}</a>
+                        <a href="{{ route('orders.show',$item->id) }}"
+                           class="btn btn-outline-primary">{{ __('admin.show') }}</a>
                     </td>
                 </tr>
             @endforeach

@@ -20,9 +20,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('file_path');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('situation_id');
             $table->integer('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('situation_id')->references('id')->on('situations');
         });
     }
 

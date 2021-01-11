@@ -24,6 +24,7 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'file_path',
+        'situation_id',
         'status',
     ];
 
@@ -36,5 +37,12 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function situation()
+    {
+        return $this->belongsTo(Situation::class, 'situation_id');
     }
 }

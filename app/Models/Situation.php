@@ -50,4 +50,12 @@ class Situation extends Model
     {
         return $this->hasMany(User_fillInput::class, 'situation_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'situation_id');
+    }
 }

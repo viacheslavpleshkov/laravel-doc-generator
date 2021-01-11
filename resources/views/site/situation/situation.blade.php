@@ -12,7 +12,8 @@
                             <button class="btn btn-link btn-block text-center collapsed" type="button"
                                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                     aria-controls="collapseTwo">
-                                Если Вы ранее пользовались нашим сервисом, укажите свою электронную почту, если хотите использовать ранее введенные Вами данные
+                                Если Вы ранее пользовались нашим сервисом, укажите свою электронную почту, если хотите
+                                использовать ранее введенные Вами данные
                             </button>
                         </h2>
                     </div>
@@ -93,19 +94,31 @@
                 @csrf
                 @foreach($main as $item_main)
                     <div class="col-lg-12" style="padding: 10px">
-                        <input type="{{ ($item_main->key == "amount_debt") ? 'number' : 'text' }}" class="form-control" name="{{ $item_main->id }}"
-                               placeholder="{{ $item_main->title }}" value="@php
-                            foreach($data as $item_data) {
-                                if($item_main->key==$item_data->document->key) {
-                                    echo $item_data->user_input;
-                                    break;
-                                    }
-                            } @endphp" required>
+                        @if($item_main->key == "amount_debt")
+                            <input type="number" class="form-control" name="{{ $item_main->id }}"
+                                   placeholder="{{ $item_main->title }}" value="@php
+                                foreach($data as $item_data) {
+                                    if($item_main->key==$item_data->document->key) {
+                                        echo $item_data->user_input;
+                                        break;
+                                        }
+                                } @endphp" required>
+                        @else
+                            <textarea row="2" class="form-control" name="{{ $item_main->id }}"
+                                      placeholder="{{ $item_main->title }}" required>@php
+                                    foreach($data as $item_data) {
+                                        if($item_main->key==$item_data->document->key) {
+                                            echo $item_data->user_input;
+                                            break;
+                                            }
+                                    } @endphp</textarea>
+                        @endif
                     </div>
                 @endforeach
                 <button class="btn btn-lg btn-outline-primary text-center" type="submit" id="inner">Создать документ
                 </button>
-
+            </div>
         </form>
+        <br>
     </div>
 @endsection

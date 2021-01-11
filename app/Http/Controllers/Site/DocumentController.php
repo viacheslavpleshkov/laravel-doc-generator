@@ -91,6 +91,7 @@ class DocumentController extends BaseController
 
             return $this->orderRepository->create([
                 'file_path' => $user_path,
+                'situation_id' => $situation_id,
                 'user_id' => $user_id,
                 'status' => 0,
             ]);

@@ -84,3 +84,19 @@ body {
   margin: 0 auto;
 }
 
+.test-font {
+  font-size: 16px;
+}
+
+.text_black {
+  color: black;
+}
+
+a.hover_blue:hover {
+  color: #007bff !important;
+}
+
+a.rights:hover {
+  text-decoration: underline;
+  color: #007bff !important;
+}

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
  * Auth Router
  */
 Route::group(['namespace' => 'Auth'], function () {
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login/attempt', 'LoginController@attempt')->name('login.attempt');
     Route::get('login/{token}/validate', 'LoginController@login')->name('login.token.validate')->middleware('signed');
@@ -16,6 +19,9 @@ Route::group(['namespace' => 'Auth'], function () {
 /**
  * Admin Router
  */
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'roles'], 'block' => ['User']], function () {
     Route::group(['roles' => ['Admin']], function () {
         Route::get('/', 'AdminController@index')->name('admin.index');
@@ -24,7 +30,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::resource('types', 'TypeController');
         Route::resource('situations', 'SituationController');
         Route::resource('documents-files', 'DocumentFileController');
-
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
         Route::get('{document}/document-key', 'DocumentKeyController@index')->name('documents-keys.index')->where('document', '[0-9]+');
         Route::get('{document}/document-key/create', 'DocumentKeyController@create')->name('documents-keys.create')->where('document', '[0-9]+');
         Route::post('{document}/document-key', 'DocumentKeyController@store')->name('documents-keys.store');
@@ -32,17 +40,23 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::get('{document}/document-key/{id}/edit', 'DocumentKeyController@edit')->name('documents-keys.edit')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
         Route::put('{document}/document-key/{id}', 'DocumentKeyController@update')->name('documents-keys.update')->where(['document' => '[0-9]+', 'id' => '[0-9]+']);
         Route::delete('{document}/document-key/{id}', 'DocumentKeyController@destroy')->name('documents-keys.destroy');
-
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
         Route::resource('orders', 'OrderController');
         Route::get('orders', 'OrderController@index')->name('orders.index');
         Route::get('orders/{id}', 'OrderController@show')->name('orders.show')->where('id', '[0-9]+');
         Route::delete('orders/{id}', 'OrderController@destroy')->name('orders.destroy')->where('id', '[0-9]+');
-
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
         Route::get('roles', 'RoleController@index')->name('roles.index');
         Route::get('role/{id}', 'RoleController@show')->name('roles.show')->where('id', '[0-9]+');
         Route::get('roles/{id}/edit', 'RoleController@edit')->name('roles.edit')->where('id', '[0-9]+');
         Route::put('roles/{id}', 'RoleController@update')->name('roles.update')->where('id', '[0-9]+');
-
+//    Если видети этот комментарий это значит, что заказчик не расчитался до конца.
+//    Было внесено кучу правок помимо ТЗ в итоге кинул нас на деньги
+//    будьте осторожны
         Route::resource('users', 'UserController');
         Route::get('settings', 'SettingController@index')->name('settings.index');
         Route::put('settings', 'SettingController@update')->name('settings.update');
