@@ -9,5 +9,6 @@
         <p>ИНН 7743655521</p>
         <p>Адрес: 125190, г. Москва, Ленинградский проспект, д. 80 корп. 5</p>
         <p>Адрес электронной почты: contact@vsudbezurista.ru</p>
+        <p>Служба поддержки в telegram: <a href="https://t.me/joinchat/Ul4m9m1dyo83ni44" target="_blank" class="text-dark">https://t.me/joinchat/Ul4m9m1dyo83ni44</a></p>
     </div>
 @endsection
