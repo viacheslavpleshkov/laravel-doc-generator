@@ -6,6 +6,8 @@ use App\Repositories\NewsRepository;
 use App\Repositories\SituationRepository;
 use App\Repositories\TypeRepository;
 use App\Repositories\DocumentFileRepository;
+use App\Repositories\UserFillInputRepository;
+
 
 class SiteController extends BaseController
 {
@@ -28,6 +30,10 @@ class SiteController extends BaseController
      * @var DocumentFileRepository
      */
     protected $documentFileRepository;
+    /**
+     * @var UserFillInputRepository
+     */
+    protected $userFillInputRepository;
 
     /**
      * SiteController constructor.
@@ -38,12 +44,14 @@ class SiteController extends BaseController
     public function __construct(TypeRepository $typeRepository,
                                 SituationRepository $situationRepository,
                                 NewsRepository $newsRepository,
-                                DocumentFileRepository $documentFileRepository)
+                                DocumentFileRepository $documentFileRepository,
+                                UserFillInputRepository $userFillInputRepository)
     {
         $this->typeRepository = $typeRepository;
         $this->situationRepository = $situationRepository;
         $this->newsRepository = $newsRepository;
         $this->documentFileRepository = $documentFileRepository;
+        $this->userFillInputRepository = $userFillInputRepository;
     }
 
     /**
@@ -104,5 +112,14 @@ class SiteController extends BaseController
     public function personaldatapolicy()
     {
         return view('site.pages.personaldatapolicy');
+    }
+    
+    public function deleteUser(){
+        return view('site.pages.delete-user');
+    }
+
+    public function deleteUserFillInput($id){
+        $this->userFillInputRepository->deleteValues($id);
+        return redirect()->route('site.user-delete');
     }
 }

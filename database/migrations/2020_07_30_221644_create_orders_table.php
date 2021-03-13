@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('file_path');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('situation_id');
+            $table->integer('price');
             $table->integer('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

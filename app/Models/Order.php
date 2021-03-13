@@ -25,6 +25,7 @@ class Order extends Model
         'user_id',
         'file_path',
         'situation_id',
+        'price',
         'status',
     ];
 

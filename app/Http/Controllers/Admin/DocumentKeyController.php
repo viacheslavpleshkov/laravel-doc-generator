@@ -10,7 +10,7 @@ use App\Http\Requests\Admin\DocumentUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\DB;
 /**
  * Class DocumentKeyController
  * @package App\Http\Controllers\Admin
@@ -83,7 +83,6 @@ class DocumentKeyController extends BaseController
             'key' => $request->key,
             'document_file_id' => $request->document
         ];
-
         $category = $this->documentRepository->create($attributes);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') store type id= ' . $category->id . ' with params ', $request->all());
 

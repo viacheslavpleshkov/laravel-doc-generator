@@ -93,6 +93,7 @@ class DocumentController extends BaseController
                 'file_path' => $user_path,
                 'situation_id' => $situation_id,
                 'user_id' => $user_id,
+                'price' => $this->documentFileRepository->getById($document->id)->price,
                 'status' => 0,
             ]);
         }

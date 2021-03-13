@@ -82,6 +82,8 @@ Route::namespace('Site')->group(function () {
     Route::get('useragreement', 'SiteController@terms_of_use')->name('site.terms-of-use');
     Route::get('personaldatapolicy', 'SiteController@personaldatapolicy')->name('site.personaldatapolicy');
     Route::get('confidentialitypolicy', 'SiteController@privacy_policy')->name('site.privacy-policy');
+    Route::get('user-delete-information', 'SiteController@deleteUser')->name('site.user-delete');
+    Route::get('user-delete-information/{id}', 'SiteController@deleteUserFillInput')->name('site.user-delete-information');
 });
 
 Route::get('home', function () {

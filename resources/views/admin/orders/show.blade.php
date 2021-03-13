@@ -23,6 +23,10 @@
             <td>{{ $main->file_path }}</td>
         </tr>
         <tr>
+            <th>Цена</th>
+            <td>{{ $main->price }} руб</td>
+        </tr>
+        <tr>
             <th>{{ __('admin.orders.status') }}</th>
             <td>
                 @if($main->status)

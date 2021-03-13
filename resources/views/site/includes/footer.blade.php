@@ -21,14 +21,14 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12 col-lg-6 p-2">
+            <div class="col-md-12 col-lg-6 p-2 text-center">
                 <p>{{ __('site.name') }} © {{date("Y")}}. {{ __('site.footer.title') }}</p>
             </div>
-            <div class="col-md-12 col-lg-3 p-2">
-                <a href="https://t.me/joinchat/Ul4m9m1dyo83ni44" target="_blank" class="text-dark">Служба поддержки <i class="fab fa-telegram"></i></a>
+            <div class="col-md-12 col-lg-3 p-2 text-center">
+                <a href="https://t.me/vsudbezuristasupport" target="_blank" class="text-dark">Служба поддержки <i class="fab fa-telegram" style="color: #0088CC;"></i></a>
             </div>
-            <div class="col-md-12 col-lg-3 p-2">
-            <a href="https://t.me/vsudbezurista" target="_blank" class="text-dark">Подписаться на новости <i class="fab fa-telegram"></i></a>
+            <div class="col-md-12 col-lg-3 p-2 text-center">
+            <a href="https://t.me/vsudbezurista" target="_blank" class="text-dark">Подписаться на новости <i class="fab fa-telegram" style="color: #0088CC;"></i></a>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 @extends('site.layouts.main')
-@section('title', 'Оплата прошла не успешно')
+@section('title', 'Оплата не прошла')
 
 @section('content')
 

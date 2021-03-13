@@ -22,9 +22,9 @@ class DocumentKey extends Model
      * @var string[]
      */
     protected $fillable = [
+        'document_file_id',
         'title',
         'key',
-        'document_file_id'
     ];
 
     const CREATED_AT = 'created_at';

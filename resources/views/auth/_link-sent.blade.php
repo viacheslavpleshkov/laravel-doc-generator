@@ -1,6 +1,6 @@
 @extends('site.layouts.main')
 
-@section('title', "Успех")
+@section('title', "Ссылка для входа направлена на указанную Вами электронную почту")
 
 @section('content')
     <div class="container">

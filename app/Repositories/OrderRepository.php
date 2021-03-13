@@ -79,6 +79,7 @@ class OrderRepository implements RepositoryInterface
             'user_id',
             'situation_id',
             'file_path',
+            'price',
             'status',
         ];
 

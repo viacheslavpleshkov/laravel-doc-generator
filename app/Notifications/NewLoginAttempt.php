@@ -42,10 +42,10 @@ class NewLoginAttempt extends Notification
     {
         return with(new MailMessage)
             ->subject('Войдите в свой аккаунт')
-            ->greeting("Здраствуйте, {$this->attempt->user->email}!")
-            ->line('Пожалуйста, нажмите кнопку ниже, чтобы получить доступ к приложению, которое будет действовать только 15 минут.')
+            ->greeting("Здравствуйте, {$this->attempt->user->email}!")
+            ->line('Нажмите кнопку ниже, чтобы войти в свой аккаунт. Ссылка активна в течение 15 минут.')
             ->action('Войдите в свой аккаунт', URL::temporarySignedRoute('login.token.validate', now()->addMinutes(15), ['token' =>$this->attempt->token, 'url' => $this->url]))
-            ->line('Спасибо, что используете наше приложение!');
+            ->line('Спасибо, что используете всудбезюриста.рф');
     }
 
     /**

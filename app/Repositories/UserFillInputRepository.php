@@ -83,6 +83,7 @@ class UserFillInputRepository implements RepositoryInterface
         return $this->model
             ->where('user_id', $user_id)
             ->where('situation_id', $situation_id)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -146,5 +147,29 @@ class UserFillInputRepository implements RepositoryInterface
             ->update([
                 'user_input' => $user_input,
             ]);
+    }
+
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public function getAdminValueUser($user_id)
+    {
+        return $this->model
+            ->where('user_id', $user_id)
+            ->get();
+    }
+
+    /**
+     * @param $user_id
+     * @param $document_id
+     * @return mixed
+     */
+    public function deleteValues($user_id)
+    {
+        return $this->model
+            ->where('user_id', $user_id)
+            ->delete();
     }
 }

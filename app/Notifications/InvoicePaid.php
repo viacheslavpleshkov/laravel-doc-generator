@@ -44,12 +44,17 @@ class InvoicePaid extends Notification
     public function toMail($notifiable)
     {
         return with(new MailMessage)
-                    ->subject('Успешная оплата документа')
-                    ->greeting("Здраствуйте, {$this->order->user->email_pay}!")
-                    ->line('Номер заказа:'. $this->order->id)
-                    ->line('Статус документа: оплачено')
-                    ->action('Скачать документ', asset($this->order->file_path))
-                    ->line('Спасибо за использование нашего приложения!');
+            ->subject('Успешная оплата документа')
+            ->greeting("Здравствуйте, {$this->order->user->email_pay}!")
+            ->line('Номер заказа:' . $this->order->id)
+            ->line('Цена:' . $this->order->price)
+            ->line('Статус документа: оплачено')
+            ->action('Скачать документ', asset($this->order->file_path))
+            ->line('Инструкция по использованию документа прилагается к созданному документу.')
+            ->line('Мы сохраняем созданный Вами документ в системе в течение 90 дней, чтобы при создании нового документа Вы могли использовать введенные Вами данные.')
+            ->line('Если Вы не хотите, чтобы мы сохраняли документ в нашей системе - пройдите по ссылке.')
+            ->action('Удалить данные', route('site.user-delete-information', $this->order->user_id))
+            ->line('Спасибо, что используете всудбезюриста.рф');
     }
 
     /**

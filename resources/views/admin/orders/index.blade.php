@@ -13,6 +13,7 @@
                 <th scope="col">{{ __('admin.orders.user-name') }}</th>
                 <th scope="col">{{ __('admin.orders.document') }}</th>
                 <th scope="col">Ситуация</th>
+                <th scope="col">Цена</th>
                 <th scope="col">{{ __('admin.orders.status') }}</th>
                 <th scope="col"></th>
             </tr>
@@ -26,6 +27,9 @@
                            class="btn btn-outline-success">Скачать</a>
                     <td>
                         {{ $item->situation->name }}
+                    </td>
+                    <td>
+                        {{ $item->price }} руб
                     </td>
                     <td>
                         @if($item->status)

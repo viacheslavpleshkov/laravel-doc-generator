@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
+use App\Repositories\UserFillInputRepository;
 use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Http\Requests\Admin\UserStoreRequest;
 use Illuminate\Support\Facades\Auth;
@@ -28,18 +29,24 @@ class UserController extends BaseController
      * @var UserRepository
      */
     protected $userRepository;
+    /**
+     * @var DocumentKeyRepository
+     */
+    protected $userFillInputRepository;
 
     /**
      * UserController constructor.
      * @param SettingRepository $settingRepository
      * @param RoleRepository $roleRepository
      * @param UserRepository $userRepository
+     * @param UserFillInputRepository $userFillInputRepository
      */
-    public function __construct(SettingRepository $settingRepository, RoleRepository $roleRepository, UserRepository $userRepository)
+    public function __construct(SettingRepository $settingRepository, RoleRepository $roleRepository, UserRepository $userRepository, UserFillInputRepository $userFillInputRepository)
     {
         $this->settingRepository = $settingRepository;
         $this->roleRepository = $roleRepository;
         $this->userRepository = $userRepository;
+        $this->userFillInputRepository = $userFillInputRepository;
     }
 
     /**
@@ -87,9 +94,10 @@ class UserController extends BaseController
     public function show($id)
     {
         $main = $this->userRepository->getById($id);
+        $userFillInputRepository = $this->userFillInputRepository->getAdminValueUser($main->id);
         Log::info('admin(role: ' . Auth::user()->role->name . ', id: ' . Auth::user()->id . ', email: ' . Auth::user()->email . ') show user id= ' . $main->id);
 
-        return view('admin.users.show', compact('main'));
+        return view('admin.users.show', compact('main', 'userFillInputRepository'));
     }
 
     /**
